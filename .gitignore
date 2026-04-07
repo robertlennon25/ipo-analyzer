@@ -38,3 +38,6 @@ data/processed/models/
 
 # Secrets
 .env
+
+key.txt
+key.txt.pub

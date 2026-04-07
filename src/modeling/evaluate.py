@@ -52,7 +52,7 @@ def load_results() -> dict:
         return json.load(f)
 
 
-def load_feature_matrix(variant_name: str) -> tuple[np.ndarray, list[str], np.ndarray] | None:
+def load_feature_matrix(variant_name: str, target: str) -> tuple[np.ndarray, list[str], np.ndarray] | None:
     """
     Reconstruct the feature matrix for a variant so SHAP can be computed.
     Returns (X, feature_names, y) or None if data is unavailable.
@@ -71,12 +71,11 @@ def load_feature_matrix(variant_name: str) -> tuple[np.ndarray, list[str], np.nd
         return None
 
     returns_df = pd.read_csv(returns_path)
-    target_cols = [c for c in returns_df.columns if c.startswith("label_")]
-    if not target_cols:
-        logger.warning("No label columns in returns.csv")
+    if target not in returns_df.columns:
+        logger.warning("Target %s not in returns.csv", target)
         return None
-    target = target_cols[0]
 
+    market_path = PROCESSED_DIR / "market_context_features.csv"
     parts: list[pd.DataFrame] = []
 
     if "M1" in variant_name or "M3" in variant_name:
@@ -94,8 +93,12 @@ def load_feature_matrix(variant_name: str) -> tuple[np.ndarray, list[str], np.nd
     if "M2" in variant_name or "M3" in variant_name:
         if multiples_path.exists():
             mult = pd.read_csv(multiples_path)
-            drop = ["filing_type", "sector"] + [c for c in mult.columns if mult[c].dtype == object and c != "ticker"]
+            drop = [c for c in mult.columns if mult[c].dtype == object and c != "ticker"]
             parts.append(mult.drop(columns=[c for c in drop if c in mult.columns]))
+        if market_path.exists():
+            mkt = pd.read_csv(market_path)
+            drop = [c for c in mkt.columns if mkt[c].dtype == object and c != "ticker"]
+            parts.append(mkt.drop(columns=[c for c in drop if c in mkt.columns]))
 
     if not parts:
         return None
@@ -150,14 +153,10 @@ def generate_shap_plot(
         logger.warning("Could not load model %s: %s", model_path, e)
         return None
 
-    # Extract the actual classifier from the Pipeline
+    # Extract classifier and pre-transform X through all pipeline steps except the final clf
     if hasattr(model, "named_steps"):
-        steps = list(model.named_steps.values())
-        clf = steps[-1]
-        # Transform X through all non-final steps
-        X_transformed = X.copy()
-        for step in steps[:-1]:
-            X_transformed = step.transform(X_transformed)
+        clf = model[-1]
+        X_transformed = model[:-1].transform(X)
     else:
         clf = model
         X_transformed = X
@@ -206,16 +205,27 @@ def generate_shap_plot(
 
 def _comparison_table(results: dict) -> str:
     """Build the model comparison Markdown table."""
+    naive = None
+    for models in results["variants"].values():
+        for m in models.values():
+            naive = m.get("naive_accuracy")
+            break
+        if naive:
+            break
+
     rows = [
-        "| Variant | Model | ROC-AUC | ± | Accuracy | ± | N |",
-        "|---------|-------|---------|---|----------|---|---|",
+        f"Naive accuracy baseline: **{naive:.1%}**\n" if naive else "",
+        "| Variant | Model | ROC-AUC | ± | Bal-Accuracy | ± | Pred +% | N |",
+        "|---------|-------|---------|---|-------------|---|---------|---|",
     ]
     for variant, models in results["variants"].items():
         for model_name, m in models.items():
             rows.append(
                 f"| {variant} | {model_name} "
                 f"| {m['roc_auc_mean']:.3f} | {m['roc_auc_std']:.3f} "
-                f"| {m['accuracy_mean']:.3f} | {m['accuracy_std']:.3f} "
+                f"| {m.get('bal_accuracy_mean', m['accuracy_mean']):.3f} "
+                f"| {m.get('bal_accuracy_std', m['accuracy_std']):.3f} "
+                f"| {m.get('pred_positive_pct', '—')}% "
                 f"| {m['n_samples']} |"
             )
     return "\n".join(rows)
@@ -423,50 +433,83 @@ beyond what can be explained by structured financials alone?
 # ---------------------------------------------------------------------------
 
 def run_evaluation() -> None:
-    """Full evaluation pipeline: SHAP plots + Markdown report."""
-    results = load_results()
-    print(f"Loaded results for {len(results['variants'])} variants (target: {results['target']})")
+    """Full evaluation pipeline: SHAP plots + Markdown report for all targets."""
+    all_results = load_results()
+
+    # Support both old single-target format and new multi-target format
+    if "variants" in all_results:
+        all_results = {all_results["target"]: all_results}
+
+    print(f"Loaded results for {len(all_results)} target(s): {list(all_results.keys())}")
 
     PLOTS_DIR.mkdir(parents=True, exist_ok=True)
-    shap_plot_paths: dict[str, Path] = {}
 
-    for variant_name, models in results["variants"].items():
-        print(f"\nEvaluating: {variant_name}")
-        data = load_feature_matrix(variant_name)
+    report_sections: list[str] = [
+        "# IPO Language & Aftermarket Performance — Evaluation Report\n",
+        f"**Cross-validation:** {CV_FOLDS}-fold stratified  \n",
+    ]
 
-        for model_type in models:
-            model_path = MODELS_DIR / f"{variant_name}_{model_type}.pkl"
-            if not model_path.exists():
-                logger.warning("Model file not found: %s", model_path)
-                continue
+    # Stdout summary header
+    print(f"\n{'='*80}")
+    print(f"{'Variant':<20} {'Model':<22} {'Target':<12} {'ROC-AUC':<16} {'Bal-Acc':<16} {'Naive':<8} Pred +%")
+    print(f"{'-'*80}")
 
-            if data is not None:
-                X, feature_names, y = data
-                plot_path = generate_shap_plot(model_path, X, feature_names, variant_name, model_type)
-                if plot_path:
-                    shap_plot_paths[f"{variant_name}/{model_type}"] = plot_path
-            else:
-                print(f"  Skipping SHAP for {variant_name}/{model_type} — data unavailable")
+    for target, results in all_results.items():
+        shap_plot_paths: dict[str, Path] = {}
 
-    # Generate report
-    report_md = generate_report(results, shap_plot_paths)
+        for variant_name, models in results.get("variants", {}).items():
+            data = load_feature_matrix(variant_name, target)
+
+            for model_type in models:
+                model_path = MODELS_DIR / f"{target}_{variant_name}_{model_type}.pkl"
+                if not model_path.exists():
+                    # Fall back to old naming convention
+                    model_path = MODELS_DIR / f"{variant_name}_{model_type}.pkl"
+                if not model_path.exists():
+                    logger.warning("Model file not found: %s", model_path.name)
+                    continue
+
+                if data is not None:
+                    X, feature_names, y = data
+                    plot_path = generate_shap_plot(
+                        model_path, X, feature_names,
+                        f"{target}_{variant_name}", model_type
+                    )
+                    if plot_path:
+                        shap_plot_paths[f"{variant_name}/{model_type}"] = plot_path
+
+        # Per-target report section
+        report_sections.append(f"\n---\n\n## Target: `{target}`\n")
+        report_sections.append(_comparison_table(results))
+        report_sections.append("\n### Top Features\n")
+        report_sections.append(_top_features_section(results))
+        report_sections.append("\n### Signal Interpretation\n")
+        report_sections.append(_text_vs_fundamentals_interpretation(results))
+        report_sections.append("\n### Notable Findings\n")
+        report_sections.append(_notable_findings(results))
+
+        if shap_plot_paths:
+            report_sections.append("\n### SHAP Plots\n")
+            for name, path in shap_plot_paths.items():
+                rel = path.relative_to(PROCESSED_DIR)
+                report_sections.append(f"**{name}**\n\n![SHAP]({rel})\n")
+
+        # Stdout table rows
+        for variant_name, models in results.get("variants", {}).items():
+            for model_name, m in models.items():
+                naive = m.get("naive_accuracy", 0)
+                print(
+                    f"{variant_name:<20} {model_name:<22} {target:<12} "
+                    f"{m['roc_auc_mean']:.3f}±{m['roc_auc_std']:.3f}    "
+                    f"{m.get('bal_accuracy_mean', m['accuracy_mean']):.3f}±"
+                    f"{m.get('bal_accuracy_std', m['accuracy_std']):.3f}    "
+                    f"{naive:.3f}   "
+                    f"{m.get('pred_positive_pct', '—')}%"
+                )
+
+    report_md = "\n".join(report_sections)
     REPORT_PATH.write_text(report_md, encoding="utf-8")
     print(f"\nReport saved: {REPORT_PATH}")
-
-    # Print comparison table to stdout
-    print("\n" + "=" * 60)
-    print("MODEL COMPARISON")
-    print("=" * 60)
-    header = f"{'Variant':<20} {'Model':<25} {'ROC-AUC':>10} {'Accuracy':>10}"
-    print(header)
-    print("-" * 60)
-    for variant, models in results["variants"].items():
-        for model_name, m in models.items():
-            print(
-                f"{variant:<20} {model_name:<25} "
-                f"{m['roc_auc_mean']:.3f}±{m['roc_auc_std']:.3f}  "
-                f"{m['accuracy_mean']:.3f}±{m['accuracy_std']:.3f}"
-            )
 
 
 if __name__ == "__main__":
