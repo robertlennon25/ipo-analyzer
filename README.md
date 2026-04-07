@@ -2,34 +2,41 @@
 
 Research system that tests whether language in IPO filings (SEC S-1 / 424B4) predicts post-IPO stock performance. Primary question: **does text signal add alpha over fundamentals?**
 
-## Results (Run 001 — April 2026)
+## Results
 
-Target: 1-month binary return (`label_1m`), n ≈ 425 IPOs, 5-fold CV
+See [`results_tracker.md`](results_tracker.md) for full run history. Summary of progression:
 
-| Variant | Features | LR ROC-AUC | XGB ROC-AUC |
-|---------|----------|-----------|------------|
-| M1 — text only | 401 (NLP + embeddings) | **0.612 ± 0.029** | 0.601 ± 0.030 |
-| M2 — fundamentals only | 18 (financials + market) | 0.535 ± 0.075 | 0.560 ± 0.052 |
-| M3 — combined | 419 | **0.615 ± 0.038** | 0.605 ± 0.032 |
+**Run 001 (Apr 2026)** — 425 samples, label_1m only, 2 model types, raw accuracy metric
+| Variant | Best ROC-AUC |
+|---------|-------------|
+| M1 text | 0.612 ± 0.029 |
+| M2 fundamentals | 0.535 ± 0.075 |
+| M3 combined | 0.615 ± 0.038 |
 
-Text features alone (M1) outperform structured financials (M2). M3 adds a small increment over M1, suggesting financials contribute marginal signal beyond language. Full details and SHAP plots in [`results_tracker.md`](results_tracker.md).
+**Run 002 (Apr 2026)** — more data, 4 model types, 4 return windows, class-balanced training, leakage fix on IPO volume feature — *see results_tracker.md for full breakdown*
+
+**Key finding so far:** Text features (M1) consistently outperform structured financials (M2). M3 adds marginal lift over M1. Results are in weak-signal territory (0.55–0.65 AUC); sample size is the primary constraint.
+
+---
 
 ## Model Variants
 
 | Variant | Features | Research Question |
 |---------|----------|-------------------|
 | M1 | Handcrafted NLP + `all-MiniLM-L6-v2` embeddings | Pure language signal |
-| M2 | Revenue, margins, proceeds + VIX/S&P/sector ETF | Pure fundamentals signal |
+| M2 | Revenue/margins/proceeds + VIX/S&P/sector ETF/IPO volume | Pure fundamentals + market signal |
 | M3 | M1 + M2 | Does text add alpha over numbers? |
 
-Each variant is trained with Logistic Regression (interpretable baseline) and XGBoost (performance). Evaluated via stratified 5-fold CV, reporting ROC-AUC and accuracy with std.
+Each variant trained with: **Logistic Regression**, **Ridge**, **Random Forest**, **XGBoost**  
+Each model evaluated across four return windows: **1w, 1m, 6m, 1y**  
+Primary metric: **ROC-AUC** (balanced accuracy also reported; raw accuracy is misleading at 6m/1y due to class imbalance)
+
+---
 
 ## Setup
 
-**Prerequisites:** Python 3.10+, SEC EDGAR account (free — just needs a name/email as User-Agent)
-
 ```bash
-git clone <repo-url>
+git clone https://github.com/robertlennon25/ipo-analyzer
 cd ipo-analyzer
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
@@ -52,51 +59,60 @@ python src/ingestion/ipo_list.py
 python src/ingestion/price_fetcher.py
 
 # 3. Download filings from EDGAR
-python src/ingestion/edgar_fetcher.py --limit 50   # test; drop --limit for full run (~3-5 hrs)
+python src/ingestion/edgar_fetcher.py --limit 50   # test; drop --limit for full run (3-5 hrs)
 
-# 4. Market context features (can run alongside step 3)
+# 4. Market context (can run alongside step 3)
 python src/features/market_context.py
 
-# 5. Extract sections + compute features
+# 5. Extract sections + features
 python src/parsing/section_extractor.py
 python src/features/handcrafted.py
 python src/features/multiples.py
 python src/features/embeddings.py
 
-# 6. Train and evaluate
+# 6. Train and evaluate (results auto-appended to results_tracker.md)
 python src/modeling/train.py
 python src/modeling/evaluate.py
 ```
 
-Results are written to `data/processed/evaluation_report.md` and `data/processed/plots/`.
+---
+
+## Leakage Validation
+
+Two tests in `src/modeling-test-leakage/` verify that model performance reflects genuine signal.
+
+### Permutation test — shuffles labels to build a null distribution
+```bash
+python src/modeling-test-leakage/permutation_test.py
+python src/modeling-test-leakage/permutation_test.py --target label_6m --shuffles 50
+```
+If AUC stays elevated on shuffled labels → features contain post-IPO information. Clean models should collapse to AUC ≈ 0.50.
+
+### Temporal split test — trains on early IPOs, tests on later ones
+```bash
+python src/modeling-test-leakage/temporal_split_test.py
+python src/modeling-test-leakage/temporal_split_test.py --target label_1m --split 0.6
+```
+Catches year-level confounding (`is_hot_ipo_year`) and tests whether signal generalises across time. If M2/M3 drops sharply while M1 holds, year features are driving structured model performance.
+
+Results saved to `data/processed/leakage-test-results/` as timestamped JSON and committed to git.
+
+---
 
 ## Data Sources
 
 | Source | What | How |
 |--------|------|-----|
-| [stockanalysis.com](https://stockanalysis.com/ipos/) | IPO list 2019–2023 | Scraped via `scrape_ipo_universe.py` |
-| SEC EDGAR | S-1 / 424B4 filing HTML | `edgar_fetcher.py` via EDGAR submissions API |
-| yfinance | Post-IPO price history, sector | `price_fetcher.py`, `scrape_ipo_universe.py` |
-| yfinance | VIX, S&P 500, sector ETFs | `market_context.py` |
+| [stockanalysis.com](https://stockanalysis.com/ipos/) | IPO list 2019–2023 | Scraped |
+| SEC EDGAR | S-1 / 424B4 filing HTML | EDGAR submissions API |
+| yfinance | Post-IPO prices, sectors | REST |
+| yfinance | VIX, S&P 500, sector ETFs | REST, cached |
 
-## Project Structure
+---
 
-```
-config/settings.py          — all paths, constants, keyword lists
-src/ingestion/              — data collection (IPO list, EDGAR, prices)
-src/parsing/                — HTML → structured section JSON
-src/features/               — feature engineering (NLP, financials, market)
-src/modeling/               — train.py, evaluate.py
-app/streamlit_app.py        — interactive explorer (WIP)
-data/raw/                   — ipo_list_override.csv, sector_cache.csv, filings/
-data/processed/             — features CSVs, model results, SHAP plots
-data/cache/                 — price cache, embeddings cache
-results_tracker.md          — per-run model comparison log
-```
+## Notes on Data Quality
 
-## Notes
-
-- `total_proceeds_m` is a placeholder ($100M) for most IPOs — stockanalysis.com doesn't publish proceeds in list view
-- ~185/700 IPOs have unknown sector (delisted companies not found by yfinance)
-- train.py requires ≥ 30 samples; recommend ≥ 300 filings for reliable results
-- Use temporal train/test splits (not random) to avoid year-level confounding from `is_hot_ipo_year`
+- `total_proceeds_m = 100` placeholder for most IPOs — stockanalysis.com doesn't publish proceeds in list view
+- ~185/700 IPOs have unknown sector (delisted tickers not found by yfinance)
+- 6m/1y targets are class-imbalanced (~30-34% positive rate) — use ROC-AUC, not accuracy
+- Financial feature extraction (multiples.py) has high NaN rates for many filings

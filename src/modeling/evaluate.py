@@ -511,6 +511,47 @@ def run_evaluation() -> None:
     REPORT_PATH.write_text(report_md, encoding="utf-8")
     print(f"\nReport saved: {REPORT_PATH}")
 
+    _append_to_results_tracker(all_results)
+
+
+def _append_to_results_tracker(all_results: dict) -> None:
+    """Append a run summary block to results_tracker.md."""
+    from datetime import datetime
+    tracker_path = Path(__file__).parent.parent.parent / "results_tracker.md"
+
+    now = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+    lines = [f"\n---\n\n## Auto-logged — {now}\n"]
+
+    for target, results in all_results.items():
+        naive = None
+        for models in results.get("variants", {}).values():
+            for m in models.values():
+                naive = m.get("naive_accuracy")
+                break
+            if naive:
+                break
+
+        lines.append(f"\n### {target}  (naive acc: {naive:.1%})\n" if naive else f"\n### {target}\n")
+        lines.append("| Variant | Model | ROC-AUC | Bal-Acc | Pred +% |")
+        lines.append("|---------|-------|---------|---------|---------|")
+
+        for variant, models in results.get("variants", {}).items():
+            for model_name, m in models.items():
+                lines.append(
+                    f"| {variant} | {model_name} "
+                    f"| {m['roc_auc_mean']:.3f} ± {m['roc_auc_std']:.3f} "
+                    f"| {m.get('bal_accuracy_mean', m['accuracy_mean']):.3f} ± {m.get('bal_accuracy_std', m['accuracy_std']):.3f} "
+                    f"| {m.get('pred_positive_pct', '—')}% |"
+                )
+
+    block = "\n".join(lines) + "\n"
+
+    with open(tracker_path, "a") as f:
+        f.write(block)
+
+    print(f"Results appended to {tracker_path.name}")
+
 
 if __name__ == "__main__":
     run_evaluation()

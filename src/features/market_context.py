@@ -9,8 +9,8 @@ Features (all computed from data available ON OR BEFORE the IPO date):
   - sp500_ret_30d          : S&P 500 trailing 30-calendar-day return
   - sp500_ret_90d          : S&P 500 trailing 90-calendar-day return
   - sector_etf_ret_30d     : Sector ETF trailing 30-day return
-  - ipos_same_month        : # of other IPOs in the same calendar month (hot market proxy)
-  - ipos_same_quarter      : # of other IPOs in the same calendar quarter
+  - ipos_prior_30d         : # of IPOs in the 30 days strictly before this IPO date (hot market proxy)
+  - ipos_prior_90d         : # of IPOs in the 90 days strictly before this IPO date
   - is_hot_ipo_year        : 1 if year is in {2020, 2021}, else 0
   - market_regime          : categorical — bull / bear / neutral (based on sp500_ret_90d)
 
@@ -170,8 +170,7 @@ def _closest_value(series: pd.Series, as_of: pd.Timestamp) -> float | None:
 def compute_features_for_ipo(
     row: pd.Series,
     market_data: dict[str, pd.DataFrame],
-    ipo_counts: pd.Series,
-    ipo_quarter_counts: pd.Series,
+    all_ipo_dates: pd.Series,
 ) -> dict:
     """Compute all market context features for a single IPO."""
     ticker   = row["ticker"]
@@ -231,9 +230,9 @@ def compute_features_for_ipo(
     else:
         features["sector_vs_sp500_30d"] = None
 
-    # --- IPO volume (hot market proxy) ---
-    features["ipos_same_month"]   = int(ipo_counts.get(month_key, 1)) - 1    # exclude self
-    features["ipos_same_quarter"] = int(ipo_quarter_counts.get(quarter_key, 1)) - 1
+    # --- IPO volume (hot market proxy — strictly prior dates, no leakage) ---
+    features["ipos_prior_30d"] = int(((all_ipo_dates < ipo_date) & (all_ipo_dates >= ipo_date - timedelta(days=30))).sum())
+    features["ipos_prior_90d"] = int(((all_ipo_dates < ipo_date) & (all_ipo_dates >= ipo_date - timedelta(days=90))).sum())
 
     # --- Year regime ---
     features["is_hot_ipo_year"] = int(year in HOT_IPO_YEARS)
@@ -263,16 +262,13 @@ def build_market_context_features(
 
     market_data = load_market_data(start=earliest, end=latest)
 
-    # Pre-compute IPO counts per month/quarter (used as hot-market proxy)
-    universe["_month_key"]   = list(zip(universe["ipo_date"].dt.year, universe["ipo_date"].dt.month))
-    universe["_quarter_key"] = list(zip(universe["ipo_date"].dt.year, universe["ipo_date"].dt.quarter))
-    ipo_counts         = universe["_month_key"].value_counts()
-    ipo_quarter_counts = universe["_quarter_key"].value_counts()
+    # All IPO dates as a Series for trailing-window count (leakage-free)
+    all_ipo_dates = universe["ipo_date"]
 
     records = []
     for _, row in universe.iterrows():
         try:
-            feats = compute_features_for_ipo(row, market_data, ipo_counts, ipo_quarter_counts)
+            feats = compute_features_for_ipo(row, market_data, all_ipo_dates)
         except Exception as exc:
             logger.warning("Feature computation failed for %s: %s", row["ticker"], exc)
             feats = {"ticker": row["ticker"]}
@@ -299,7 +295,7 @@ def build_market_context_features(
     preview_cols = [
         "ticker", "vix_on_ipo_date", "sp500_ret_30d", "sp500_ret_90d",
         "sector_etf_ret_30d", "sector_vs_sp500_30d",
-        "ipos_same_month", "is_hot_ipo_year", "market_regime",
+        "ipos_prior_30d", "ipos_prior_90d", "is_hot_ipo_year", "market_regime",
     ]
     print(df[[c for c in preview_cols if c in df.columns]].head().to_string())
 

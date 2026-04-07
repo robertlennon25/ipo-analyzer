@@ -20,11 +20,13 @@ data/processed/*.csv
 data/processed/sections/
 data/processed/models/
 
-# Keep: plots, results JSON, evaluation report, results tracker
+# Keep: plots, results JSON, evaluation report, results tracker, leakage tests
 !data/processed/plots/
 !data/processed/plots/*.png
 !data/processed/model_results.json
 !data/processed/evaluation_report.md
+!data/processed/leakage-test-results/
+!data/processed/leakage-test-results/*.json
 
 # Raw data inputs — keep the IPO list and sector cache (small, useful to version)
 # data/raw/ipo_list_override.csv  ← intentionally NOT ignored

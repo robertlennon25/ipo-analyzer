@@ -1,51 +1,63 @@
 # Results Tracker
 
-Tracks model performance across runs. Target is always binary 1-month return (`label_1m`) unless noted.
-ROC-AUC is the primary metric (0.5 = random, higher = better). Std is from 5-fold stratified CV.
+Tracks model performance across runs. Appended automatically by `evaluate.py` after each run.
+
+**Primary metric:** ROC-AUC (0.5 = random chance). Balanced accuracy also reported.  
+**Note:** Raw accuracy is misleading for 6m/1y targets due to class imbalance (66–70% naive baseline).
 
 ---
 
 ## Run 001 — 2026-04-07
 
+### Changes from baseline
+- First full run of pipeline
+
 ### Setup
 | Parameter | Value |
 |-----------|-------|
-| Date | 2026-04-07 |
-| Target | `label_1m` (1-month return > 0) |
-| IPO universe | 700 scraped (2019–2023), 515–517 with price data |
-| Filings downloaded | ~200 (edgar_fetcher --limit 200) |
-| Samples in model | M1/M3: 425, M2: 427 |
-| CV folds | 5 (StratifiedKFold) |
-| Sector coverage | 515 / 700 with known sector (185 Unknown) |
+| Filings | ~200 (edgar_fetcher --limit 200) |
+| Samples | M1/M3: 425, M2: 427 |
+| Targets | label_1m only |
+| Models | logistic_regression, xgboost |
+| Class balancing | None |
+| IPO volume feature | ipos_same_month (contained leakage) |
 
-### Feature counts
-| Variant | Features | Description |
-|---------|----------|-------------|
-| M1_text | 401 | Handcrafted NLP (VADER sentiment, keyword densities, readability) + 384-dim `all-MiniLM-L6-v2` embeddings |
-| M2_multiples | 18 | Financial features (revenue, margins, proceeds) + market context (VIX, S&P momentum, sector ETF) |
-| M3_combined | 419 | M1 + M2 combined |
-
-### Results
-| Variant | Model | ROC-AUC | Accuracy |
-|---------|-------|---------|----------|
-| M1_text | logistic_regression | 0.612 ± 0.029 | 0.586 ± 0.044 |
-| M1_text | xgboost | 0.601 ± 0.030 | 0.576 ± 0.025 |
-| M2_multiples | logistic_regression | 0.535 ± 0.075 | 0.529 ± 0.080 |
-| M2_multiples | xgboost | 0.560 ± 0.052 | 0.567 ± 0.050 |
-| M3_combined | logistic_regression | 0.615 ± 0.038 | 0.584 ± 0.033 |
-| M3_combined | xgboost | 0.605 ± 0.032 | 0.560 ± 0.042 |
+### Results (label_1m, naive acc: 52.4%)
+| Variant | Model | ROC-AUC |
+|---------|-------|---------|
+| M1_text | logistic_regression | 0.612 ± 0.029 |
+| M1_text | xgboost | 0.601 ± 0.030 |
+| M2_multiples | logistic_regression | 0.535 ± 0.075 |
+| M2_multiples | xgboost | 0.560 ± 0.052 |
+| M3_combined | logistic_regression | 0.615 ± 0.038 |
+| M3_combined | xgboost | 0.605 ± 0.032 |
 
 ### Observations
-- M1 (text only) outperforms M2 (fundamentals only) — text features carry more signal at this sample size
-- M3 marginally beats M1 alone (0.615 vs 0.612 for LR), suggesting financials add a small increment over text
-- M2 XGBoost (0.560) now above random after fixing all-NaN column drop — but high std (±0.075 for LR) indicates instability
-- All results are weak signal territory (0.5–0.65); 425 samples is at the low end for reliable conclusions
-- SHAP plots saved to `data/processed/plots/`
+- M1 (text) outperforms M2 (fundamentals)
+- M3 marginally beats M1 (0.615 vs 0.612)
+- High std on M2 (±0.075) indicates instability from sparse financial features
 
-### Known limitations this run
-- ~185 / 700 IPOs have Unknown sector (affects sector ETF features in M3)
-- `total_proceeds_m` is a placeholder (100) for most IPOs
-- Financial feature coverage is sparse — many filings had extraction failures in `multiples.py`
-- Sample size (~425) too small for definitive conclusions; target ≥ 300 clean filings for next run
+---
+
+## Run 002 — 2026-04-07
+
+### Changes from Run 001
+- Added Random Forest and Ridge to model suite (4 models total)
+- Trained across all 4 return windows (1w, 1m, 6m, 1y)
+- Added class balancing: `class_weight="balanced"` on LR + RF; `scale_pos_weight` on XGBoost
+- Added balanced accuracy metric and prediction split (% positive/negative predictions)
+- Fixed leakage: `ipos_same_month` → `ipos_prior_30d` / `ipos_prior_90d` (strictly trailing)
+- M2 now correctly includes market context features alongside financial multiples
+- More filings downloaded (full pipeline run)
+
+### Setup
+| Parameter | Value |
+|-----------|-------|
+| Targets | label_1w, label_1m, label_6m, label_1y |
+| Models | logistic_regression, ridge, random_forest, xgboost |
+| Class balancing | Yes (balanced weights / scale_pos_weight) |
+| IPO volume feature | ipos_prior_30d, ipos_prior_90d (leakage-free) |
+
+*Full numeric results below — auto-appended by evaluate.py after next run*
 
 ---
