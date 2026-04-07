@@ -1,0 +1,702 @@
+ticker,company,ipo_date,offer_price,sector,total_proceeds_m
+MDJH,MDJM Ltd.,2019-01-08,5.0,Unknown,100.0
+NFE,New Fortress Energy Inc.,2019-01-31,14.0,Energy,100.0
+INMB,INmune Bio Inc.,2019-02-04,8.0,Healthcare,100.0
+ALEC,"Alector, Inc.",2019-02-07,19.0,Healthcare,100.0
+HARP,"Harpoon Therapeutics, Inc.",2019-02-08,14.0,Unknown,100.0
+GOSS,"Gossamer Bio, Inc.",2019-02-08,16.0,Healthcare,100.0
+ANCN,Anchiano Therapeutics,2019-02-12,11.5,Unknown,100.0
+BACK,"IMAC Holdings, Inc.",2019-02-13,5.13,Healthcare,100.0
+TCRR,TCR2 Therapeutics Inc.,2019-02-14,15.0,Unknown,100.0
+AVDR,"Avedro, Inc.",2019-02-14,14.0,Unknown,100.0
+MITO,Stealth BioTherapeutics Corp.,2019-02-15,12.0,Unknown,100.0
+HOTH,"Hoth Therapeutics, Inc.",2019-02-15,5.6,Healthcare,100.0
+SOLY,"Soliton, Inc.",2019-02-19,5.0,Unknown,100.0
+SLE,"Super League Enterprise, Inc.",2019-02-26,11.0,Communication Services,100.0
+KLDO,"Kaleido Biosciences, Inc.",2019-02-28,15.0,Healthcare,100.0
+SWAV,"Shockwave Medical, Inc.",2019-03-07,17.0,Unknown,100.0
+FUTU,Futu Holdings Limited,2019-03-08,12.0,Financial Services,100.0
+TIGR,UP Fintech Holding Limited,2019-03-20,8.0,Financial Services,100.0
+LEVI,Levi Strauss & Co.,2019-03-21,17.0,Consumer Cyclical,100.0
+GNFT,Genfit S.A.,2019-03-27,22.0,Unknown,100.0
+DTIL,"Precision BioSciences, Inc.",2019-03-28,16.0,Healthcare,100.0
+WTRE,Watford Holdings Ltd.,2019-03-28,25.26,Unknown,100.0
+LYFT,"Lyft, Inc.",2019-03-29,72.0,Technology,2340.0
+RUHN,Ruhnn Holding Limited,2019-04-03,12.5,Unknown,100.0
+TW,Tradeweb Markets Inc.,2019-04-04,27.0,Financial Services,100.0
+SILK,"Silk Road Medical, Inc.",2019-04-04,20.0,Unknown,100.0
+NGM,"NGM Biopharmaceuticals, Inc.",2019-04-04,16.0,Unknown,100.0
+TUFN,Tufin Software Technologies Ltd.,2019-04-11,14.0,Unknown,100.0
+PD,"PagerDuty, Inc.",2019-04-11,24.0,Technology,100.0
+JMIA,Jumia Technologies AG,2019-04-12,14.5,Consumer Cyclical,100.0
+TPTX,"Turning Point Therapeutics, Inc.",2019-04-17,18.0,Unknown,100.0
+PLMR,"Palomar Holdings, Inc.",2019-04-17,15.0,Financial Services,100.0
+BWAY,BrainsWay Ltd.,2019-04-17,11.0,Healthcare,100.0
+GNLN,"Greenlane Holdings, Inc.",2019-04-18,17.0,Consumer Defensive,100.0
+HOOK,HOOKIPA Pharma Inc.,2019-04-18,14.0,Healthcare,100.0
+ZM,"Zoom Communications, Inc.",2019-04-18,36.0,Technology,751.0
+PINS,"Pinterest, Inc.",2019-04-18,19.0,Communication Services,1400.0
+MNRL,"Brigham Minerals, Inc.",2019-04-18,18.0,Unknown,100.0
+WAFU,Wah Fu Education Group Limited,2019-04-30,5.0,Consumer Defensive,100.0
+SY,So-Young International Inc.,2019-05-02,13.8,Healthcare,100.0
+BYND,"Beyond Meat, Inc.",2019-05-02,25.0,Consumer Defensive,241.0
+TMDX,"TransMedics Group, Inc.",2019-05-02,16.0,Healthcare,100.0
+YJ,Yunji Inc.,2019-05-03,11.0,Consumer Cyclical,100.0
+SCPL,SciPlay Corporation,2019-05-03,16.0,Unknown,100.0
+RRBI,"Red River Bancshares, Inc.",2019-05-03,45.0,Financial Services,100.0
+ATIF,ATIF Holdings Limited,2019-05-03,5.0,Unknown,100.0
+PSN,Parsons Corporation,2019-05-08,27.0,Technology,100.0
+HHR,Headhunter Group PLC,2019-05-09,13.5,Unknown,100.0
+AXLA,"Axcella Health, Inc.",2019-05-09,20.0,Unknown,100.0
+NXTC,"NextCure, Inc.",2019-05-09,15.0,Healthcare,100.0
+QNCX,"Quince Therapeutics, Inc.",2019-05-09,17.0,Healthcare,100.0
+MEC,"Mayville Engineering Company, Inc.",2019-05-09,17.0,Industrials,100.0
+SPFI,"South Plains Financial, Inc.",2019-05-09,17.5,Financial Services,100.0
+SONM,"DNA X, Inc.",2019-05-10,11.0,Technology,100.0
+UBER,"Uber Technologies, Inc.",2019-05-10,45.0,Technology,8100.0
+JFIN,Jiayin Group Inc.,2019-05-10,10.5,Communication Services,100.0
+PSTL,"Postal Realty Trust, Inc.",2019-05-15,17.0,Real Estate,100.0
+LKNCY,"Luckin Coffee, Inc.",2019-05-17,17.0,Consumer Cyclical,100.0
+FSLY,"Fastly, Inc.",2019-05-17,16.0,Technology,100.0
+AVTR,"Avantor, Inc.",2019-05-17,14.0,Healthcare,100.0
+RTLR,Rattler Midstream LP,2019-05-23,17.5,Unknown,100.0
+BCYC,Bicycle Therapeutics plc,2019-05-23,14.0,Healthcare,100.0
+GOTU,Gaotu Techedu Inc.,2019-06-06,10.5,Consumer Defensive,100.0
+RVLV,"Revolve Group, Inc.",2019-06-07,18.0,Consumer Cyclical,100.0
+CRWD,"CrowdStrike Holdings, Inc.",2019-06-12,34.0,Technology,612.0
+FVRR,Fiverr International Ltd.,2019-06-13,21.0,Communication Services,111.0
+CHWY,"Chewy, Inc.",2019-06-14,22.0,Consumer Cyclical,1020.0
+STOK,"Stoke Therapeutics, Inc.",2019-06-19,18.0,Healthcare,100.0
+WORK,"Slack Technologies, Inc.",2019-06-20,26.0,Unknown,838.0
+PRVL,Prevail Therapeutics Inc.,2019-06-20,17.0,Unknown,100.0
+GO,Grocery Outlet Holding Corp.,2019-06-20,22.0,Consumer Defensive,100.0
+BCEL,"Atreca, Inc.",2019-06-20,17.0,Unknown,100.0
+AKRO,"Akero Therapeutics, Inc.",2019-06-20,16.0,Unknown,100.0
+PSNL,"Personalis, Inc.",2019-06-20,17.0,Healthcare,100.0
+LINX,Linx S.A.,2019-06-26,9.4,Unknown,100.0
+CMBM,Cambium Networks Corporation,2019-06-26,12.0,Technology,100.0
+CHNG,"Change Healthcare, Inc.",2019-06-27,13.0,Unknown,100.0
+BBIO,"BridgeBio Pharma, Inc.",2019-06-27,17.0,Healthcare,100.0
+ADPT,Adaptive Biotechnologies Corporation,2019-06-27,20.0,Healthcare,100.0
+MORF,"Morphic Holding, Inc.",2019-06-27,15.0,Unknown,100.0
+REAL,"The RealReal, Inc.",2019-06-28,20.0,Consumer Cyclical,100.0
+KRTX,"Karuna Therapeutics, Inc.",2019-06-28,16.0,Unknown,100.0
+DOYU,DouYu International Holdings Limited,2019-07-17,11.5,Communication Services,100.0
+IHRT,"iHeartMedia, Inc.",2019-07-18,17.0,Communication Services,100.0
+AMK,"Amkor Technology, Inc.",2019-07-18,22.0,Unknown,100.0
+MIRM,"Mirum Pharmaceuticals, Inc.",2019-07-18,15.0,Healthcare,100.0
+PHR,"Phreesia, Inc.",2019-07-18,17.0,Healthcare,100.0
+FULC,"Fulcrum Therapeutics, Inc.",2019-07-18,16.0,Healthcare,100.0
+MDLA,"Medallia, Inc.",2019-07-19,21.0,Unknown,100.0
+IFS,Intercorp Financial Services Inc.,2019-07-19,46.0,Financial Services,100.0
+AFYA,Afya Limited,2019-07-19,19.0,Consumer Defensive,100.0
+EIC,Eagle Point Income Company Inc.,2019-07-24,19.0,Financial Services,100.0
+PROS,"ProSight Global, Inc.",2019-07-25,14.0,Unknown,100.0
+NOVA,"Sunnova Energy International, Inc.",2019-07-25,12.0,Unknown,100.0
+LVGO,Livongo Health,2019-07-25,28.0,Unknown,100.0
+HCAT,"Health Catalyst, Inc.",2019-07-25,26.0,Healthcare,100.0
+CSTL,"Castle Biosciences, Inc.",2019-07-25,16.0,Healthcare,100.0
+WSG,Wanda Sports Group Co. Ltd.,2019-07-26,8.0,Unknown,100.0
+VIST,"Vista Energy, S.A.B. de C.V.",2019-07-26,9.0,Energy,100.0
+BORR,Borr Drilling Limited,2019-07-31,9.3,Energy,100.0
+DT,"Dynatrace, Inc.",2019-08-01,16.0,Technology,100.0
+SNDL,SNDL Inc.,2019-08-01,13.0,Consumer Defensive,100.0
+KRUS,"Kura Sushi USA, Inc.",2019-08-01,14.0,Consumer Cyclical,100.0
+AMTD,AMTD IDEA Group,2019-08-05,8.38,Financial Services,100.0
+INMD,InMode Ltd.,2019-08-08,14.0,Healthcare,100.0
+BTOG,Bit Origin Ltd,2019-08-14,5.0,Financial Services,100.0
+JFU,9F Inc.,2019-08-15,9.5,Technology,100.0
+CFB,"CrossFirst Bankshares, Inc.",2019-08-15,14.5,Unknown,100.0
+TXG,"10x Genomics, Inc.",2019-09-12,39.0,Healthcare,100.0
+ALRS,Alerus Financial Corporation,2019-09-13,21.0,Financial Services,100.0
+NET,"Cloudflare, Inc.",2019-09-13,15.0,Technology,100.0
+STSA,"Satsuma Pharmaceuticals, Inc.",2019-09-13,15.0,Unknown,100.0
+SWTX,"Springworks Therapeutics, Inc.",2019-09-13,18.0,Unknown,100.0
+IGMS,"IGM Biosciences, Inc.",2019-09-18,16.0,Unknown,100.0
+XGN,Exagen Inc.,2019-09-19,14.0,Healthcare,100.0
+PING,Ping Identity Holding Corp.,2019-09-19,15.0,Unknown,100.0
+DDOG,"Datadog, Inc.",2019-09-19,27.0,Technology,648.0
+PTON,"Peloton Interactive, Inc.",2019-09-26,29.0,Consumer Cyclical,1160.0
+OPRT,Oportun Financial Corporation,2019-09-26,15.0,Financial Services,100.0
+APRE,"Aprea Therapeutics, Inc.",2019-10-03,15.0,Healthcare,100.0
+MCBS,"MetroCity Bankshares, Inc.",2019-10-03,13.5,Financial Services,100.0
+KRRO,"Korro Bio, Inc.",2019-10-03,14.0,Healthcare,100.0
+VIE,Viela Bio,2019-10-03,19.0,Unknown,100.0
+BNTX,BioNTech SE,2019-10-10,15.0,Healthcare,100.0
+VIR,"Vir Biotechnology, Inc.",2019-10-11,20.0,Healthcare,100.0
+HBT,"HBT Financial, Inc.",2019-10-11,16.0,Financial Services,100.0
+IPHA,Innate Pharma S.A.,2019-10-17,5.5,Healthcare,100.0
+BRBR,"BellRing Brands, Inc.",2019-10-17,14.0,Consumer Defensive,100.0
+DAO,"Youdao, Inc.",2019-10-25,17.0,Consumer Defensive,100.0
+CABA,"Cabaletta Bio, Inc.",2019-10-25,11.0,Healthcare,100.0
+PGNY,"Progyny, Inc.",2019-10-25,13.0,Healthcare,100.0
+PHAT,"Phathom Pharmaceuticals, Inc.",2019-10-25,19.0,Healthcare,100.0
+PAVS,Paranovus Entertainment Technology Ltd.,2019-10-25,5.5,Consumer Defensive,100.0
+TFFP,TFF Group,2019-10-25,5.0,Unknown,100.0
+RAPT,"Rapt Therapeutics, Inc.",2019-10-31,12.0,Healthcare,100.0
+OYST,"Oyster Point Pharma, Inc.",2019-10-31,16.0,Unknown,100.0
+DUO,Fangdd Network Group Ltd.,2019-11-01,13.0,Real Estate,100.0
+CNTG,Centogene N.V.,2019-11-07,14.0,Unknown,100.0
+GRTX,"Galera Therapeutics, Inc.",2019-11-07,12.0,Healthcare,100.0
+KRKR,36Kr Holdings Inc.,2019-11-08,14.5,Communication Services,100.0
+TELA,"TELA Bio, Inc.",2019-11-08,13.0,Healthcare,100.0
+ETNB,"89bio, Inc.",2019-11-11,16.0,Unknown,100.0
+CAN,Canaan Inc.,2019-11-21,9.0,Technology,100.0
+SITM,SiTime Corporation,2019-11-21,13.0,Technology,100.0
+PINE,"Alpine Income Property Trust, Inc.",2019-11-22,19.0,Real Estate,100.0
+LMPX,"LMP Automotive Holdings, Inc.",2019-12-05,5.0,Consumer Cyclical,100.0
+XP,XP Inc.,2019-12-11,27.0,Financial Services,100.0
+EH,EHang Holdings Limited,2019-12-12,12.5,Industrials,100.0
+BILL,"BILL Holdings, Inc.",2019-12-12,22.0,Technology,216.0
+SPT,"Sprout Social, Inc.",2019-12-13,17.0,Technology,100.0
+MNPR,Monopar Therapeutics Inc.,2019-12-19,8.0,Healthcare,100.0
+INDO,Indonesia Energy Corporation Limited,2019-12-19,11.0,Energy,100.0
+MKDTY,Molecular Data Inc.,2019-12-30,5.38,Basic Materials,100.0
+VEL,"Velocity Financial, Inc.",2020-01-17,13.0,Financial Services,100.0
+SOGP,Sound Group Inc.,2020-01-17,11.0,Communication Services,100.0
+DNK,Phoenix Tree Holdings Ltd.,2020-01-17,13.5,Unknown,100.0
+ANVS,"Annovis Bio, Inc.",2020-01-29,6.0,Healthcare,100.0
+FRES,Fresh2 Group Ltd.,2020-01-30,12.0,Unknown,100.0
+BDTX,"Black Diamond Therapeutics, Inc.",2020-01-30,19.0,Healthcare,100.0
+ONEM,"1Life Healthcare, Inc.",2020-01-31,14.0,Unknown,100.0
+ARQT,"Arcutis Biotherapeutics, Inc.",2020-01-31,17.0,Healthcare,100.0
+REYN,Reynolds Consumer Products Inc.,2020-01-31,26.0,Consumer Cyclical,100.0
+SDGR,"SchrÃ¶dinger, Inc.",2020-02-06,17.0,Healthcare,100.0
+PPD,"PPD, Inc.",2020-02-06,27.0,Unknown,100.0
+CSPR,"Casper Sleep, Inc.",2020-02-06,12.0,Unknown,100.0
+BEAM,Beam Therapeutics Inc.,2020-02-06,17.0,Healthcare,100.0
+PFHD,Professional Holding Corp.,2020-02-07,18.5,Unknown,100.0
+ONEW,OneWater Marine Inc.,2020-02-07,12.0,Consumer Cyclical,100.0
+NREF,"NexPoint Real Estate Finance, Inc.",2020-02-07,19.0,Real Estate,100.0
+HUIZ,Huize Holding Limited,2020-02-12,10.5,Financial Services,100.0
+SDOT,Sadot Group Inc.,2020-02-13,5.0,Consumer Defensive,100.0
+RVMD,"Revolution Medicines, Inc.",2020-02-13,17.0,Healthcare,100.0
+PASG,"Passage Bio, Inc.",2020-02-28,18.0,Healthcare,100.0
+GFL,GFL Environmental Inc.,2020-03-03,19.0,Industrials,100.0
+ELVN,"Enliven Therapeutics, Inc.",2020-03-12,16.0,Healthcare,100.0
+WIMI,WiMi Hologram Cloud Inc.,2020-04-01,5.5,Communication Services,100.0
+ZNTL,"Zentalis Pharmaceuticals, Inc.",2020-04-03,18.0,Healthcare,100.0
+KROS,"Keros Therapeutics, Inc.",2020-04-08,16.0,Healthcare,100.0
+ORIC,"ORIC Pharmaceuticals, Inc.",2020-04-24,16.0,Healthcare,100.0
+LYRA,"Lyra Therapeutics, Inc.",2020-05-01,16.0,Healthcare,100.0
+GAN,"Naturgy Energy Group, S.A.",2020-05-05,8.5,Unknown,100.0
+KC,Kingsoft Cloud Holdings Limited,2020-05-08,17.0,Technology,100.0
+CLEU,China Liberal Education Holdings Limited,2020-05-08,6.0,Unknown,100.0
+AYLA,"Ayala Pharmaceuticals, Inc.",2020-05-08,15.0,Unknown,100.0
+ADCT,ADC Therapeutics SA,2020-05-15,19.0,Healthcare,100.0
+SLQT,"SelectQuote, Inc.",2020-05-21,20.0,Financial Services,100.0
+NARI,"Inari Medical, Inc.",2020-05-22,19.0,Unknown,100.0
+WMG,Warner Music Group Corp.,2020-06-03,25.0,Communication Services,100.0
+PLRX,"Pliant Therapeutics, Inc.",2020-06-03,16.0,Healthcare,100.0
+ZI,ZoomInfo Technologies Inc.,2020-06-04,21.0,Unknown,935.0
+LEGN,Legend Biotech Corporation,2020-06-05,23.0,Healthcare,100.0
+FOUR,"Shift4 Payments, Inc.",2020-06-05,23.0,Technology,100.0
+DADA,Dada Nexus Limited,2020-06-05,16.0,Unknown,100.0
+CALT,Calliditas Therapeutics AB,2020-06-05,19.5,Unknown,100.0
+AMTI,"Applied Molecular Transport, Inc.",2020-06-05,14.0,Unknown,100.0
+VRM,"Vroom, Inc.",2020-06-09,22.0,Financial Services,100.0
+UCL,uCloudlink Group Inc.,2020-06-10,18.0,Communication Services,100.0
+LTRN,Lantern Pharma Inc.,2020-06-11,15.0,Healthcare,100.0
+GBIO,Generation Bio Co.,2020-06-12,19.0,Healthcare,100.0
+AZEK,The AZEK Company Inc.,2020-06-12,23.0,Unknown,100.0
+RNA,"Avidity Biosciences, Inc.",2020-06-12,18.0,Healthcare,100.0
+PCVX,"Vaxcyte, Inc.",2020-06-12,16.0,Healthcare,100.0
+BNR,Burning Rock Biotech Limited,2020-06-12,16.5,Healthcare,100.0
+RPRX,Royalty Pharma plc,2020-06-16,28.0,Healthcare,100.0
+RPTX,"Repare Therapeutics, Inc.",2020-06-19,20.0,Unknown,100.0
+NUZE,"NuZee, Inc.",2020-06-19,9.0,Unknown,100.0
+GTH,Genetron Holdings Limited,2020-06-19,16.0,Unknown,100.0
+FMTX,"Forma Therapeutics Holdings, Inc.",2020-06-19,20.0,Unknown,100.0
+BIOR,"Biora Therapeutics, Inc.",2020-06-19,15.0,Unknown,100.0
+PYPD,PolyPid Ltd.,2020-06-26,16.0,Healthcare,100.0
+FUSN,"Fusion Pharmaceuticals, Inc.",2020-06-26,17.0,Unknown,100.0
+EBON,Ebang International Holdings Inc.,2020-06-26,5.23,Technology,100.0
+API,"Agora, Inc.",2020-06-26,20.0,Technology,100.0
+AKUS,"Akouos, Inc.",2020-06-26,17.0,Unknown,100.0
+ACI,"Albertsons Companies, Inc.",2020-06-26,16.0,Consumer Defensive,100.0
+ADTX,"Aditxt, Inc.",2020-06-30,9.0,Healthcare,100.0
+DNB,"Dun & Bradstreet Holdings, Inc.",2020-07-01,22.0,Unknown,100.0
+ACCD,"Accolade, Inc.",2020-07-02,22.0,Unknown,100.0
+LMND,"Lemonade, Inc.",2020-07-02,29.0,Financial Services,319.0
+BLCT,BlueCity Holdings Ltd.,2020-07-08,16.0,Unknown,100.0
+PSTX,"Poseida Therapeutics, Inc.",2020-07-10,16.0,Unknown,100.0
+NKTX,"Nkarta, Inc.",2020-07-10,18.0,Healthcare,100.0
+IVA,Inventiva S.A.,2020-07-10,14.4,Healthcare,100.0
+NCNO,"nCino, Inc.",2020-07-14,31.0,Technology,100.0
+GOCO,"GoHealth, Inc.",2020-07-15,21.0,Financial Services,100.0
+TIG,"Trean Insurance Group, Inc.",2020-07-16,15.0,Unknown,100.0
+RLAY,"Relay Therapeutics, Inc.",2020-07-16,20.0,Healthcare,100.0
+RNLX,Renalytix Plc,2020-07-17,13.5,Unknown,100.0
+PAND,"Pandion Therapeutics, Inc.",2020-07-17,18.0,Unknown,100.0
+CELL,PhenomeX Inc.,2020-07-17,22.0,Unknown,100.0
+ALXO,ALX Oncology Holdings Inc.,2020-07-17,19.0,Healthcare,100.0
+PSTH,"Pershing Square Tontine Holdings, Ltd.",2020-07-22,20.0,Unknown,100.0
+JAMF,Jamf Holding Corporation,2020-07-22,26.0,Unknown,100.0
+MEG,"Montrose Environmental Group, Inc.",2020-07-23,15.0,Industrials,100.0
+EDTK,Skillful Craftsman Education Technology Limited,2020-07-23,5.0,Consumer Defensive,100.0
+NRIX,"Nurix Therapeutics, Inc.",2020-07-24,19.0,Healthcare,100.0
+ITOS,"iTeos Therapeutics, Inc.",2020-07-24,19.0,Unknown,100.0
+INZY,"Inozyme Pharma, Inc.",2020-07-24,16.0,Unknown,100.0
+ANNX,"Annexon, Inc.",2020-07-24,17.0,Healthcare,100.0
+VERX,"Vertex, Inc.",2020-07-29,19.0,Technology,100.0
+ALVR,"AlloVir, Inc.",2020-07-30,17.0,Unknown,100.0
+LI,Li Auto Inc.,2020-07-30,11.5,Consumer Cyclical,100.0
+VSTA,Vasta Platform Limited,2020-07-31,19.0,Unknown,100.0
+VITL,"Vital Farms, Inc.",2020-07-31,22.0,Consumer Defensive,100.0
+RKT,"Rocket Companies, Inc.",2020-08-06,18.0,Financial Services,100.0
+OSH,"Oak Street Health, Inc.",2020-08-06,21.0,Unknown,100.0
+AFIB,"Acutus Medical, Inc.",2020-08-06,18.0,Healthcare,100.0
+IBEX,IBEX Limited,2020-08-07,19.0,Technology,100.0
+FRLN,Freeline Therapeutics Holdings PLC,2020-08-07,18.0,Unknown,100.0
+CMPI,"Checkmate Pharmaceuticals, Inc.",2020-08-07,15.0,Unknown,100.0
+KBNT,"Kubient, Inc.",2020-08-12,5.0,Technology,100.0
+NTST,NETSTREIT Corp.,2020-08-13,18.0,Real Estate,100.0
+BEKE,KE Holdings Inc.,2020-08-13,20.0,Real Estate,100.0
+DCT,Delta Charter Township Michigan,2020-08-14,27.0,Unknown,100.0
+CVAC,CureVac N.V.,2020-08-14,16.0,Unknown,100.0
+INBX,"Inhibrx Biosciences, Inc.",2020-08-19,17.0,Healthcare,100.0
+HRMY,"Harmony Biosciences Holdings, Inc.",2020-08-19,24.0,Healthcare,100.0
+NNOX,Nano-X Imaging Ltd.,2020-08-21,18.0,Healthcare,100.0
+KYMR,"Kymera Therapeutics, Inc.",2020-08-21,20.0,Healthcare,100.0
+XPEV,XPeng Inc.,2020-08-27,15.0,Consumer Cyclical,100.0
+HCDIQ,"Harbor Custom Development, Inc.",2020-08-28,6.0,Unknown,100.0
+GP,GreenPower Motor Company Inc.,2020-08-28,20.0,Industrials,100.0
+AUVIQ,"Applied UV, Inc.",2020-08-31,5.0,Unknown,100.0
+PRFX,PRF Technologies Ltd.,2020-09-01,8.0,Healthcare,100.0
+LSPD,Lightspeed Commerce Inc.,2020-09-11,30.5,Technology,100.0
+OM,"Outset Medical, Inc.",2020-09-15,27.0,Healthcare,100.0
+STEP,StepStone Group Inc.,2020-09-16,18.0,Financial Services,100.0
+SNOW,Snowflake Inc.,2020-09-16,120.0,Technology,3360.0
+MTCR,"Metacrine, Inc.",2020-09-16,13.0,Unknown,100.0
+FROG,JFrog Ltd.,2020-09-16,44.0,Technology,352.0
+ENPC,Executive Network Partnering Corporation,2020-09-16,25.0,Unknown,100.0
+AMWL,American Well Corporation,2020-09-17,18.0,Healthcare,100.0
+BNL,"Broadstone Net Lease, Inc.",2020-09-17,17.0,Real Estate,100.0
+PTVE,"Pactiv Evergreen, Inc.",2020-09-17,14.0,Unknown,100.0
+SUMO,"Sumo Logic, Inc.",2020-09-17,22.0,Unknown,100.0
+DYN,"Dyne Therapeutics, Inc.",2020-09-17,19.0,Healthcare,100.0
+VTRU,Vitru Limited,2020-09-18,16.0,Unknown,100.0
+U,Unity Software Inc.,2020-09-18,52.0,Technology,1300.0
+CMPS,COMPASS Pathways plc,2020-09-18,17.0,Healthcare,100.0
+LSF,"Laird Superfood, Inc.",2020-09-23,22.0,Consumer Defensive,100.0
+GDRX,"GoodRx Holdings, Inc.",2020-09-23,33.0,Healthcare,100.0
+CRSR,"Corsair Gaming, Inc.",2020-09-23,17.0,Technology,100.0
+BSY,"Bentley Systems, Incorporated",2020-09-23,22.0,Technology,100.0
+TSHA,"Taysha Gene Therapies, Inc.",2020-09-24,20.0,Healthcare,100.0
+GLSI,"Greenwich LifeSciences, Inc.",2020-09-25,5.75,Healthcare,100.0
+AMST,Amesite Inc.,2020-09-25,5.0,Technology,100.0
+GRAY,"Graybug Vision, Inc.",2020-09-25,16.0,Unknown,100.0
+SYTA,"Siyata Mobile, Inc.",2020-09-25,7.25,Unknown,100.0
+PRLD,Prelude Therapeutics Incorporated,2020-09-25,19.0,Healthcare,100.0
+VIAOY,VIA optronics AG,2020-09-25,15.0,Technology,100.0
+PMVP,"PMV Pharmaceuticals, Inc.",2020-09-25,18.0,Healthcare,100.0
+ORPHY,Orphazyme A/S,2020-09-29,11.0,Unknown,100.0
+YALA,Yalla Group Limited,2020-09-30,7.5,Technology,100.0
+PLTR,Palantir Technologies Inc.,2020-09-30,7.25,Technology,2200.0
+CD,Chindata Group Holdings Limited,2020-09-30,13.5,Financial Services,100.0
+ASAN,"Asana, Inc.",2020-09-30,21.0,Technology,1340.0
+AVO,"Mission Produce, Inc.",2020-10-01,12.0,Consumer Defensive,100.0
+LUNG,Pulmonx Corporation,2020-10-01,19.0,Healthcare,100.0
+THRY,"Thryv Holdings, Inc.",2020-10-01,10.17,Technology,100.0
+LXEH,"Lixiang Education Holding Co., Ltd.",2020-10-01,9.25,Consumer Defensive,100.0
+ONCR,"Oncorus, Inc.",2020-10-02,15.0,Unknown,100.0
+IMNM,"Immunome, Inc.",2020-10-02,12.0,Healthcare,100.0
+CCCC,"C4 Therapeutics, Inc.",2020-10-02,19.0,Healthcare,100.0
+ASO,"Academy Sports and Outdoors, Inc.",2020-10-02,13.0,Consumer Cyclical,100.0
+SQFT,"Presidio Property Trust, Inc.",2020-10-07,5.0,Real Estate,100.0
+ELUT,Elutia Inc.,2020-10-08,17.0,Healthcare,100.0
+IH,iHuman Inc.,2020-10-09,12.0,Consumer Defensive,100.0
+INTZ,Intrusion Inc.,2020-10-09,8.0,Technology,100.0
+STTK,"Shattuck Labs, Inc.",2020-10-09,17.0,Healthcare,100.0
+SPRB,"Spruce Biosciences, Inc.",2020-10-09,15.0,Healthcare,100.0
+KRON,"Kronos Bio, Inc.",2020-10-09,19.0,Unknown,100.0
+CDAKQ,"Codiak BioSciences, Inc.",2020-10-14,15.0,Unknown,100.0
+MNSO,MINISO Group Holding Limited,2020-10-15,20.0,Consumer Cyclical,100.0
+ARRY,"Array Technologies, Inc.",2020-10-15,22.0,Technology,100.0
+TARS,"Tarsus Pharmaceuticals, Inc.",2020-10-16,16.0,Healthcare,100.0
+PRAX,"Praxis Precision Medicines, Inc.",2020-10-16,19.0,Healthcare,100.0
+OPT,Opthea Limited,2020-10-16,13.5,Unknown,100.0
+KRBP,"Kiromic BioPharma, Inc.",2020-10-16,12.0,Unknown,100.0
+EAR,"Eargo, Inc.",2020-10-16,18.0,Unknown,100.0
+ALGS,"Aligos Therapeutics, Inc.",2020-10-16,15.0,Healthcare,100.0
+MSP,Datto Holding Corp.,2020-10-21,27.0,Unknown,100.0
+GHLD,Guild Holdings Company,2020-10-22,15.0,Unknown,100.0
+ABCM,Abcam PLC,2020-10-22,17.5,Unknown,100.0
+MCFE,McAfee Corp.,2020-10-22,20.0,Unknown,100.0
+FHTX,Foghorn Therapeutics Inc.,2020-10-23,16.0,Healthcare,100.0
+ROOT,"Root, Inc.",2020-10-28,27.0,Financial Services,100.0
+MAX,"MediaAlpha, Inc.",2020-10-28,19.0,Communication Services,100.0
+GATO,"Gatos Silver, Inc.",2020-10-28,7.0,Unknown,100.0
+BDSX,"Biodesix, Inc.",2020-10-28,18.0,Healthcare,100.0
+ABST,Absolute Software Corporation,2020-10-28,11.0,Unknown,100.0
+LESL,"Leslie's, Inc.",2020-10-29,17.0,Consumer Cyclical,100.0
+ALGM,"Allegro MicroSystems, Inc.",2020-10-29,14.0,Technology,100.0
+SQZB,SQZ Biotechnologies Company,2020-10-30,16.0,Healthcare,100.0
+LU,Lufax Holding Ltd,2020-10-30,13.5,Financial Services,100.0
+AVIR,"Atea Pharmaceuticals, Inc.",2020-10-30,24.0,Healthcare,100.0
+YSG,Yatsen Holding Limited,2020-11-19,10.5,Consumer Defensive,100.0
+TLS,Telos Corporation,2020-11-19,17.0,Technology,100.0
+OLMA,"Olema Pharmaceuticals, Inc.",2020-11-19,19.0,Healthcare,100.0
+NGMS,NeoGames S.A.,2020-11-19,17.0,Unknown,100.0
+MRVI,"Maravai LifeSciences Holdings, Inc.",2020-11-20,27.0,Healthcare,100.0
+SHC,Sotera Health Company,2020-11-20,23.0,Healthcare,100.0
+OZON,Ozon Holdings PLC,2020-11-24,30.0,Unknown,990.0
+HFEN,"HF Enterprises, Inc.",2020-11-24,7.0,Unknown,100.0
+KNTE,"Kinnate Biopharma, Inc.",2020-12-03,20.0,Unknown,100.0
+DCBO,Docebo Inc.,2020-12-03,52.21,Technology,100.0
+YQ,17 Education & Technology Group Inc.,2020-12-04,10.5,Consumer Defensive,100.0
+SGTX,"Sigilon Therapeutics, Inc.",2020-12-04,18.0,Unknown,100.0
+SEER,"Seer, Inc.",2020-12-04,19.0,Healthcare,100.0
+SBTX,"Silverback Therapeutics, Inc.",2020-12-04,21.0,Unknown,100.0
+DASH,"DoorDash, Inc.",2020-12-09,102.0,Consumer Cyclical,3370.0
+AI,"C3.ai, Inc.",2020-12-09,42.0,Technology,100.0
+PUBM,"PubMatic, Inc.",2020-12-09,20.0,Technology,100.0
+PCPC,Periphas Capital Partnering Corporation,2020-12-10,25.0,Unknown,100.0
+HYFM,"Hydrofarm Holdings Group, Inc.",2020-12-10,20.0,Industrials,100.0
+ABNB,"Airbnb, Inc.",2020-12-10,68.0,Consumer Cyclical,3500.0
+VVOS,"Vivos Therapeutics, Inc.",2020-12-11,6.0,Healthcare,100.0
+NBTX,Nanobiotix S.A.,2020-12-11,13.5,Healthcare,100.0
+FDMT,"4D Molecular Therapeutics, Inc.",2020-12-11,23.0,Healthcare,100.0
+CERT,"Certara, Inc.",2020-12-11,23.0,Healthcare,100.0
+ABCL,AbCellera Biologics Inc.,2020-12-11,20.0,Healthcare,100.0
+WNW,Meiwu Technology Company Limited,2020-12-15,5.0,Consumer Cyclical,100.0
+BCAB,"BioAtla, Inc.",2020-12-16,18.0,Healthcare,100.0
+LOGC,"ContextLogic, Inc.",2020-12-16,24.0,Consumer Cyclical,100.0
+UPST,"Upstart Holdings, Inc.",2020-12-16,20.0,Financial Services,100.0
+SCPS,"Scopus Biopharma, Inc.",2020-12-16,5.5,Healthcare,100.0
+MDWT,"Midwest Holding, Inc.",2020-12-17,70.0,Unknown,100.0
+MASS,908 Devices Inc.,2020-12-18,20.0,Healthcare,100.0
+GBS,"GBS, Inc.",2020-12-23,17.0,Unknown,100.0
+MRM,MEDIROM Healthcare Technologies Inc.,2020-12-29,15.0,Consumer Cyclical,100.0
+AMAM,"Ambrx Biopharma Cayman, Inc.",2021-06-18,18.0,Unknown,100.0
+YMM,Full Truck Alliance Co. Ltd.,2021-06-22,19.0,Technology,100.0
+FA,First Advantage Corporation,2021-06-23,15.0,Industrials,100.0
+CXM,"Sprinklr, Inc.",2021-06-23,16.0,Technology,100.0
+CFLT,"Confluent, Inc.",2021-06-24,36.0,Technology,100.0
+BON,Bon Natural Life Limited,2021-06-24,5.0,Basic Materials,100.0
+DOCS,"Doximity, Inc.",2021-06-24,26.0,Healthcare,690.0
+UPXI,"Upexi, Inc.",2021-06-24,5.0,Communication Services,100.0
+MIRO,Miro Popara A.D.,2021-06-24,9.0,Unknown,100.0
+NEUE,"NeueHealth, Inc.",2021-06-24,18.0,Unknown,100.0
+GLUE,"Monte Rosa Therapeutics, Inc.",2021-06-24,19.0,Healthcare,100.0
+TKNO,"Alpha Teknova, Inc.",2021-06-25,16.0,Healthcare,100.0
+MFLTF,Missfresh Limited,2021-06-25,13.0,Unknown,100.0
+MCW,"Mister Car Wash, Inc.",2021-06-25,15.0,Consumer Cyclical,100.0
+LENZ,"LENZ Therapeutics, Inc.",2021-06-25,17.0,Healthcare,100.0
+GMVDF,G Medical Innovations Holdings Ltd.,2021-06-25,5.0,Healthcare,100.0
+GHRS,GH Research PLC,2021-06-25,16.0,Healthcare,100.0
+ELEV,"Elevation Oncology, Inc.",2021-06-25,16.0,Unknown,100.0
+ACXP,"Acurx Pharmaceuticals, Inc.",2021-06-25,6.0,Healthcare,100.0
+DDL,Dingdong (Cayman) Limited,2021-06-29,23.5,Consumer Defensive,100.0
+AVTE,"Aerovate Therapeutics, Inc.",2021-06-30,14.0,Unknown,100.0
+CVRX,"CVRx, Inc.",2021-06-30,18.0,Healthcare,100.0
+CPOP,"Pop Culture Group Co., Ltd",2021-06-30,6.0,Communication Services,100.0
+DIDIY,DiDi Global Inc.,2021-06-30,14.0,Technology,100.0
+XMTR,"Xometry, Inc.",2021-06-30,44.0,Industrials,100.0
+INTA,"Intapp, Inc.",2021-06-30,26.0,Technology,100.0
+YOU,"Clear Secure, Inc.",2021-06-30,31.0,Technology,100.0
+IAS,Integral Ad Science Holding Corp.,2021-06-30,18.0,Communication Services,100.0
+LZ,"LegalZoom.com, Inc.",2021-06-30,28.0,Industrials,100.0
+S,"SentinelOne, Inc.",2021-06-30,35.0,Technology,100.0
+WAVE,Eco Wave Power Global AB (publ),2021-07-01,8.0,Utilities,100.0
+HEPS,D-Market Elektronik Hizmetler ve Ticaret A.S.,2021-07-01,12.0,Consumer Cyclical,100.0
+EVCM,EverCommerce Inc.,2021-07-01,17.0,Technology,100.0
+DNUT,"Krispy Kreme, Inc.",2021-07-01,17.0,Consumer Defensive,100.0
+ABOS,"Acumen Pharmaceuticals, Inc.",2021-07-01,16.0,Healthcare,100.0
+CURV,Torrid Holdings Inc.,2021-07-01,21.0,Consumer Cyclical,100.0
+NYXH,Nyxoah SA,2021-07-02,30.0,Healthcare,100.0
+SNTG,Sentage Holdings Inc.,2021-07-09,5.0,Financial Services,100.0
+UNCY,"Unicycive Therapeutics, Inc.",2021-07-13,5.0,Healthcare,100.0
+IINN,Inspira Technologies Oxy B.H.N. Ltd.,2021-07-14,5.51,Healthcare,100.0
+PECO,"Phillips Edison & Company, Inc.",2021-07-15,28.0,Real Estate,100.0
+FXLV,"F45 Training Holdings, Inc.",2021-07-15,16.0,Consumer Cyclical,100.0
+RPID,"Rapid Micro Biosystems, Inc.",2021-07-15,20.0,Healthcare,100.0
+SGHT,"Sight Sciences, Inc.",2021-07-15,24.0,Healthcare,100.0
+SERA,"Sera Prognostics, Inc.",2021-07-15,16.0,Healthcare,100.0
+TCRX,"TScan Therapeutics, Inc.",2021-07-16,15.0,Healthcare,100.0
+STVN,Stevanato Group S.p.A.,2021-07-16,21.0,Healthcare,100.0
+RGC,Regencell Bioscience Holdings Limited,2021-07-16,9.5,Healthcare,100.0
+IMGO,"Imago BioSciences, Inc.",2021-07-16,16.0,Unknown,100.0
+ERAS,"Erasca, Inc.",2021-07-16,16.0,Healthcare,100.0
+BRDG,"Bridge Investment Group Holdings, Inc.",2021-07-16,16.0,Unknown,100.0
+BLND,"Blend Labs, Inc.",2021-07-16,18.0,Technology,100.0
+HCWB,HCW Biologics Inc.,2021-07-20,8.0,Healthcare,100.0
+VTEX,VTEX,2021-07-21,19.0,Technology,100.0
+VEEE,Twin Vee Powercats Co.,2021-07-21,6.0,Consumer Cyclical,100.0
+PYCR,"Paycor HCM, Inc.",2021-07-21,23.0,Unknown,100.0
+LAW,"CS Disco, Inc.",2021-07-21,32.0,Technology,100.0
+ABSI,Absci Corporation,2021-07-22,16.0,Healthcare,100.0
+BASE,"Couchbase, Inc.",2021-07-22,24.0,Unknown,100.0
+ZENV,"Zenvia, Inc.",2021-07-22,13.0,Technology,100.0
+RYAN,"Ryan Specialty Holdings, Inc.",2021-07-22,23.5,Financial Services,100.0
+ZVIA,Zevia PBC,2021-07-22,14.0,Consumer Defensive,100.0
+INST,"Instructure Holdings, Inc.",2021-07-22,20.0,Unknown,100.0
+CNM,"Core & Main, Inc.",2021-07-23,20.0,Industrials,100.0
+CTKB,"Cytek Biosciences, Inc.",2021-07-23,17.0,Healthcare,100.0
+CRBU,"Caribou Biosciences, Inc.",2021-07-23,16.0,Healthcare,100.0
+OB,"Outbrain, Inc.",2021-07-23,20.0,Unknown,100.0
+XPOF,"Xponential Fitness, Inc.",2021-07-23,12.0,Consumer Cyclical,100.0
+GAMB,Gambling.com Group Limited,2021-07-23,8.0,Consumer Cyclical,100.0
+SOPH,SOPHiA GENETICS SA,2021-07-23,18.0,Healthcare,100.0
+CADL,"Candel Therapeutics, Inc.",2021-07-27,8.0,Healthcare,100.0
+PWSC,"PowerSchool Holdings, Inc.",2021-07-28,18.0,Unknown,100.0
+MLNK,"MeridianLink, Inc.",2021-07-28,26.0,Unknown,100.0
+DUOL,"Duolingo, Inc.",2021-07-28,102.0,Technology,521.0
+RSKD,Riskified Ltd.,2021-07-29,21.0,Technology,100.0
+RLYB,Rallybio Corporation,2021-07-29,13.0,Healthcare,100.0
+NUVL,"Nuvalent, Inc.",2021-07-29,17.0,Healthcare,100.0
+ICVX,"Icosavax, Inc.",2021-07-29,15.0,Unknown,100.0
+HOOD,"Robinhood Markets, Inc.",2021-07-29,38.0,Financial Services,100.0
+COOK,"Traeger, Inc.",2021-07-29,18.0,Consumer Cyclical,100.0
+IMRX,Immuneering Corporation,2021-07-30,15.0,Healthcare,100.0
+DOLE,Dole plc,2021-07-30,16.0,Consumer Defensive,100.0
+MXCT,"MaxCyte, Inc.",2021-07-30,13.0,Healthcare,100.0
+RANI,"Rani Therapeutics Holdings, Inc.",2021-07-30,11.0,Healthcare,100.0
+RXST,"RxSight, Inc.",2021-07-30,16.0,Healthcare,100.0
+OMGA,"Omega Therapeutics, Inc.",2021-07-30,17.0,Unknown,100.0
+TNYA,"Tenaya Therapeutics, Inc.",2021-07-30,15.0,Healthcare,100.0
+WEBR,"Weber, Inc.",2021-08-05,14.0,Unknown,100.0
+EWCZ,"European Wax Center, Inc.",2021-08-05,17.0,Consumer Defensive,100.0
+IVVD,"Invivyd, Inc.",2021-08-06,17.0,Healthcare,100.0
+ELYM,"Eliem Therapeutics, Inc.",2021-08-10,12.5,Unknown,100.0
+SSBK,"Southern States Bancshares, Inc.",2021-08-12,19.0,Unknown,100.0
+DRMA,"Dermata Therapeutics, Inc.",2021-08-13,7.0,Healthcare,100.0
+RNXT,"RenovoRx, Inc.",2021-08-26,9.0,Healthcare,100.0
+DDI,"DoubleDown Interactive Co., Ltd.",2021-08-31,18.0,Communication Services,100.0
+SRAD,Sportradar Group AG,2021-09-14,27.0,Technology,100.0
+TYRA,"Tyra Biosciences, Inc.",2021-09-15,16.0,Healthcare,100.0
+TWKS,"Thoughtworks Holding, Inc.",2021-09-15,21.0,Unknown,100.0
+PRCT,PROCEPT BioRobotics Corporation,2021-09-15,25.0,Healthcare,100.0
+ONON,On Holding AG,2021-09-15,24.0,Consumer Cyclical,100.0
+DICE,"DICE Therapeutics, Inc.",2021-09-15,17.0,Unknown,100.0
+DH,Definitive Healthcare Corp.,2021-09-15,27.0,Healthcare,100.0
+BROS,Dutch Bros Inc.,2021-09-15,23.0,Consumer Cyclical,100.0
+KTTA,Pasithea Therapeutics Corp.,2021-09-15,5.0,Healthcare,100.0
+FORG,"ForgeRock, Inc.",2021-09-16,25.0,Unknown,100.0
+ACT,"Enact Holdings, Inc.",2021-09-16,19.0,Financial Services,100.0
+FRSH,Freshworks Inc.,2021-09-22,36.0,Technology,100.0
+AKA,a.k.a. Brands Holding Corp.,2021-09-22,11.0,Consumer Cyclical,100.0
+TOST,"Toast, Inc.",2021-09-22,40.0,Technology,870.0
+STER,Sterling Check Corp.,2021-09-23,23.0,Unknown,100.0
+SOVO,"Sovos Brands, Inc.",2021-09-23,12.0,Unknown,100.0
+RELY,"Remitly Global, Inc.",2021-09-23,43.0,Technology,100.0
+ESMT,"EngageSmart, Inc.",2021-09-23,26.0,Unknown,100.0
+BRLT,"Brilliant Earth Group, Inc.",2021-09-23,12.0,Consumer Cyclical,100.0
+ARBK,Argo Blockchain plc,2021-09-23,15.0,Financial Services,100.0
+CWAN,"Clearwater Analytics Holdings, Inc.",2021-09-24,18.0,Technology,100.0
+AMPL,"Amplitude, Inc.",2021-09-28,35.0,Technology,100.0
+WRBY,Warby Parker Inc.,2021-09-29,40.0,Healthcare,100.0
+OLPX,"Olaplex Holdings, Inc.",2021-09-30,21.0,Consumer Cyclical,100.0
+FWRG,"First Watch Restaurant Group, Inc.",2021-10-01,18.0,Consumer Cyclical,100.0
+EXAI,Exscientia plc,2021-10-01,22.0,Unknown,100.0
+TDCX,"TDCX, Inc.",2021-10-01,18.0,Unknown,100.0
+PYXS,"Pyxis Oncology, Inc.",2021-10-01,16.0,Healthcare,100.0
+NVEI,Nuvei Corporation,2021-10-06,123.14,Unknown,100.0
+THRX,"Theseus Pharmaceuticals, Inc.",2021-10-07,16.0,Unknown,100.0
+TCN,Tricon Residential Inc.,2021-10-07,12.4,Unknown,100.0
+LTH,"Life Time Group Holdings, Inc.",2021-10-07,18.0,Consumer Cyclical,100.0
+ISO,IsoPlexis Corporation,2021-10-08,15.0,Unknown,100.0
+CGTX,"Cognition Therapeutics, Inc.",2021-10-08,12.0,Healthcare,100.0
+AVDX,"AvidXchange Holdings, Inc.",2021-10-13,25.0,Unknown,100.0
+LUCD,Lucid Diagnostics Inc.,2021-10-14,14.0,Healthcare,100.0
+IHS,IHS Holding Limited,2021-10-14,21.0,Real Estate,100.0
+GTLB,GitLab Inc.,2021-10-14,77.0,Technology,100.0
+INKT,"MiNK Therapeutics, Inc.",2021-10-15,12.0,Healthcare,100.0
+FNA,"Paragon 28, Inc.",2021-10-15,16.0,Unknown,100.0
+CNTX,Context Therapeutics Inc.,2021-10-20,5.0,Healthcare,100.0
+SDIG,"Stronghold Digital Mining, Inc.",2021-10-20,19.0,Unknown,100.0
+CYN,Cyngn Inc.,2021-10-20,7.5,Technology,100.0
+VTYX,"Ventyx Biosciences, Inc.",2021-10-21,16.0,Healthcare,100.0
+RWAY,Runway Growth Finance Corp.,2021-10-21,14.6,Financial Services,100.0
+PTLO,Portillo's Inc.,2021-10-21,20.0,Consumer Cyclical,100.0
+ENFN,"Enfusion, Inc.",2021-10-21,17.0,Unknown,100.0
+COCO,"The Vita Coco Company, Inc.",2021-10-21,15.0,Consumer Defensive,100.0
+XLO,"Xilio Therapeutics, Inc.",2021-10-22,16.0,Healthcare,100.0
+UTRS,"Minerva Surgical, Inc.",2021-10-22,12.0,Healthcare,100.0
+ARIS,"Aris Water Solutions, Inc.",2021-10-22,13.0,Basic Materials,100.0
+AIP,"Arteris, Inc.",2021-10-27,14.0,Technology,100.0
+RENT,"Rent the Runway, Inc.",2021-10-27,21.0,Consumer Cyclical,100.0
+INFA,Informatica Inc.,2021-10-27,29.0,Unknown,100.0
+GFS,GLOBALFOUNDRIES Inc.,2021-10-28,47.0,Technology,100.0
+FLNC,"Fluence Energy, Inc.",2021-10-28,28.0,Utilities,100.0
+DTC,"Solo Brands, Inc.",2021-10-28,17.0,Unknown,100.0
+AURA,"Aura Biosciences, Inc.",2021-10-29,14.0,Healthcare,100.0
+BFRI,Biofrontera Inc.,2021-10-29,5.0,Healthcare,100.0
+AIRS,"AirSculpt Technologies, Inc.",2021-10-29,11.0,Healthcare,100.0
+TRDA,"Entrada Therapeutics, Inc.",2021-10-29,20.0,Healthcare,100.0
+UDMY,"Udemy, Inc.",2021-10-29,29.0,Consumer Defensive,100.0
+SONX,"Sonendo, Inc.",2021-10-29,12.0,Healthcare,100.0
+LIANY,LianBio,2021-11-01,16.0,Healthcare,100.0
+CMTG,"Claros Mortgage Trust, Inc.",2021-11-03,18.65,Real Estate,100.0
+BIRD,"Allbirds, Inc.",2021-11-03,15.0,Consumer Cyclical,100.0
+NRDS,"NerdWallet, Inc.",2021-11-04,18.0,Communication Services,100.0
+MDXH,MDxHealth SA,2021-11-04,13.46,Healthcare,100.0
+EVO,Evotec SE,2021-11-04,26.16,Healthcare,100.0
+CDRE,"Cadre Holdings, Inc.",2021-11-04,13.0,Industrials,100.0
+ARHS,"Arhaus, Inc.",2021-11-04,13.0,Consumer Cyclical,100.0
+CIAN,Cian PLC,2021-11-05,16.0,Unknown,100.0
+RGF,Rio Grande Forestal (RIVERFOREST) S.A.,2021-11-05,12.0,Unknown,100.0
+IOBT,"IO Biotech, Inc.",2021-11-05,14.0,Healthcare,100.0
+TCBX,"Third Coast Bancshares, Inc.",2021-11-09,25.0,Financial Services,100.0
+SOPA,Society Pass Incorporated,2021-11-09,9.0,Communication Services,100.0
+RIVN,"Rivian Automotive, Inc.",2021-11-10,78.0,Consumer Cyclical,13700.0
+EXFY,"Expensify, Inc.",2021-11-10,27.0,Technology,100.0
+CINT,CI&T Inc.,2021-11-10,15.0,Technology,100.0
+LVLU,"Lulu's Fashion Lounge Holdings, Inc.",2021-11-11,16.0,Consumer Cyclical,100.0
+PIK,Kidpik Corp.,2021-11-11,8.5,Unknown,100.0
+BEAT,"HeartBeam, Inc.",2021-11-11,6.0,Healthcare,100.0
+VAXX,"Vaxxinity, Inc.",2021-11-11,13.0,Healthcare,100.0
+TIVC,"Tivic Health Systems, Inc.",2021-11-11,5.0,Healthcare,100.0
+WEAV,"Weave Communications, Inc.",2021-11-11,24.0,Healthcare,100.0
+BLZE,"Backblaze, Inc.",2021-11-11,16.0,Technology,100.0
+WBEV,"Winc, Inc.",2021-11-11,13.0,Unknown,100.0
+MYNA,Mynaric AG,2021-11-12,17.48,Unknown,100.0
+BTBD,"BT Brands, Inc.",2021-11-12,5.0,Consumer Cyclical,100.0
+USER,"UserTesting, Inc.",2021-11-17,14.0,Unknown,100.0
+IREN,IREN Limited,2021-11-17,28.0,Financial Services,100.0
+BRZE,"Braze, Inc.",2021-11-17,65.0,Technology,483.0
+SG,"Sweetgreen, Inc.",2021-11-18,28.0,Consumer Cyclical,100.0
+FINW,FinWise Bancorp,2021-11-19,10.5,Financial Services,100.0
+AHI,Advanced Human Imaging Limited,2021-11-19,10.5,Unknown,100.0
+CING,Cingulate Inc.,2021-12-08,6.0,Healthcare,100.0
+REFI,"Chicago Atlantic Real Estate Finance, Inc.",2021-12-08,16.0,Real Estate,100.0
+NRSN,NeuroSense Therapeutics Ltd.,2021-12-09,6.0,Healthcare,100.0
+HCP,"HashiCorp, Inc.",2021-12-09,80.0,Unknown,100.0
+NU,Nu Holdings Ltd.,2021-12-09,9.0,Financial Services,100.0
+IOT,Samsara Inc.,2021-12-15,23.0,Technology,100.0
+GNTA,Genenta Science S.p.A.,2021-12-15,11.5,Healthcare,100.0
+SANG,Sangoma Technologies Corporation,2021-12-16,22.68,Technology,100.0
+IMMX,"Immix Biopharma, Inc.",2021-12-16,5.0,Healthcare,100.0
+BNOX,Bionomics Limited,2021-12-16,15.45,Unknown,100.0
+NXGL,"NEXGEL, Inc.",2021-12-22,5.5,Healthcare,100.0
+AMLX,"Amylyx Pharmaceuticals, Inc.",2022-01-07,19.0,Healthcare,100.0
+VIGL,"Vigil Neuroscience, Inc.",2022-01-07,14.0,Unknown,100.0
+CINC,"CinCor Pharma, Inc.",2022-01-07,16.0,Unknown,100.0
+TPG,TPG Inc.,2022-01-13,29.5,Financial Services,100.0
+FGI,FGI Industries Ltd.,2022-01-25,6.0,Consumer Cyclical,100.0
+NVCT,"Nuvectis Pharma, Inc.",2022-02-04,5.0,Healthcare,100.0
+ACLX,"Arcellx, Inc.",2022-02-04,15.0,Healthcare,100.0
+SKYX,SKYX Platforms Corp.,2022-02-10,14.0,Industrials,100.0
+HTCR,"HeartCore Enterprises, Inc.",2022-02-10,5.0,Technology,100.0
+MDV,"Modiv Industrial, Inc.",2022-02-11,25.0,Real Estate,100.0
+DRCT,"Direct Digital Holdings, Inc.",2022-02-11,5.5,Communication Services,100.0
+ONCO,"Onconetix, Inc.",2022-02-18,9.0,Healthcare,100.0
+ANTX,"AN2 Therapeutics, Inc.",2022-03-25,15.0,Healthcare,100.0
+XPON,Expion360 Inc.,2022-04-01,7.0,Industrials,100.0
+GNS,Genius Group Limited,2022-04-12,6.0,Consumer Defensive,100.0
+EE,"Excelerate Energy, Inc.",2022-04-13,24.0,Energy,100.0
+TNON,"Tenon Medical, Inc.",2022-04-27,5.0,Healthcare,100.0
+HLVX,"HilleVax, Inc.",2022-04-29,17.0,Unknown,100.0
+BLTE,"Belite Bio, Inc",2022-04-29,6.0,Healthcare,100.0
+EDBL,Edible Garden AG Incorporated,2022-05-05,5.0,Consumer Defensive,100.0
+PEPG,PepGen Inc.,2022-05-06,12.0,Healthcare,100.0
+BLCO,Bausch + Lomb Corporation,2022-05-06,18.0,Healthcare,100.0
+HNVR,"Hanover Bancorp, Inc.",2022-05-11,21.0,Financial Services,100.0
+PFHC,ProFrac Holding Corp.,2022-05-13,18.0,Unknown,100.0
+ACDC,ProFrac Holding Corp.,2022-05-13,18.0,Energy,100.0
+BGXX,Bright Green Corporation,2022-05-17,8.0,Unknown,100.0
+BNRG,Brenmiller Energy Ltd,2022-05-24,5.18,Utilities,100.0
+TOP,TOP Financial Group Limited,2022-06-01,5.0,Financial Services,100.0
+SVRE,SaverOne 2014 Ltd.,2022-06-03,5.8,Technology,100.0
+PEV,Phoenix Motor Inc.,2022-06-08,7.5,Unknown,100.0
+IE,Ivanhoe Electric Inc.,2022-06-28,11.75,Basic Materials,100.0
+NA,Nano Labs Ltd,2022-07-12,11.5,Technology,100.0
+HKD,AMTD Digital Inc.,2022-07-15,7.8,Technology,100.0
+VRAX,Virax Biolabs Group Limited,2022-07-21,5.0,Healthcare,100.0
+MAIA,"MAIA Biotechnology, Inc.",2022-07-28,5.0,Healthcare,100.0
+REBN,"Reborn Coffee, Inc.",2022-08-12,5.0,Consumer Cyclical,100.0
+FRZA,"Forza X1, Inc.",2022-08-12,5.0,Unknown,100.0
+LUCY,"Lucyd, Inc",2022-08-15,7.5,Healthcare,100.0
+GCT,GigaCloud Technology Inc.,2022-08-18,12.25,Technology,100.0
+JZ,Jianzhi Education Technology Group Company Limited,2022-08-26,5.0,Technology,100.0
+PXMD,"PaxMedica, Inc.",2022-08-26,5.25,Healthcare,100.0
+ONFO,"Onfolio Holdings, Inc.",2022-08-26,5.0,Communication Services,100.0
+HPCO,"Hempacco Co., Inc.",2022-08-30,6.0,Consumer Defensive,100.0
+SHPH,"Shuttle Pharmaceuticals Holdings, Inc.",2022-08-31,8.13,Healthcare,100.0
+BIAF,"bioAffinity Technologies, Inc.",2022-09-01,6.13,Healthcare,100.0
+THRD,"Third Harmonic Bio, Inc.",2022-09-15,17.0,Unknown,100.0
+CRBG,"Corebridge Financial, Inc.",2022-09-15,21.0,Financial Services,100.0
+NXU,"Nxu, Inc.",2022-09-27,27.5,Unknown,100.0
+LASE,Laser Photonics Corporation,2022-09-30,5.0,Industrials,100.0
+PRME,"Prime Medicine, Inc.",2022-10-20,17.0,Healthcare,100.0
+MBLY,Mobileye Global Inc.,2022-10-26,21.0,Consumer Cyclical,100.0
+SNAL,"Snail, Inc.",2022-11-10,5.0,Communication Services,100.0
+ATAT,Atour Lifestyle Holdings Limited,2022-11-11,11.0,Consumer Cyclical,100.0
+ACRV,"Acrivon Therapeutics, Inc.",2022-11-15,12.5,Healthcare,100.0
+LIPO,Lipella Pharmaceuticals Inc.,2022-12-20,5.75,Healthcare,100.0
+COYA,"Coya Therapeutics, Inc.",2022-12-29,5.0,Healthcare,100.0
+SKWD,"Skyward Specialty Insurance Group, Inc.",2023-01-13,15.0,Financial Services,100.0
+MGOL,MGO Global Inc.,2023-01-13,5.0,Unknown,100.0
+CVKD,"Cadrenal Therapeutics, Inc.",2023-01-20,5.0,Healthcare,100.0
+GNLX,Genelux Corporation,2023-01-26,6.0,Healthcare,100.0
+TXO,"TXO Partners, L.P.",2023-01-27,20.0,Energy,100.0
+BREA,Brera Holdings PLC,2023-01-27,5.0,Unknown,100.0
+GPCR,Structure Therapeutics Inc.,2023-02-03,15.0,Healthcare,100.0
+ASST,"Strive Asset Management, LLC",2023-02-03,5.0,Financial Services,100.0
+NXT,Nextpower Inc.,2023-02-09,24.0,Technology,100.0
+HSAI,Hesai Group,2023-02-09,19.0,Consumer Cyclical,100.0
+MLYS,"Mineralys Therapeutics, Inc.",2023-02-10,16.0,Healthcare,100.0
+ENLT,Enlight Renewable Energy Ltd,2023-02-10,18.0,Utilities,100.0
+BFRG,"Bullfrog AI Holdings, Inc.",2023-02-14,6.5,Healthcare,100.0
+AIXI,Xiao-I Corporation,2023-03-09,6.8,Technology,100.0
+AESI,Atlas Energy Solutions Inc.,2023-03-09,18.0,Energy,100.0
+ICG,Intchains Group Limited,2023-03-16,8.0,Technology,100.0
+ZJYL,Jin Medical International Ltd.,2023-03-28,8.0,Healthcare,100.0
+HSHP,Himalaya Shipping Ltd.,2023-03-31,5.8,Industrials,100.0
+HKIT,Hitek Global Inc.,2023-03-31,5.0,Technology,100.0
+SYT,Softing AG,2023-03-31,8.0,Unknown,100.0
+ISPR,Ispire Technology Inc.,2023-04-04,7.0,Consumer Defensive,100.0
+UCAR,U Power Limited,2023-04-20,6.0,Consumer Cyclical,100.0
+WLGS,"Wang & Lee Group, Inc.",2023-04-20,5.0,Unknown,100.0
+TRNR,Interactive Strength Inc.,2023-04-28,8.0,Consumer Cyclical,100.0
+KVUE,Kenvue Inc.,2023-05-04,22.0,Consumer Defensive,100.0
+SLRN,Solar 18 Corporation,2023-05-05,18.0,Unknown,100.0
+ATS,ATS Corporation,2023-05-25,41.0,Industrials,100.0
+ATMU,Atmus Filtration Technologies Inc.,2023-05-26,19.5,Consumer Cyclical,100.0
+CAVA,"CAVA Group, Inc.",2023-06-15,22.0,Consumer Cyclical,100.0
+BOF,BranchOut Food Inc.,2023-06-16,6.0,Consumer Defensive,100.0
+AZTR,"Azitra, Inc.",2023-06-16,5.0,Healthcare,100.0
+GENK,"GEN Restaurant Group, Inc.",2023-06-28,12.0,Consumer Cyclical,100.0
+SVV,"Savers Value Village, Inc.",2023-06-29,18.0,Consumer Cyclical,100.0
+KGS,"Kodiak Gas Services, Inc.",2023-06-29,16.0,Energy,100.0
+FIHL,Fidelis Insurance Holdings Limited,2023-06-29,14.0,Financial Services,100.0
+VTMX,"CorporaciÃ³n Inmobiliaria Vesta, S.A.B. de C.V.",2023-06-30,31.0,Real Estate,100.0
+INTS,"Intensity Therapeutics, Inc.",2023-06-30,5.0,Healthcare,100.0
+PWM,Power Metals Corp.,2023-07-06,5.0,Unknown,100.0
+SXTP,"60 Degrees Pharmaceuticals, Inc.",2023-07-12,5.3,Healthcare,100.0
+SGMT,Sagimet Biosciences Inc.,2023-07-14,16.0,Healthcare,100.0
+APGE,"Apogee Therapeutics, Inc.",2023-07-14,17.0,Healthcare,100.0
+ODD,Oddity Tech Ltd.,2023-07-19,35.0,Consumer Defensive,100.0
+TSBX,Turnstone Biologics Corp.,2023-07-21,12.0,Unknown,100.0
+ELWS,"Earlyworks Co., Ltd.",2023-07-25,5.0,Unknown,100.0
+SRFM,Surf Air Mobility Inc.,2023-07-27,20.0,Industrials,100.0
+PXDT,"Pixie Dust Technologies, Inc.",2023-08-01,9.0,Unknown,100.0
+MIRA,"MIRA Pharmaceuticals, Inc.",2023-08-03,7.0,Healthcare,100.0
+NRXS,"NeurAxis, Inc.",2023-08-09,6.0,Healthcare,100.0
+LQR,LQR House Inc.,2023-08-10,5.0,Unknown,100.0
+SRM,SRM Contractors Limited,2023-08-15,5.0,Unknown,100.0
+NWGL,CL Workshop Group Limited,2023-09-12,9.0,Basic Materials,100.0
+SPPL,Simpple Ltd.,2023-09-13,5.25,Industrials,100.0
+ARM,Arm Holdings plc,2023-09-14,51.0,Technology,100.0
+RYZB,"RayzeBio, Inc.",2023-09-15,18.0,Unknown,100.0
+NMRA,"Neumora Therapeutics, Inc.",2023-09-15,17.0,Healthcare,100.0
+CART,Maplebear Inc.,2023-09-19,30.0,Consumer Cyclical,100.0
+KVYO,"Klaviyo, Inc.",2023-09-20,30.0,Technology,100.0
+MDBH,"MDB Capital Holdings, LLC",2023-09-21,12.0,Financial Services,100.0
+TURB,"Turbo Energy, S.A.",2023-09-22,5.0,Technology,100.0
+LRE,"Lead Real Estate Co., Ltd",2023-09-27,7.0,Real Estate,100.0
+VSME,VS MEDIA Holdings Limited,2023-09-28,5.0,Communication Services,100.0
+ANL,Adlai Nortye Ltd.,2023-09-29,23.0,Healthcare,100.0
+GMM,Global Mofy AI Limited,2023-10-10,5.0,Technology,100.0
+BIRK,Birkenstock Holding plc,2023-10-11,46.0,Consumer Cyclical,100.0
+NCL,Northann Corp.,2023-10-19,5.0,Consumer Cyclical,100.0
+MNR,Mach Natural Resources LP,2023-10-25,19.0,Energy,100.0
+LXEO,"Lexeo Therapeutics, Inc.",2023-11-03,11.0,Healthcare,100.0
+HG,"Hamilton Insurance Group, Ltd.",2023-11-10,15.0,Financial Services,100.0
+CRGX,"CARGO Therapeutics, Inc.",2023-11-10,15.0,Unknown,100.0
+SHIM,Shimmick Corporation,2023-11-14,7.0,Industrials,100.0
+SGN,"Signing Day Sports, Inc.",2023-11-14,5.0,Technology,100.0
+RR,Richtech Robotics Inc.,2023-11-17,5.0,Industrials,100.0
+DDC,DDC Enterprise Limited,2023-11-17,8.5,Consumer Defensive,100.0
+FEBO,Fenbo Holdings Limited,2023-11-30,5.0,Technology,100.0
+ZKH,ZKH Group Limited,2023-12-15,15.5,Consumer Cyclical,100.0

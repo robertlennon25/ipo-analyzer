@@ -1,0 +1,702 @@
+ticker,sector
+ABNB,Consumer Cyclical
+SNOW,Technology
+CRWD,Technology
+BYND,Consumer Defensive
+ZM,Technology
+DDOG,Technology
+MKDTY,Basic Materials
+INDO,Energy
+MNPR,Healthcare
+SPT,Technology
+BILL,Technology
+EH,Industrials
+XP,Financial Services
+LMPX,Consumer Cyclical
+PINE,Real Estate
+CAN,Technology
+SITM,Technology
+ETNB,Unknown
+KRKR,Communication Services
+TELA,Healthcare
+CNTG,Unknown
+GRTX,Healthcare
+DUO,Real Estate
+OYST,Unknown
+RAPT,Healthcare
+CABA,Healthcare
+DAO,Consumer Defensive
+PAVS,Consumer Defensive
+PGNY,Healthcare
+PHAT,Healthcare
+TFFP,Unknown
+BRBR,Consumer Defensive
+IPHA,Healthcare
+HBT,Financial Services
+VIR,Healthcare
+BNTX,Healthcare
+APRE,Healthcare
+KRRO,Healthcare
+MCBS,Financial Services
+VIE,Unknown
+OPRT,Financial Services
+PTON,Consumer Cyclical
+PING,Unknown
+XGN,Healthcare
+IGMS,Unknown
+ALRS,Financial Services
+NET,Technology
+STSA,Unknown
+SWTX,Unknown
+TXG,Healthcare
+CFB,Unknown
+JFU,Technology
+BTOG,Financial Services
+INMD,Healthcare
+AMTD,Financial Services
+DT,Technology
+KRUS,Consumer Cyclical
+SNDL,Consumer Defensive
+BORR,Energy
+VIST,Energy
+WSG,Unknown
+CSTL,Healthcare
+HCAT,Healthcare
+LVGO,Unknown
+NOVA,Unknown
+PROS,Unknown
+EIC,Financial Services
+AFYA,Consumer Defensive
+IFS,Financial Services
+MDLA,Unknown
+AMK,Unknown
+FULC,Healthcare
+IHRT,Communication Services
+MIRM,Healthcare
+PHR,Healthcare
+DOYU,Communication Services
+KRTX,Unknown
+REAL,Consumer Cyclical
+ADPT,Healthcare
+BBIO,Healthcare
+CHNG,Unknown
+MORF,Unknown
+CMBM,Technology
+LINX,Unknown
+AKRO,Unknown
+BCEL,Unknown
+GO,Consumer Defensive
+PRVL,Unknown
+PSNL,Healthcare
+WORK,Unknown
+STOK,Healthcare
+CHWY,Consumer Cyclical
+FVRR,Communication Services
+RVLV,Consumer Cyclical
+GOTU,Consumer Defensive
+BCYC,Healthcare
+RTLR,Unknown
+AVTR,Healthcare
+FSLY,Technology
+LKNCY,Consumer Cyclical
+PSTL,Real Estate
+JFIN,Communication Services
+SONM,Technology
+UBER,Technology
+AXLA,Unknown
+HHR,Unknown
+MEC,Industrials
+NXTC,Healthcare
+QNCX,Healthcare
+SPFI,Financial Services
+PSN,Technology
+ATIF,Unknown
+RRBI,Financial Services
+SCPL,Unknown
+YJ,Consumer Cyclical
+SY,Healthcare
+TMDX,Healthcare
+WAFU,Consumer Defensive
+GNLN,Consumer Defensive
+HOOK,Healthcare
+MNRL,Unknown
+PINS,Communication Services
+BWAY,Healthcare
+PLMR,Financial Services
+TPTX,Unknown
+JMIA,Consumer Cyclical
+PD,Technology
+TUFN,Unknown
+NGM,Unknown
+SILK,Unknown
+TW,Financial Services
+RUHN,Unknown
+LYFT,Technology
+DTIL,Healthcare
+WTRE,Unknown
+GNFT,Unknown
+LEVI,Consumer Cyclical
+TIGR,Financial Services
+FUTU,Financial Services
+SWAV,Unknown
+KLDO,Healthcare
+SLE,Communication Services
+SOLY,Unknown
+HOTH,Healthcare
+MITO,Unknown
+AVDR,Unknown
+TCRR,Unknown
+BACK,Healthcare
+ANCN,Unknown
+GOSS,Healthcare
+HARP,Unknown
+ALEC,Healthcare
+INMB,Healthcare
+NFE,Energy
+MDJH,Unknown
+MRM,Consumer Cyclical
+GBS,Unknown
+MASS,Healthcare
+MDWT,Unknown
+BCAB,Healthcare
+LOGC,Consumer Cyclical
+SCPS,Healthcare
+UPST,Financial Services
+WNW,Consumer Cyclical
+ABCL,Healthcare
+CERT,Healthcare
+FDMT,Healthcare
+NBTX,Healthcare
+VVOS,Healthcare
+HYFM,Industrials
+PCPC,Unknown
+AI,Technology
+DASH,Consumer Cyclical
+PUBM,Technology
+SBTX,Unknown
+SEER,Healthcare
+SGTX,Unknown
+YQ,Consumer Defensive
+DCBO,Technology
+KNTE,Unknown
+HFEN,Unknown
+OZON,Unknown
+MRVI,Healthcare
+SHC,Healthcare
+NGMS,Unknown
+OLMA,Healthcare
+TLS,Technology
+YSG,Consumer Defensive
+AVIR,Healthcare
+LU,Financial Services
+SQZB,Healthcare
+ALGM,Technology
+LESL,Consumer Cyclical
+ABST,Unknown
+BDSX,Healthcare
+GATO,Unknown
+MAX,Communication Services
+ROOT,Financial Services
+FHTX,Healthcare
+ABCM,Unknown
+GHLD,Unknown
+MCFE,Unknown
+MSP,Unknown
+ALGS,Healthcare
+EAR,Unknown
+KRBP,Unknown
+OPT,Unknown
+PRAX,Healthcare
+TARS,Healthcare
+ARRY,Technology
+MNSO,Consumer Cyclical
+CDAKQ,Unknown
+IH,Consumer Defensive
+INTZ,Technology
+KRON,Unknown
+SPRB,Healthcare
+STTK,Healthcare
+ELUT,Healthcare
+SQFT,Real Estate
+ASO,Consumer Cyclical
+CCCC,Healthcare
+IMNM,Healthcare
+ONCR,Unknown
+AVO,Consumer Defensive
+LUNG,Healthcare
+LXEH,Consumer Defensive
+THRY,Technology
+ASAN,Technology
+CD,Financial Services
+PLTR,Technology
+YALA,Technology
+ORPHY,Unknown
+AMST,Technology
+GLSI,Healthcare
+GRAY,Unknown
+PMVP,Healthcare
+PRLD,Healthcare
+SYTA,Unknown
+VIAOY,Technology
+TSHA,Healthcare
+BSY,Technology
+CRSR,Technology
+GDRX,Healthcare
+LSF,Consumer Defensive
+CMPS,Healthcare
+U,Technology
+VTRU,Unknown
+AMWL,Healthcare
+BNL,Real Estate
+DYN,Healthcare
+PTVE,Unknown
+SUMO,Unknown
+ENPC,Unknown
+FROG,Technology
+MTCR,Unknown
+STEP,Financial Services
+OM,Healthcare
+LSPD,Technology
+PRFX,Healthcare
+AUVIQ,Unknown
+GP,Industrials
+HCDIQ,Unknown
+XPEV,Consumer Cyclical
+KYMR,Healthcare
+NNOX,Healthcare
+HRMY,Healthcare
+INBX,Healthcare
+CVAC,Unknown
+DCT,Unknown
+BEKE,Real Estate
+NTST,Real Estate
+KBNT,Technology
+CMPI,Unknown
+FRLN,Unknown
+IBEX,Technology
+AFIB,Healthcare
+OSH,Unknown
+RKT,Financial Services
+VITL,Consumer Defensive
+VSTA,Unknown
+ALVR,Unknown
+LI,Consumer Cyclical
+VERX,Technology
+ANNX,Healthcare
+INZY,Unknown
+ITOS,Unknown
+NRIX,Healthcare
+EDTK,Consumer Defensive
+MEG,Industrials
+JAMF,Unknown
+PSTH,Unknown
+ALXO,Healthcare
+CELL,Unknown
+PAND,Unknown
+RNLX,Unknown
+RLAY,Healthcare
+TIG,Unknown
+GOCO,Financial Services
+NCNO,Technology
+IVA,Healthcare
+NKTX,Healthcare
+PSTX,Unknown
+BLCT,Unknown
+ACCD,Unknown
+LMND,Financial Services
+DNB,Unknown
+ADTX,Healthcare
+ACI,Consumer Defensive
+AKUS,Unknown
+API,Technology
+EBON,Technology
+FUSN,Unknown
+PYPD,Healthcare
+BIOR,Unknown
+FMTX,Unknown
+GTH,Unknown
+NUZE,Unknown
+RPTX,Unknown
+RPRX,Healthcare
+AZEK,Unknown
+BNR,Healthcare
+GBIO,Healthcare
+PCVX,Healthcare
+RNA,Healthcare
+LTRN,Healthcare
+UCL,Communication Services
+VRM,Financial Services
+AMTI,Unknown
+CALT,Unknown
+DADA,Unknown
+FOUR,Technology
+LEGN,Healthcare
+ZI,Unknown
+PLRX,Healthcare
+WMG,Communication Services
+NARI,Unknown
+SLQT,Financial Services
+ADCT,Healthcare
+AYLA,Unknown
+CLEU,Unknown
+KC,Technology
+GAN,Unknown
+LYRA,Healthcare
+ORIC,Healthcare
+KROS,Healthcare
+ZNTL,Healthcare
+WIMI,Communication Services
+ELVN,Healthcare
+GFL,Industrials
+PASG,Healthcare
+RVMD,Healthcare
+SDOT,Consumer Defensive
+HUIZ,Financial Services
+NREF,Real Estate
+ONEW,Consumer Cyclical
+PFHD,Unknown
+BEAM,Healthcare
+CSPR,Unknown
+PPD,Unknown
+SDGR,Healthcare
+ARQT,Healthcare
+ONEM,Unknown
+REYN,Consumer Cyclical
+BDTX,Healthcare
+FRES,Unknown
+ANVS,Healthcare
+DNK,Unknown
+SOGP,Communication Services
+VEL,Financial Services
+NXGL,Healthcare
+BNOX,Unknown
+IMMX,Healthcare
+SANG,Technology
+GNTA,Healthcare
+IOT,Technology
+HCP,Unknown
+NRSN,Healthcare
+NU,Financial Services
+CING,Healthcare
+REFI,Real Estate
+AHI,Unknown
+FINW,Financial Services
+SG,Consumer Cyclical
+BRZE,Technology
+IREN,Financial Services
+USER,Unknown
+BTBD,Consumer Cyclical
+MYNA,Unknown
+BEAT,Healthcare
+BLZE,Technology
+LVLU,Consumer Cyclical
+PIK,Unknown
+TIVC,Healthcare
+VAXX,Healthcare
+WBEV,Unknown
+WEAV,Healthcare
+CINT,Technology
+EXFY,Technology
+RIVN,Consumer Cyclical
+SOPA,Communication Services
+TCBX,Financial Services
+CIAN,Unknown
+IOBT,Healthcare
+RGF,Unknown
+ARHS,Consumer Cyclical
+CDRE,Industrials
+EVO,Healthcare
+MDXH,Healthcare
+NRDS,Communication Services
+BIRD,Consumer Cyclical
+CMTG,Real Estate
+LIANY,Healthcare
+AIRS,Healthcare
+AURA,Healthcare
+BFRI,Healthcare
+SONX,Healthcare
+TRDA,Healthcare
+UDMY,Consumer Defensive
+DTC,Unknown
+FLNC,Utilities
+GFS,Technology
+AIP,Technology
+INFA,Unknown
+RENT,Consumer Cyclical
+ARIS,Basic Materials
+UTRS,Healthcare
+XLO,Healthcare
+COCO,Consumer Defensive
+ENFN,Unknown
+PTLO,Consumer Cyclical
+RWAY,Financial Services
+VTYX,Healthcare
+CNTX,Healthcare
+CYN,Technology
+SDIG,Unknown
+FNA,Unknown
+INKT,Healthcare
+GTLB,Technology
+IHS,Real Estate
+LUCD,Healthcare
+AVDX,Unknown
+CGTX,Healthcare
+ISO,Unknown
+LTH,Consumer Cyclical
+TCN,Unknown
+THRX,Unknown
+NVEI,Unknown
+EXAI,Unknown
+FWRG,Consumer Cyclical
+PYXS,Healthcare
+TDCX,Unknown
+OLPX,Consumer Cyclical
+WRBY,Healthcare
+AMPL,Technology
+CWAN,Technology
+ARBK,Financial Services
+BRLT,Consumer Cyclical
+ESMT,Unknown
+RELY,Technology
+SOVO,Unknown
+STER,Unknown
+AKA,Consumer Cyclical
+FRSH,Technology
+TOST,Technology
+ACT,Financial Services
+FORG,Unknown
+BROS,Consumer Cyclical
+DH,Healthcare
+DICE,Unknown
+KTTA,Healthcare
+ONON,Consumer Cyclical
+PRCT,Healthcare
+TWKS,Unknown
+TYRA,Healthcare
+SRAD,Technology
+DDI,Communication Services
+RNXT,Healthcare
+DRMA,Healthcare
+SSBK,Unknown
+ELYM,Unknown
+IVVD,Healthcare
+EWCZ,Consumer Defensive
+WEBR,Unknown
+DOLE,Consumer Defensive
+IMRX,Healthcare
+MXCT,Healthcare
+OMGA,Unknown
+RANI,Healthcare
+RXST,Healthcare
+TNYA,Healthcare
+COOK,Consumer Cyclical
+HOOD,Financial Services
+ICVX,Unknown
+NUVL,Healthcare
+RLYB,Healthcare
+RSKD,Technology
+DUOL,Technology
+MLNK,Unknown
+PWSC,Unknown
+CADL,Healthcare
+CNM,Industrials
+CRBU,Healthcare
+CTKB,Healthcare
+GAMB,Consumer Cyclical
+OB,Unknown
+SOPH,Healthcare
+XPOF,Consumer Cyclical
+ABSI,Healthcare
+BASE,Unknown
+INST,Unknown
+RYAN,Financial Services
+ZENV,Technology
+ZVIA,Consumer Defensive
+LAW,Technology
+PYCR,Unknown
+VEEE,Consumer Cyclical
+VTEX,Technology
+HCWB,Healthcare
+BLND,Technology
+BRDG,Unknown
+ERAS,Healthcare
+IMGO,Unknown
+RGC,Healthcare
+STVN,Healthcare
+TCRX,Healthcare
+FXLV,Consumer Cyclical
+PECO,Real Estate
+RPID,Healthcare
+SERA,Healthcare
+SGHT,Healthcare
+IINN,Healthcare
+UNCY,Healthcare
+SNTG,Financial Services
+NYXH,Healthcare
+ABOS,Healthcare
+CURV,Consumer Cyclical
+DNUT,Consumer Defensive
+EVCM,Technology
+HEPS,Consumer Cyclical
+WAVE,Utilities
+AVTE,Unknown
+CPOP,Communication Services
+CVRX,Healthcare
+DIDIY,Technology
+IAS,Communication Services
+INTA,Technology
+LZ,Industrials
+S,Technology
+XMTR,Industrials
+YOU,Technology
+DDL,Consumer Defensive
+ACXP,Healthcare
+ELEV,Unknown
+GHRS,Healthcare
+GMVDF,Healthcare
+LENZ,Healthcare
+MCW,Consumer Cyclical
+MFLTF,Unknown
+TKNO,Healthcare
+BON,Basic Materials
+CFLT,Technology
+DOCS,Healthcare
+GLUE,Healthcare
+MIRO,Unknown
+NEUE,Unknown
+UPXI,Communication Services
+CXM,Technology
+FA,Industrials
+YMM,Technology
+AMAM,Unknown
+COYA,Healthcare
+LIPO,Healthcare
+ACRV,Healthcare
+ATAT,Consumer Cyclical
+SNAL,Communication Services
+MBLY,Consumer Cyclical
+PRME,Healthcare
+LASE,Industrials
+NXU,Unknown
+CRBG,Financial Services
+THRD,Unknown
+BIAF,Healthcare
+SHPH,Healthcare
+HPCO,Consumer Defensive
+JZ,Technology
+ONFO,Communication Services
+PXMD,Healthcare
+GCT,Technology
+LUCY,Healthcare
+FRZA,Unknown
+REBN,Consumer Cyclical
+MAIA,Healthcare
+VRAX,Healthcare
+HKD,Technology
+NA,Technology
+IE,Basic Materials
+PEV,Unknown
+SVRE,Technology
+TOP,Financial Services
+BNRG,Utilities
+BGXX,Unknown
+ACDC,Energy
+PFHC,Unknown
+HNVR,Financial Services
+BLCO,Healthcare
+PEPG,Healthcare
+EDBL,Consumer Defensive
+BLTE,Healthcare
+HLVX,Unknown
+TNON,Healthcare
+EE,Energy
+GNS,Consumer Defensive
+XPON,Industrials
+ANTX,Healthcare
+ONCO,Healthcare
+DRCT,Communication Services
+MDV,Real Estate
+HTCR,Technology
+SKYX,Industrials
+ACLX,Healthcare
+NVCT,Healthcare
+FGI,Consumer Cyclical
+TPG,Financial Services
+AMLX,Healthcare
+CINC,Unknown
+VIGL,Unknown
+ZKH,Consumer Cyclical
+FEBO,Technology
+DDC,Consumer Defensive
+RR,Industrials
+SGN,Technology
+SHIM,Industrials
+CRGX,Unknown
+HG,Financial Services
+LXEO,Healthcare
+MNR,Energy
+NCL,Consumer Cyclical
+BIRK,Consumer Cyclical
+GMM,Technology
+ANL,Healthcare
+VSME,Communication Services
+LRE,Real Estate
+TURB,Technology
+MDBH,Financial Services
+KVYO,Technology
+CART,Consumer Cyclical
+NMRA,Healthcare
+RYZB,Unknown
+ARM,Technology
+SPPL,Industrials
+NWGL,Basic Materials
+SRM,Unknown
+LQR,Unknown
+NRXS,Healthcare
+MIRA,Healthcare
+PXDT,Unknown
+SRFM,Industrials
+ELWS,Unknown
+TSBX,Unknown
+ODD,Consumer Defensive
+APGE,Healthcare
+SGMT,Healthcare
+SXTP,Healthcare
+PWM,Unknown
+INTS,Healthcare
+VTMX,Real Estate
+FIHL,Financial Services
+KGS,Energy
+SVV,Consumer Cyclical
+GENK,Consumer Cyclical
+AZTR,Healthcare
+BOF,Consumer Defensive
+CAVA,Consumer Cyclical
+ATMU,Consumer Cyclical
+ATS,Industrials
+SLRN,Unknown
+KVUE,Consumer Defensive
+TRNR,Consumer Cyclical
+UCAR,Consumer Cyclical
+WLGS,Unknown
+ISPR,Consumer Defensive
+HKIT,Technology
+HSHP,Industrials
+SYT,Unknown
+ZJYL,Healthcare
+ICG,Technology
+AESI,Energy
+AIXI,Technology
+BFRG,Healthcare
+ENLT,Utilities
+MLYS,Healthcare
+HSAI,Consumer Cyclical
+NXT,Technology
+ASST,Financial Services
+GPCR,Healthcare
+BREA,Unknown
+TXO,Energy
+GNLX,Healthcare
+CVKD,Healthcare
+MGOL,Unknown
+SKWD,Financial Services

@@ -1,0 +1,40 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyo
+*.pyd
+.Python
+
+# Large data files — raw filings and caches
+data/raw/filings/
+data/cache/
+
+# Processed CSVs and model artifacts (regenerable from pipeline)
+data/processed/*.csv
+data/processed/sections/
+data/processed/models/
+
+# Keep: plots, results JSON, evaluation report, results tracker
+!data/processed/plots/
+!data/processed/plots/*.png
+!data/processed/model_results.json
+!data/processed/evaluation_report.md
+
+# Raw data inputs — keep the IPO list and sector cache (small, useful to version)
+# data/raw/ipo_list_override.csv  ← intentionally NOT ignored
+# data/raw/sector_cache.csv       ← intentionally NOT ignored
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Secrets
+.env
