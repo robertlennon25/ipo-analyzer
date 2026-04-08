@@ -56,6 +56,12 @@ python src/modeling/train.py --target label_1m  # single target only
 python src/modeling/evaluate.py
 ```
 
+### View results
+```bash
+cat data/processed/evaluation_report.md
+streamlit run app/streamlit_app.py   # interactive explorer: IPO table, SHAP charts, model scores
+```
+
 ### Re-running after downloading more filings
 Steps 1, 2, 4 don't need to re-run. Only:
 ```bash
@@ -66,6 +72,27 @@ python src/features/multiples.py
 python src/features/embeddings.py
 python src/modeling/train.py
 python src/modeling/evaluate.py
+```
+
+### Enhanced experiment pipeline (new features + versioned comparison)
+```bash
+# Step 1 — compute new feature files (run after section_extractor)
+python src/features/underwriter.py          # → data/processed/underwriter_features.csv
+python src/features/proceeds.py             # → data/processed/proceeds_features.csv
+                                            #   data/processed/proceeds_raw_text.csv (debug)
+python src/features/regime_normalized.py    # → data/processed/regime_normalized_features.csv
+
+# Step 2 — train enhanced variants (saves to experiments/enhanced_v1/, never overwrites baseline)
+python src/modeling/train_experiment.py                          # enhanced variants only
+python src/modeling/train_experiment.py --variants all           # both baseline + enhanced
+python src/modeling/train_experiment.py --target label_1m --notes "first enhanced run"
+
+# Step 3 — compare baseline vs enhanced
+python src/modeling/compare_experiments.py                       # auto-discovers latest runs
+python src/modeling/compare_experiments.py \
+    --baseline data/processed/run_results/run_XXXX.json \
+    --enhanced data/processed/experiments/enhanced_v1/run_results/run_XXXX.json \
+    --tag my_comparison
 ```
 
 ---
@@ -86,9 +113,20 @@ multiples.py            →  data/processed/multiples_features.csv
 market_context.py       →  data/processed/market_context_features.csv
 train.py                →  data/processed/models/{target}_{variant}_{model}.pkl
                            data/processed/model_results.json        ← OVERWRITTEN each run
+                           data/processed/run_results/{run_id}.json ← NEVER overwritten
 evaluate.py             →  data/processed/plots/shap_*.png          ← OVERWRITTEN each run
                            data/processed/evaluation_report.md      ← OVERWRITTEN each run
                            results_tracker.md                       ← APPENDED each run
+underwriter.py          →  data/processed/underwriter_features.csv
+proceeds.py             →  data/processed/proceeds_features.csv
+                           data/processed/proceeds_raw_text.csv     (debug snippets)
+regime_normalized.py    →  data/processed/regime_normalized_features.csv
+train_experiment.py     →  data/processed/experiments/{name}/models/
+                           data/processed/experiments/{name}/run_results/{run_id}.json
+                           data/processed/experiments/{name}/feature_manifest.json
+compare_experiments.py  →  data/processed/comparisons/{tag}/comparison_long.csv
+                           data/processed/comparisons/{tag}/comparison_pivot.csv
+                           data/processed/comparisons/{tag}/comparison_config.json
 ```
 
 ### Module responsibilities
@@ -104,6 +142,11 @@ evaluate.py             →  data/processed/plots/shap_*.png          ← OVERWR
 | `src/features/market_context.py` | VIX, S&P, sector ETF (all trailing/as-of); IPO volume via leakage-free 30/90-day lookback |
 | `src/modeling/train.py` | 4 models × 3 variants × N targets; class-balanced; outputs balanced accuracy + prediction split |
 | `src/modeling/evaluate.py` | SHAP plots per target; Markdown report; auto-appends run summary to `results_tracker.md` |
+| `src/features/underwriter.py` | Extracts lead underwriter from section text + raw HTML fallback; normalizes names; assigns tiers (1=major IB, 2=mid-tier, 3=other) |
+| `src/features/proceeds.py` | Keyword scoring of use-of-proceeds section into debt / growth / general / secondary categories |
+| `src/features/regime_normalized.py` | Within-year z-score and percentile rank for regime-sensitive market + multiples features |
+| `src/modeling/train_experiment.py` | Trains baseline (M1/M2/M3) and/or enhanced (E1/E2/E3) variants; saves to `experiments/{name}/`; never overwrites old runs |
+| `src/modeling/compare_experiments.py` | Loads two run JSONs, produces long-form CSV + pivot table + console summary with delta AUC columns |
 
 ---
 
@@ -168,3 +211,14 @@ Results saved to `data/processed/leakage-test-results/` as timestamped JSON file
 
 ### EDGAR filing retrieval
 The submissions API `recent` array holds ~1000 filings. For older IPOs, `edgar_fetcher.py` automatically fetches archive pages (`CIK{n}-submissions-001.json`). Section extractor outputs one `{ticker}.json` per ticker (424B4 preferred over S-1 since manifest is sorted that way).
+
+---
+
+## Known Active Issues
+
+| Issue | Severity | Notes |
+|-------|----------|-------|
+| `EDGAR_USER_AGENT` is placeholder in `config/settings.py` | High | Must update to real name/email before running `edgar_fetcher.py` |
+| `sentence-transformers` not in `requirements.txt` | Medium | `pip install sentence-transformers` before running `embeddings.py` |
+| Sector = "Unknown" for all 700 IPOs | Medium | Run `scrape_ipo_universe.py` without `--no-sector` to fix; affects sector ETF features in M2/M3 |
+| `total_proceeds_m = 100` placeholder | Low | Most IPOs use placeholder; large IPOs have accurate values in `KNOWN_PROCEEDS` dict in `settings.py` |

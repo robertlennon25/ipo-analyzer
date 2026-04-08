@@ -1,0 +1,1231 @@
+{
+  "run_id": "run_20260407_234544",
+  "timestamp": "2026-04-07T23:45:44.317325",
+  "experiment": "enhanced_v2_no_ipoyear",
+  "notes": "removed ipo_year from feature matrix to eliminate temporal shortcut learning",
+  "variants_trained": "enhanced",
+  "targets_trained": [
+    "label_1m"
+  ],
+  "hyperparameters": {
+    "logistic_regression": {
+      "C": 0.1,
+      "max_iter": 1000,
+      "class_weight": "balanced"
+    },
+    "ridge": {
+      "alpha": 1.0,
+      "note": "no class_weight \u2014 caution on imbalanced targets"
+    },
+    "random_forest": {
+      "n_estimators": 200,
+      "max_depth": 6,
+      "min_samples_leaf": 5,
+      "class_weight": "balanced"
+    },
+    "xgboost": {
+      "n_estimators": 100,
+      "max_depth": 4,
+      "learning_rate": 0.05,
+      "eval_metric": "logloss",
+      "note": "scale_pos_weight computed per-target from class ratio"
+    },
+    "shared": {
+      "imputer_strategy": "median",
+      "cv_folds": 5,
+      "random_state": 42,
+      "min_samples_to_train": 30
+    }
+  },
+  "shap_plots": {
+    "label_1m/E1_text_enhanced/logistic_regression": "/Users/robertlennon/Desktop/ipo-analyzer/data/processed/experiments/enhanced_v2_no_ipoyear/plots/shap_label_1m_E1_text_enhanced_logistic_regression.png",
+    "label_1m/E1_text_enhanced/ridge": "/Users/robertlennon/Desktop/ipo-analyzer/data/processed/experiments/enhanced_v2_no_ipoyear/plots/shap_label_1m_E1_text_enhanced_ridge.png",
+    "label_1m/E1_text_enhanced/random_forest": "/Users/robertlennon/Desktop/ipo-analyzer/data/processed/experiments/enhanced_v2_no_ipoyear/plots/shap_label_1m_E1_text_enhanced_random_forest.png",
+    "label_1m/E1_text_enhanced/xgboost": "/Users/robertlennon/Desktop/ipo-analyzer/data/processed/experiments/enhanced_v2_no_ipoyear/plots/shap_label_1m_E1_text_enhanced_xgboost.png",
+    "label_1m/E2_structured_enhanced/logistic_regression": "/Users/robertlennon/Desktop/ipo-analyzer/data/processed/experiments/enhanced_v2_no_ipoyear/plots/shap_label_1m_E2_structured_enhanced_logistic_regression.png",
+    "label_1m/E2_structured_enhanced/ridge": "/Users/robertlennon/Desktop/ipo-analyzer/data/processed/experiments/enhanced_v2_no_ipoyear/plots/shap_label_1m_E2_structured_enhanced_ridge.png",
+    "label_1m/E2_structured_enhanced/random_forest": "/Users/robertlennon/Desktop/ipo-analyzer/data/processed/experiments/enhanced_v2_no_ipoyear/plots/shap_label_1m_E2_structured_enhanced_random_forest.png",
+    "label_1m/E2_structured_enhanced/xgboost": "/Users/robertlennon/Desktop/ipo-analyzer/data/processed/experiments/enhanced_v2_no_ipoyear/plots/shap_label_1m_E2_structured_enhanced_xgboost.png",
+    "label_1m/E3_combined_enhanced/logistic_regression": "/Users/robertlennon/Desktop/ipo-analyzer/data/processed/experiments/enhanced_v2_no_ipoyear/plots/shap_label_1m_E3_combined_enhanced_logistic_regression.png",
+    "label_1m/E3_combined_enhanced/ridge": "/Users/robertlennon/Desktop/ipo-analyzer/data/processed/experiments/enhanced_v2_no_ipoyear/plots/shap_label_1m_E3_combined_enhanced_ridge.png",
+    "label_1m/E3_combined_enhanced/random_forest": "/Users/robertlennon/Desktop/ipo-analyzer/data/processed/experiments/enhanced_v2_no_ipoyear/plots/shap_label_1m_E3_combined_enhanced_random_forest.png",
+    "label_1m/E3_combined_enhanced/xgboost": "/Users/robertlennon/Desktop/ipo-analyzer/data/processed/experiments/enhanced_v2_no_ipoyear/plots/shap_label_1m_E3_combined_enhanced_xgboost.png"
+  },
+  "results": {
+    "label_1m": {
+      "target": "label_1m",
+      "variants": {
+        "E1_text_enhanced": {
+          "logistic_regression": {
+            "roc_auc_mean": 0.6077519379844961,
+            "roc_auc_std": 0.03873056966527176,
+            "accuracy_mean": 0.5811764705882354,
+            "accuracy_std": 0.0456252221874478,
+            "bal_accuracy_mean": 0.5815060908084165,
+            "bal_accuracy_std": 0.04549177197849751,
+            "pred_positive_pct": 52.7,
+            "pred_negative_pct": 47.3,
+            "n_samples": 425,
+            "n_features": 413,
+            "positive_rate": 0.49411764705882355,
+            "naive_accuracy": 0.5058823529411764,
+            "top_features": [
+              {
+                "feature": "emb_315",
+                "importance": 0.48128978499993225
+              },
+              {
+                "feature": "emb_380",
+                "importance": 0.3553832381442311
+              },
+              {
+                "feature": "emb_120",
+                "importance": 0.33119169133782755
+              },
+              {
+                "feature": "emb_076",
+                "importance": 0.3297549915078405
+              },
+              {
+                "feature": "emb_153",
+                "importance": 0.32054534839829374
+              },
+              {
+                "feature": "emb_369",
+                "importance": 0.31452038217894845
+              },
+              {
+                "feature": "emb_329",
+                "importance": 0.31418019345899273
+              },
+              {
+                "feature": "emb_256",
+                "importance": 0.30215972477205677
+              },
+              {
+                "feature": "emb_383",
+                "importance": 0.30139453434112645
+              },
+              {
+                "feature": "emb_047",
+                "importance": 0.2910455167268871
+              },
+              {
+                "feature": "emb_202",
+                "importance": 0.28596903235190146
+              },
+              {
+                "feature": "emb_167",
+                "importance": 0.2748009007911354
+              },
+              {
+                "feature": "emb_176",
+                "importance": 0.26693145932060797
+              },
+              {
+                "feature": "emb_154",
+                "importance": 0.2658996132703418
+              },
+              {
+                "feature": "emb_162",
+                "importance": 0.2652508627800885
+              },
+              {
+                "feature": "emb_250",
+                "importance": 0.26156735214900484
+              },
+              {
+                "feature": "emb_144",
+                "importance": 0.24883409541534415
+              },
+              {
+                "feature": "emb_125",
+                "importance": 0.24868847672113345
+              },
+              {
+                "feature": "emb_038",
+                "importance": 0.2482039009149201
+              },
+              {
+                "feature": "emb_001",
+                "importance": 0.24718040047444287
+              }
+            ],
+            "model_type": "logistic_regression"
+          },
+          "ridge": {
+            "roc_auc_mean": 0.5705426356589147,
+            "roc_auc_std": 0.04856082789810179,
+            "accuracy_mean": 0.5576470588235294,
+            "accuracy_std": 0.052928102960950546,
+            "bal_accuracy_mean": 0.5578626799557032,
+            "bal_accuracy_std": 0.0532569872205463,
+            "pred_positive_pct": 51.8,
+            "pred_negative_pct": 48.2,
+            "n_samples": 425,
+            "n_features": 413,
+            "positive_rate": 0.49411764705882355,
+            "naive_accuracy": 0.5058823529411764,
+            "top_features": [
+              {
+                "feature": "emb_383",
+                "importance": 0.7654909833833732
+              },
+              {
+                "feature": "emb_232",
+                "importance": 0.7567018523163498
+              },
+              {
+                "feature": "emb_367",
+                "importance": 0.651283358814861
+              },
+              {
+                "feature": "emb_378",
+                "importance": 0.6391176503828765
+              },
+              {
+                "feature": "emb_131",
+                "importance": 0.6241732852849976
+              },
+              {
+                "feature": "emb_380",
+                "importance": 0.5829193063508492
+              },
+              {
+                "feature": "emb_250",
+                "importance": 0.5829103224746323
+              },
+              {
+                "feature": "emb_167",
+                "importance": 0.5749573581726121
+              },
+              {
+                "feature": "emb_233",
+                "importance": 0.566940472855313
+              },
+              {
+                "feature": "emb_176",
+                "importance": 0.5599277841930314
+              },
+              {
+                "feature": "emb_356",
+                "importance": 0.5315795240016981
+              },
+              {
+                "feature": "emb_047",
+                "importance": 0.5288926655285084
+              },
+              {
+                "feature": "emb_247",
+                "importance": 0.5283693797880475
+              },
+              {
+                "feature": "emb_048",
+                "importance": 0.5263591487563477
+              },
+              {
+                "feature": "emb_076",
+                "importance": 0.5202048236620447
+              },
+              {
+                "feature": "emb_185",
+                "importance": 0.5112693114049229
+              },
+              {
+                "feature": "emb_005",
+                "importance": 0.5032751303375239
+              },
+              {
+                "feature": "emb_152",
+                "importance": 0.5005801923531803
+              },
+              {
+                "feature": "emb_181",
+                "importance": 0.4961900165637837
+              },
+              {
+                "feature": "emb_308",
+                "importance": 0.4944040719931175
+              }
+            ],
+            "model_type": "ridge"
+          },
+          "random_forest": {
+            "roc_auc_mean": 0.636655592469546,
+            "roc_auc_std": 0.02550048808792781,
+            "accuracy_mean": 0.6023529411764706,
+            "accuracy_std": 0.02512253706360308,
+            "bal_accuracy_mean": 0.6029346622369879,
+            "bal_accuracy_std": 0.025394343775499487,
+            "pred_positive_pct": 54.8,
+            "pred_negative_pct": 45.2,
+            "n_samples": 425,
+            "n_features": 413,
+            "positive_rate": 0.49411764705882355,
+            "naive_accuracy": 0.5058823529411764,
+            "top_features": [
+              {
+                "feature": "emb_189",
+                "importance": 0.011720620076206341
+              },
+              {
+                "feature": "emb_006",
+                "importance": 0.010790683694076542
+              },
+              {
+                "feature": "emb_064",
+                "importance": 0.010124327181841941
+              },
+              {
+                "feature": "emb_149",
+                "importance": 0.009676200219031783
+              },
+              {
+                "feature": "emb_200",
+                "importance": 0.008927021373342415
+              },
+              {
+                "feature": "emb_253",
+                "importance": 0.008665329695240276
+              },
+              {
+                "feature": "emb_158",
+                "importance": 0.00843525719346142
+              },
+              {
+                "feature": "emb_258",
+                "importance": 0.00716720142842854
+              },
+              {
+                "feature": "emb_012",
+                "importance": 0.007158932995729665
+              },
+              {
+                "feature": "emb_379",
+                "importance": 0.0068435072473937205
+              },
+              {
+                "feature": "emb_128",
+                "importance": 0.006808611417787448
+              },
+              {
+                "feature": "emb_250",
+                "importance": 0.006769561962689384
+              },
+              {
+                "feature": "emb_248",
+                "importance": 0.006352026126292736
+              },
+              {
+                "feature": "emb_013",
+                "importance": 0.0063063077646549615
+              },
+              {
+                "feature": "emb_037",
+                "importance": 0.006241937035877444
+              },
+              {
+                "feature": "emb_046",
+                "importance": 0.006047054156051742
+              },
+              {
+                "feature": "emb_080",
+                "importance": 0.005795874539549216
+              },
+              {
+                "feature": "emb_230",
+                "importance": 0.005788805641230807
+              },
+              {
+                "feature": "emb_380",
+                "importance": 0.005775029083720731
+              },
+              {
+                "feature": "emb_364",
+                "importance": 0.005697256481827074
+              }
+            ],
+            "model_type": "random_forest"
+          },
+          "xgboost": {
+            "roc_auc_mean": 0.6122923588039867,
+            "roc_auc_std": 0.03642956412028246,
+            "accuracy_mean": 0.5858823529411764,
+            "accuracy_std": 0.035993078919478484,
+            "bal_accuracy_mean": 0.5866002214839424,
+            "bal_accuracy_std": 0.035985773515824014,
+            "pred_positive_pct": 56.0,
+            "pred_negative_pct": 44.0,
+            "n_samples": 425,
+            "n_features": 413,
+            "positive_rate": 0.49411764705882355,
+            "naive_accuracy": 0.5058823529411764,
+            "top_features": [
+              {
+                "feature": "emb_002",
+                "importance": 0.010412252508103848
+              },
+              {
+                "feature": "emb_225",
+                "importance": 0.00881385337561369
+              },
+              {
+                "feature": "emb_182",
+                "importance": 0.008220700547099113
+              },
+              {
+                "feature": "emb_268",
+                "importance": 0.0081320870667696
+              },
+              {
+                "feature": "emb_092",
+                "importance": 0.008085846900939941
+              },
+              {
+                "feature": "emb_284",
+                "importance": 0.007898171432316303
+              },
+              {
+                "feature": "emb_064",
+                "importance": 0.007886027917265892
+              },
+              {
+                "feature": "emb_178",
+                "importance": 0.007840879261493683
+              },
+              {
+                "feature": "emb_038",
+                "importance": 0.00781707651913166
+              },
+              {
+                "feature": "emb_248",
+                "importance": 0.007735731080174446
+              },
+              {
+                "feature": "emb_011",
+                "importance": 0.007565513253211975
+              },
+              {
+                "feature": "emb_174",
+                "importance": 0.007281333673745394
+              },
+              {
+                "feature": "emb_206",
+                "importance": 0.007160948123782873
+              },
+              {
+                "feature": "emb_200",
+                "importance": 0.007075672037899494
+              },
+              {
+                "feature": "emb_334",
+                "importance": 0.007026325445622206
+              },
+              {
+                "feature": "emb_232",
+                "importance": 0.006892228964716196
+              },
+              {
+                "feature": "emb_189",
+                "importance": 0.0067678834311664104
+              },
+              {
+                "feature": "emb_006",
+                "importance": 0.006737238261848688
+              },
+              {
+                "feature": "emb_273",
+                "importance": 0.006711088120937347
+              },
+              {
+                "feature": "emb_315",
+                "importance": 0.006591297686100006
+              }
+            ],
+            "model_type": "xgboost"
+          }
+        },
+        "E2_structured_enhanced": {
+          "logistic_regression": {
+            "roc_auc_mean": 0.6284455438741152,
+            "roc_auc_std": 0.0514676565211833,
+            "accuracy_mean": 0.5879947722180733,
+            "accuracy_std": 0.037548788734416,
+            "bal_accuracy_mean": 0.5882578162578163,
+            "bal_accuracy_std": 0.03926331379237383,
+            "pred_positive_pct": 49.7,
+            "pred_negative_pct": 50.3,
+            "n_samples": 517,
+            "n_features": 74,
+            "positive_rate": 0.4758220502901354,
+            "naive_accuracy": 0.5241779497098646,
+            "top_features": [
+              {
+                "feature": "vix_on_ipo_date_year_pctile",
+                "importance": 0.4766255341070994
+              },
+              {
+                "feature": "vix_on_ipo_date_year_z",
+                "importance": 0.30606853397968176
+              },
+              {
+                "feature": "sector_etf_ret_90d_year_pctile",
+                "importance": 0.3055751877243091
+              },
+              {
+                "feature": "ipos_prior_90d",
+                "importance": 0.28672696421810717
+              },
+              {
+                "feature": "has_tier1_underwriter",
+                "importance": 0.2815955543468637
+              },
+              {
+                "feature": "proceeds_secondary_score",
+                "importance": 0.2764397167743281
+              },
+              {
+                "feature": "sector_etf_ret_30d",
+                "importance": 0.2708734271268306
+              },
+              {
+                "feature": "is_hot_ipo_year",
+                "importance": 0.24648907309488127
+              },
+              {
+                "feature": "sp500_ret_30d",
+                "importance": 0.2368112533363084
+              },
+              {
+                "feature": "revenue_prior_year_z",
+                "importance": 0.23328170118527697
+              },
+              {
+                "feature": "cash_burn_proxy",
+                "importance": 0.23126458241817283
+              },
+              {
+                "feature": "sector_etf_ret_90d",
+                "importance": 0.22970036258740467
+              },
+              {
+                "feature": "vix_30d_avg_year_z",
+                "importance": 0.20553182451298796
+              },
+              {
+                "feature": "sp500_ret_30d_year_pctile",
+                "importance": 0.20142024684816304
+              },
+              {
+                "feature": "is_profitable",
+                "importance": 0.19525465677386464
+              },
+              {
+                "feature": "proceeds_secondary_pct",
+                "importance": 0.18540995615281916
+              },
+              {
+                "feature": "ipos_prior_90d_year_z",
+                "importance": 0.18044571800653916
+              },
+              {
+                "feature": "gross_profit",
+                "importance": 0.17943121354413502
+              },
+              {
+                "feature": "total_proceeds_m",
+                "importance": 0.1791890788387425
+              },
+              {
+                "feature": "net_income_pct_revenue",
+                "importance": 0.17590196488773005
+              }
+            ],
+            "model_type": "logistic_regression"
+          },
+          "ridge": {
+            "roc_auc_mean": 0.6334758469044183,
+            "roc_auc_std": 0.055169987381735036,
+            "accuracy_mean": 0.6111277072442121,
+            "accuracy_std": 0.04418556694382354,
+            "bal_accuracy_mean": 0.6088871023156738,
+            "bal_accuracy_std": 0.04256280591567755,
+            "pred_positive_pct": 45.1,
+            "pred_negative_pct": 54.9,
+            "n_samples": 517,
+            "n_features": 74,
+            "positive_rate": 0.4758220502901354,
+            "naive_accuracy": 0.5241779497098646,
+            "top_features": [
+              {
+                "feature": "vix_on_ipo_date_year_pctile",
+                "importance": 0.47788986018011226
+              },
+              {
+                "feature": "num_underwriters_total",
+                "importance": 0.47638769303946343
+              },
+              {
+                "feature": "is_hot_ipo_year",
+                "importance": 0.35340327907689356
+              },
+              {
+                "feature": "vix_on_ipo_date_year_z",
+                "importance": 0.35225209268870716
+              },
+              {
+                "feature": "ipos_prior_90d",
+                "importance": 0.30529822791105177
+              },
+              {
+                "feature": "ipos_prior_90d_year_z",
+                "importance": 0.3051655334030422
+              },
+              {
+                "feature": "sp500_ret_30d_year_pctile",
+                "importance": 0.2830009228536024
+              },
+              {
+                "feature": "revenue_prior_year_z",
+                "importance": 0.26210315477616875
+              },
+              {
+                "feature": "sector_etf_ret_30d",
+                "importance": 0.2578876153288049
+              },
+              {
+                "feature": "num_tier1_underwriters",
+                "importance": 0.2562973302808875
+              },
+              {
+                "feature": "total_proceeds_m_year_z",
+                "importance": 0.25540854058874113
+              },
+              {
+                "feature": "total_proceeds_m",
+                "importance": 0.2424416086463185
+              },
+              {
+                "feature": "sector_etf_ret_30d_year_z",
+                "importance": 0.24156749426522484
+              },
+              {
+                "feature": "sector_etf_ret_90d_year_pctile",
+                "importance": 0.23376591852890505
+              },
+              {
+                "feature": "cash",
+                "importance": 0.2327012002509413
+              },
+              {
+                "feature": "net_income",
+                "importance": 0.19482648309324274
+              },
+              {
+                "feature": "num_tier2_underwriters",
+                "importance": 0.1924360837299783
+              },
+              {
+                "feature": "sp500_ret_30d",
+                "importance": 0.17664270849526073
+              },
+              {
+                "feature": "proceeds_secondary_score",
+                "importance": 0.1715542393938261
+              },
+              {
+                "feature": "proceeds_secondary_pct",
+                "importance": 0.15463774141239262
+              }
+            ],
+            "model_type": "ridge"
+          },
+          "random_forest": {
+            "roc_auc_mean": 0.6526580086580086,
+            "roc_auc_std": 0.04268034155152076,
+            "accuracy_mean": 0.6150485436893204,
+            "accuracy_std": 0.048406251123414026,
+            "bal_accuracy_mean": 0.6139623445337732,
+            "bal_accuracy_std": 0.04799914218469288,
+            "pred_positive_pct": 47.0,
+            "pred_negative_pct": 53.0,
+            "n_samples": 517,
+            "n_features": 74,
+            "positive_rate": 0.4758220502901354,
+            "naive_accuracy": 0.5241779497098646,
+            "top_features": [
+              {
+                "feature": "underwriter_tier_strength",
+                "importance": 0.05268744331506117
+              },
+              {
+                "feature": "num_underwriters_total",
+                "importance": 0.04178170762703788
+              },
+              {
+                "feature": "ipos_prior_90d",
+                "importance": 0.03663912019536074
+              },
+              {
+                "feature": "sector_etf_ret_30d",
+                "importance": 0.03600223850773624
+              },
+              {
+                "feature": "sp500_ret_90d_year_pctile",
+                "importance": 0.03578441982429286
+              },
+              {
+                "feature": "vix_30d_avg",
+                "importance": 0.031893038663095966
+              },
+              {
+                "feature": "ipos_prior_90d_year_pctile",
+                "importance": 0.03016102955376629
+              },
+              {
+                "feature": "ipos_prior_90d_year_z",
+                "importance": 0.02995741031744066
+              },
+              {
+                "feature": "sector_etf_ret_90d",
+                "importance": 0.029017235321419168
+              },
+              {
+                "feature": "ipos_prior_30d",
+                "importance": 0.02831931187128848
+              },
+              {
+                "feature": "sp500_ret_90d_year_z",
+                "importance": 0.028196353271523356
+              },
+              {
+                "feature": "sector_etf_ret_90d_year_z",
+                "importance": 0.028095500450497416
+              },
+              {
+                "feature": "sp500_ret_90d",
+                "importance": 0.02809017808791837
+              },
+              {
+                "feature": "sector_etf_ret_90d_year_pctile",
+                "importance": 0.02767490620162035
+              },
+              {
+                "feature": "num_tier1_underwriters",
+                "importance": 0.026976152147444043
+              },
+              {
+                "feature": "sector_vs_sp500_30d_year_z",
+                "importance": 0.02598682336245371
+              },
+              {
+                "feature": "sector_etf_ret_30d_year_z",
+                "importance": 0.025676153734881735
+              },
+              {
+                "feature": "vix_30d_avg_year_z",
+                "importance": 0.025359347198821318
+              },
+              {
+                "feature": "vix_30d_avg_year_pctile",
+                "importance": 0.024853878716859724
+              },
+              {
+                "feature": "sector_etf_ret_30d_year_pctile",
+                "importance": 0.02463611475990946
+              }
+            ],
+            "model_type": "random_forest"
+          },
+          "xgboost": {
+            "roc_auc_mean": 0.65511124853982,
+            "roc_auc_std": 0.03879203705818751,
+            "accuracy_mean": 0.6285847647498132,
+            "accuracy_std": 0.027654730424659928,
+            "bal_accuracy_mean": 0.6285822854394283,
+            "bal_accuracy_std": 0.027816053048730905,
+            "pred_positive_pct": 49.5,
+            "pred_negative_pct": 50.5,
+            "n_samples": 517,
+            "n_features": 74,
+            "positive_rate": 0.4758220502901354,
+            "naive_accuracy": 0.5241779497098646,
+            "top_features": [
+              {
+                "feature": "is_hot_ipo_year",
+                "importance": 0.06843209266662598
+              },
+              {
+                "feature": "num_underwriters_total",
+                "importance": 0.04420579597353935
+              },
+              {
+                "feature": "sp500_ret_30d_year_z",
+                "importance": 0.030917368829250336
+              },
+              {
+                "feature": "sp500_ret_90d_year_z",
+                "importance": 0.03009304776787758
+              },
+              {
+                "feature": "sector_vs_sp500_30d_year_z",
+                "importance": 0.029649080708622932
+              },
+              {
+                "feature": "ipos_prior_30d_year_pctile",
+                "importance": 0.026768628507852554
+              },
+              {
+                "feature": "underwriter_tier_strength",
+                "importance": 0.026321981102228165
+              },
+              {
+                "feature": "ipos_prior_90d",
+                "importance": 0.025654872879385948
+              },
+              {
+                "feature": "sector_etf_ret_30d",
+                "importance": 0.025400027632713318
+              },
+              {
+                "feature": "ipos_prior_90d_year_z",
+                "importance": 0.024472787976264954
+              },
+              {
+                "feature": "vix_30d_avg_year_z",
+                "importance": 0.02333364263176918
+              },
+              {
+                "feature": "sp500_ret_90d_year_pctile",
+                "importance": 0.023109080269932747
+              },
+              {
+                "feature": "sector_etf_ret_90d_year_pctile",
+                "importance": 0.02302907407283783
+              },
+              {
+                "feature": "num_tier2_underwriters",
+                "importance": 0.0229021143168211
+              },
+              {
+                "feature": "sector_etf_ret_90d_year_z",
+                "importance": 0.02223891392350197
+              },
+              {
+                "feature": "total_proceeds_m_year_pctile",
+                "importance": 0.021990535780787468
+              },
+              {
+                "feature": "sp500_ret_90d",
+                "importance": 0.021964775398373604
+              },
+              {
+                "feature": "cash",
+                "importance": 0.021473482251167297
+              },
+              {
+                "feature": "vix_on_ipo_date_year_z",
+                "importance": 0.021191339939832687
+              },
+              {
+                "feature": "sector_etf_ret_30d_year_z",
+                "importance": 0.020891545340418816
+              }
+            ],
+            "model_type": "xgboost"
+          }
+        },
+        "E3_combined_enhanced": {
+          "logistic_regression": {
+            "roc_auc_mean": 0.6208194905869323,
+            "roc_auc_std": 0.046093676655951626,
+            "accuracy_mean": 0.583529411764706,
+            "accuracy_std": 0.047410451010846795,
+            "bal_accuracy_mean": 0.5839424141749724,
+            "bal_accuracy_std": 0.04736773416815986,
+            "pred_positive_pct": 53.4,
+            "pred_negative_pct": 46.6,
+            "n_samples": 425,
+            "n_features": 475,
+            "positive_rate": 0.49411764705882355,
+            "naive_accuracy": 0.5058823529411764,
+            "top_features": [
+              {
+                "feature": "emb_315",
+                "importance": 0.43700890148458843
+              },
+              {
+                "feature": "emb_369",
+                "importance": 0.3460674705511154
+              },
+              {
+                "feature": "emb_329",
+                "importance": 0.3382030142725028
+              },
+              {
+                "feature": "emb_380",
+                "importance": 0.3160139588590665
+              },
+              {
+                "feature": "emb_184",
+                "importance": 0.30467840087118303
+              },
+              {
+                "feature": "emb_076",
+                "importance": 0.30132672438720703
+              },
+              {
+                "feature": "emb_153",
+                "importance": 0.3010747959867693
+              },
+              {
+                "feature": "emb_047",
+                "importance": 0.2767765184510633
+              },
+              {
+                "feature": "emb_256",
+                "importance": 0.2735940237896162
+              },
+              {
+                "feature": "emb_012",
+                "importance": 0.26948245113868546
+              },
+              {
+                "feature": "emb_383",
+                "importance": 0.2676292467550405
+              },
+              {
+                "feature": "emb_006",
+                "importance": 0.2635965773068613
+              },
+              {
+                "feature": "emb_167",
+                "importance": 0.26191028871852734
+              },
+              {
+                "feature": "emb_120",
+                "importance": 0.25863985907072384
+              },
+              {
+                "feature": "emb_011",
+                "importance": 0.24719800086115687
+              },
+              {
+                "feature": "cash_burn_proxy",
+                "importance": 0.2462656200342344
+              },
+              {
+                "feature": "emb_162",
+                "importance": 0.24294952271763512
+              },
+              {
+                "feature": "emb_352",
+                "importance": 0.24067564945337558
+              },
+              {
+                "feature": "emb_381",
+                "importance": 0.23858614039614698
+              },
+              {
+                "feature": "uncertainty_in_risk",
+                "importance": 0.23414832101319497
+              }
+            ],
+            "model_type": "logistic_regression"
+          },
+          "ridge": {
+            "roc_auc_mean": 0.56843853820598,
+            "roc_auc_std": 0.045660890206679655,
+            "accuracy_mean": 0.5411764705882353,
+            "accuracy_std": 0.04879162671371226,
+            "bal_accuracy_mean": 0.5413621262458472,
+            "bal_accuracy_std": 0.048522046787040043,
+            "pred_positive_pct": 51.5,
+            "pred_negative_pct": 48.5,
+            "n_samples": 425,
+            "n_features": 475,
+            "positive_rate": 0.49411764705882355,
+            "naive_accuracy": 0.5058823529411764,
+            "top_features": [
+              {
+                "feature": "emb_367",
+                "importance": 0.6830926809808491
+              },
+              {
+                "feature": "emb_378",
+                "importance": 0.6658250098208232
+              },
+              {
+                "feature": "emb_250",
+                "importance": 0.6387771479406399
+              },
+              {
+                "feature": "emb_167",
+                "importance": 0.603900132594442
+              },
+              {
+                "feature": "emb_383",
+                "importance": 0.5895275285725322
+              },
+              {
+                "feature": "emb_013",
+                "importance": 0.5768805733004283
+              },
+              {
+                "feature": "emb_232",
+                "importance": 0.5713852909733699
+              },
+              {
+                "feature": "emb_175",
+                "importance": 0.5601182000264515
+              },
+              {
+                "feature": "emb_131",
+                "importance": 0.5200186268939166
+              },
+              {
+                "feature": "emb_304",
+                "importance": 0.5166320346621703
+              },
+              {
+                "feature": "emb_380",
+                "importance": 0.5112601278129967
+              },
+              {
+                "feature": "vix_on_ipo_date_year_z",
+                "importance": 0.5081860105763156
+              },
+              {
+                "feature": "emb_315",
+                "importance": 0.5067415513144224
+              },
+              {
+                "feature": "emb_095",
+                "importance": 0.5038791818689929
+              },
+              {
+                "feature": "emb_308",
+                "importance": 0.5010398296433967
+              },
+              {
+                "feature": "emb_318",
+                "importance": 0.46521591583410893
+              },
+              {
+                "feature": "emb_179",
+                "importance": 0.4578993857556757
+              },
+              {
+                "feature": "emb_314",
+                "importance": 0.45786456243889506
+              },
+              {
+                "feature": "emb_181",
+                "importance": 0.44981859619410036
+              },
+              {
+                "feature": "emb_185",
+                "importance": 0.4431621846001884
+              }
+            ],
+            "model_type": "ridge"
+          },
+          "random_forest": {
+            "roc_auc_mean": 0.6314507198228129,
+            "roc_auc_std": 0.010007300418677617,
+            "accuracy_mean": 0.6047058823529412,
+            "accuracy_std": 0.03537246206675977,
+            "bal_accuracy_mean": 0.6052048726467332,
+            "bal_accuracy_std": 0.035767256638569785,
+            "pred_positive_pct": 54.1,
+            "pred_negative_pct": 45.9,
+            "n_samples": 425,
+            "n_features": 475,
+            "positive_rate": 0.49411764705882355,
+            "naive_accuracy": 0.5058823529411764,
+            "top_features": [
+              {
+                "feature": "underwriter_tier_strength",
+                "importance": 0.011845118060128864
+              },
+              {
+                "feature": "emb_200",
+                "importance": 0.011191317299264225
+              },
+              {
+                "feature": "emb_006",
+                "importance": 0.010586103370541633
+              },
+              {
+                "feature": "emb_012",
+                "importance": 0.009761548955886946
+              },
+              {
+                "feature": "emb_253",
+                "importance": 0.009711375984316711
+              },
+              {
+                "feature": "emb_149",
+                "importance": 0.009479765147380834
+              },
+              {
+                "feature": "num_underwriters_total",
+                "importance": 0.008940875695296741
+              },
+              {
+                "feature": "emb_315",
+                "importance": 0.008274264743337945
+              },
+              {
+                "feature": "emb_120",
+                "importance": 0.008249761575311758
+              },
+              {
+                "feature": "emb_189",
+                "importance": 0.008245300439781375
+              },
+              {
+                "feature": "emb_258",
+                "importance": 0.007812604309948434
+              },
+              {
+                "feature": "emb_037",
+                "importance": 0.007385283521590208
+              },
+              {
+                "feature": "emb_380",
+                "importance": 0.00686586225532254
+              },
+              {
+                "feature": "emb_064",
+                "importance": 0.006847374241376163
+              },
+              {
+                "feature": "emb_038",
+                "importance": 0.006075201144527798
+              },
+              {
+                "feature": "has_tier1_underwriter",
+                "importance": 0.006023073743619632
+              },
+              {
+                "feature": "emb_224",
+                "importance": 0.005986118289521288
+              },
+              {
+                "feature": "emb_156",
+                "importance": 0.0059796015037803674
+              },
+              {
+                "feature": "emb_282",
+                "importance": 0.005601438178690534
+              },
+              {
+                "feature": "emb_310",
+                "importance": 0.005462743101778886
+              }
+            ],
+            "model_type": "random_forest"
+          },
+          "xgboost": {
+            "roc_auc_mean": 0.603875968992248,
+            "roc_auc_std": 0.021372339736742026,
+            "accuracy_mean": 0.5811764705882353,
+            "accuracy_std": 0.02422501209644,
+            "bal_accuracy_mean": 0.5816168327796236,
+            "bal_accuracy_std": 0.024027690367142553,
+            "pred_positive_pct": 53.6,
+            "pred_negative_pct": 46.4,
+            "n_samples": 425,
+            "n_features": 475,
+            "positive_rate": 0.49411764705882355,
+            "naive_accuracy": 0.5058823529411764,
+            "top_features": [
+              {
+                "feature": "num_underwriters_total",
+                "importance": 0.013535563834011555
+              },
+              {
+                "feature": "emb_025",
+                "importance": 0.010566803626716137
+              },
+              {
+                "feature": "emb_210",
+                "importance": 0.009404189884662628
+              },
+              {
+                "feature": "emb_206",
+                "importance": 0.008969618007540703
+              },
+              {
+                "feature": "underwriter_tier_strength",
+                "importance": 0.008737586438655853
+              },
+              {
+                "feature": "emb_092",
+                "importance": 0.008142232894897461
+              },
+              {
+                "feature": "emb_198",
+                "importance": 0.007931101135909557
+              },
+              {
+                "feature": "emb_044",
+                "importance": 0.007639286108314991
+              },
+              {
+                "feature": "emb_024",
+                "importance": 0.007634120061993599
+              },
+              {
+                "feature": "emb_273",
+                "importance": 0.006654052995145321
+              },
+              {
+                "feature": "emb_164",
+                "importance": 0.006607363931834698
+              },
+              {
+                "feature": "emb_031",
+                "importance": 0.00638554198667407
+              },
+              {
+                "feature": "emb_108",
+                "importance": 0.006318047642707825
+              },
+              {
+                "feature": "emb_085",
+                "importance": 0.006272417493164539
+              },
+              {
+                "feature": "emb_361",
+                "importance": 0.005962652154266834
+              },
+              {
+                "feature": "emb_163",
+                "importance": 0.00593509990721941
+              },
+              {
+                "feature": "emb_205",
+                "importance": 0.0058979857712984085
+              },
+              {
+                "feature": "emb_006",
+                "importance": 0.005885221529752016
+              },
+              {
+                "feature": "emb_054",
+                "importance": 0.0058546471409499645
+              },
+              {
+                "feature": "emb_182",
+                "importance": 0.00577341066673398
+              }
+            ],
+            "model_type": "xgboost"
+          }
+        }
+      }
+    }
+  }
+}

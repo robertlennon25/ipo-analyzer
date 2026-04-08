@@ -17,6 +17,7 @@ Report includes:
 
 import sys
 import json
+import argparse
 import logging
 from pathlib import Path
 
@@ -35,6 +36,7 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
 MODELS_DIR = PROCESSED_DIR / "models"
 PLOTS_DIR = PROCESSED_DIR / "plots"
+RUN_RESULTS_DIR = PROCESSED_DIR / "run_results"
 RESULTS_PATH = PROCESSED_DIR / "model_results.json"
 REPORT_PATH = PROCESSED_DIR / "evaluation_report.md"
 
@@ -43,13 +45,42 @@ REPORT_PATH = PROCESSED_DIR / "evaluation_report.md"
 # Data loading helpers
 # ---------------------------------------------------------------------------
 
-def load_results() -> dict:
+def load_results(run_id: str | None = None) -> tuple[dict, Path | None]:
+    """
+    Load model results. Returns (results_dict, run_file_path_or_None).
+
+    Priority:
+      1. run_id specified → load run_results/{run_id}.json
+      2. run_results/ has files → load the most recent one
+      3. Fall back to model_results.json (legacy)
+    """
+    RUN_RESULTS_DIR.mkdir(exist_ok=True)
+
+    if run_id:
+        run_path = RUN_RESULTS_DIR / f"{run_id}.json"
+        if not run_path.exists():
+            raise FileNotFoundError(f"Run file not found: {run_path}")
+        with open(run_path) as f:
+            envelope = json.load(f)
+        logger.info("Loaded run: %s", run_id)
+        return envelope["results"], run_path
+
+    run_files = sorted(RUN_RESULTS_DIR.glob("run_*.json"))
+    if run_files:
+        run_path = run_files[-1]  # lexicographic = chronological for run_YYYYMMDD_HHMMSS
+        with open(run_path) as f:
+            envelope = json.load(f)
+        logger.info("Loaded latest run: %s", run_path.stem)
+        return envelope["results"], run_path
+
+    # Legacy fallback
     if not RESULTS_PATH.exists():
         raise FileNotFoundError(
-            f"model_results.json not found at {RESULTS_PATH}. Run train.py first."
+            f"No run files found in {RUN_RESULTS_DIR} and model_results.json not found. "
+            "Run train.py first."
         )
     with open(RESULTS_PATH) as f:
-        return json.load(f)
+        return json.load(f), None
 
 
 def load_feature_matrix(variant_name: str, target: str) -> tuple[np.ndarray, list[str], np.ndarray] | None:
@@ -139,6 +170,7 @@ def generate_shap_plot(
     feature_names: list[str],
     variant_name: str,
     model_type: str,
+    output_dir: Path | None = None,
 ) -> Path | None:
     """Generate and save a SHAP summary plot for one model. Returns plot path or None."""
     try:
@@ -178,8 +210,9 @@ def generate_shap_plot(
         return None
 
     # Plot
-    PLOTS_DIR.mkdir(parents=True, exist_ok=True)
-    plot_path = PLOTS_DIR / f"shap_{variant_name}_{model_type}.png"
+    save_dir = output_dir if output_dir is not None else PLOTS_DIR
+    save_dir.mkdir(parents=True, exist_ok=True)
+    plot_path = save_dir / f"shap_{variant_name}_{model_type}.png"
 
     fig, ax = plt.subplots(figsize=(10, 7))
     shap.summary_plot(
@@ -432,9 +465,9 @@ beyond what can be explained by structured financials alone?
 # Entry point
 # ---------------------------------------------------------------------------
 
-def run_evaluation() -> None:
+def run_evaluation(run_id: str | None = None, notes: str = "") -> None:
     """Full evaluation pipeline: SHAP plots + Markdown report for all targets."""
-    all_results = load_results()
+    all_results, run_path = load_results(run_id)
 
     # Support both old single-target format and new multi-target format
     if "variants" in all_results:
@@ -453,6 +486,8 @@ def run_evaluation() -> None:
     print(f"\n{'='*80}")
     print(f"{'Variant':<20} {'Model':<22} {'Target':<12} {'ROC-AUC':<16} {'Bal-Acc':<16} {'Naive':<8} Pred +%")
     print(f"{'-'*80}")
+
+    all_shap_plot_paths: dict[str, Path] = {}  # accumulated across all targets
 
     for target, results in all_results.items():
         shap_plot_paths: dict[str, Path] = {}
@@ -477,6 +512,7 @@ def run_evaluation() -> None:
                     )
                     if plot_path:
                         shap_plot_paths[f"{variant_name}/{model_type}"] = plot_path
+                        all_shap_plot_paths[f"{target}/{variant_name}/{model_type}"] = plot_path
 
         # Per-target report section
         report_sections.append(f"\n---\n\n## Target: `{target}`\n")
@@ -512,6 +548,10 @@ def run_evaluation() -> None:
     print(f"\nReport saved: {REPORT_PATH}")
 
     _append_to_results_tracker(all_results)
+
+    # Update the run JSON with evaluation metadata (if loaded from run_results/)
+    if run_path is not None:
+        _update_run_with_eval(run_path, notes, all_shap_plot_paths, REPORT_PATH)
 
 
 def _append_to_results_tracker(all_results: dict) -> None:
@@ -553,5 +593,41 @@ def _append_to_results_tracker(all_results: dict) -> None:
     print(f"Results appended to {tracker_path.name}")
 
 
+def _update_run_with_eval(
+    run_path: Path,
+    notes: str,
+    shap_plot_paths: dict,
+    report_path: Path,
+) -> None:
+    """Write evaluation metadata back into the run JSON file."""
+    from datetime import datetime
+
+    with open(run_path) as f:
+        envelope = json.load(f)
+
+    envelope["evaluation"] = {
+        "timestamp": datetime.now().isoformat(),
+        "notes": notes,
+        "report_path": str(report_path),
+        "shap_plots": {k: str(v) for k, v in shap_plot_paths.items()},
+    }
+
+    with open(run_path, "w") as f:
+        json.dump(envelope, f, indent=2)
+
+    logger.info("Run file updated with eval metadata: %s", run_path.name)
+
+
 if __name__ == "__main__":
-    run_evaluation()
+    parser = argparse.ArgumentParser(description="Evaluate trained IPO model variants")
+    parser.add_argument(
+        "--run", type=str, default=None,
+        help="Run ID to evaluate (e.g. run_20260407_143022). Defaults to the latest run."
+    )
+    parser.add_argument(
+        "--notes", type=str, default="",
+        help="Optional note to attach to the evaluation record in the run file."
+    )
+    args = parser.parse_args()
+
+    run_evaluation(run_id=args.run, notes=args.notes)

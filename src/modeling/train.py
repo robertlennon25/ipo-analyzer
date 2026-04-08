@@ -16,8 +16,10 @@ Model types per variant:
 
 Default: trains all variants × all model types × all return windows (1w, 1m, 6m, 1y).
 Pass --target label_1m to train a single window only.
+Pass --notes "..." to attach a note to the saved run file.
 
-Output: data/processed/model_results.json
+Output: data/processed/run_results/{run_id}.json   ← timestamped, never overwritten
+        data/processed/model_results.json           ← latest run (overwritten each time)
         data/processed/models/{target}_{variant}_{model}.pkl
 """
 
@@ -26,6 +28,7 @@ import argparse
 import joblib
 import numpy as np
 import pandas as pd
+from datetime import datetime
 from pathlib import Path
 
 from sklearn.linear_model import LogisticRegression, RidgeClassifier
@@ -43,9 +46,37 @@ from config.settings import PROCESSED_DIR, CACHE_DIR, RANDOM_STATE, CV_FOLDS
 
 MODELS_DIR = PROCESSED_DIR / "models"
 MODELS_DIR.mkdir(exist_ok=True)
+RUN_RESULTS_DIR = PROCESSED_DIR / "run_results"
+RUN_RESULTS_DIR.mkdir(exist_ok=True)
 RESULTS_PATH = PROCESSED_DIR / "model_results.json"
 
 DEFAULT_TARGETS = ["label_1w", "label_1m", "label_6m", "label_1y"]
+
+# Hyperparameters — single source of truth, serialised into every run JSON.
+HYPERPARAMS = {
+    "logistic_regression": {
+        "C": 0.1, "max_iter": 1000, "class_weight": "balanced",
+    },
+    "ridge": {
+        "alpha": 1.0,
+        "note": "no class_weight — interpret with caution on imbalanced targets",
+    },
+    "random_forest": {
+        "n_estimators": 200, "max_depth": 6, "min_samples_leaf": 5,
+        "class_weight": "balanced",
+    },
+    "xgboost": {
+        "n_estimators": 100, "max_depth": 4, "learning_rate": 0.05,
+        "eval_metric": "logloss",
+        "note": "scale_pos_weight computed per-target from class ratio",
+    },
+    "shared": {
+        "imputer_strategy": "median",
+        "cv_folds": CV_FOLDS,
+        "random_state": RANDOM_STATE,
+        "min_samples_to_train": 30,
+    },
+}
 
 
 def _build_model_list(scale_pos_weight: float = 1.0) -> list[tuple[str, Pipeline]]:
@@ -54,33 +85,41 @@ def _build_model_list(scale_pos_weight: float = 1.0) -> list[tuple[str, Pipeline
     LR and RF use class_weight='balanced' which computes this automatically.
     Ridge has no class_weight support; it will be biased toward the majority class.
     """
+    hp = HYPERPARAMS
     return [
         ("logistic_regression", Pipeline([
-            ("imputer", SimpleImputer(strategy="median")),
+            ("imputer", SimpleImputer(strategy=hp["shared"]["imputer_strategy"])),
             ("scaler", StandardScaler()),
             ("clf", LogisticRegression(
-                max_iter=1000, random_state=RANDOM_STATE, C=0.1,
-                class_weight="balanced",
+                max_iter=hp["logistic_regression"]["max_iter"],
+                random_state=RANDOM_STATE,
+                C=hp["logistic_regression"]["C"],
+                class_weight=hp["logistic_regression"]["class_weight"],
             )),
         ])),
         ("ridge", Pipeline([
-            ("imputer", SimpleImputer(strategy="median")),
+            ("imputer", SimpleImputer(strategy=hp["shared"]["imputer_strategy"])),
             ("scaler", StandardScaler()),
-            ("clf", RidgeClassifier(alpha=1.0)),  # no class_weight — interpret with caution on imbalanced targets
+            ("clf", RidgeClassifier(alpha=hp["ridge"]["alpha"])),
         ])),
         ("random_forest", Pipeline([
-            ("imputer", SimpleImputer(strategy="median")),
+            ("imputer", SimpleImputer(strategy=hp["shared"]["imputer_strategy"])),
             ("clf", RandomForestClassifier(
-                n_estimators=200, max_depth=6, min_samples_leaf=5,
+                n_estimators=hp["random_forest"]["n_estimators"],
+                max_depth=hp["random_forest"]["max_depth"],
+                min_samples_leaf=hp["random_forest"]["min_samples_leaf"],
                 random_state=RANDOM_STATE, n_jobs=-1,
-                class_weight="balanced",
+                class_weight=hp["random_forest"]["class_weight"],
             )),
         ])),
         ("xgboost", Pipeline([
-            ("imputer", SimpleImputer(strategy="median")),
+            ("imputer", SimpleImputer(strategy=hp["shared"]["imputer_strategy"])),
             ("clf", xgb.XGBClassifier(
-                n_estimators=100, max_depth=4, learning_rate=0.05,
-                random_state=RANDOM_STATE, eval_metric="logloss",
+                n_estimators=hp["xgboost"]["n_estimators"],
+                max_depth=hp["xgboost"]["max_depth"],
+                learning_rate=hp["xgboost"]["learning_rate"],
+                random_state=RANDOM_STATE,
+                eval_metric=hp["xgboost"]["eval_metric"],
                 verbosity=0,
                 scale_pos_weight=scale_pos_weight,
             )),
@@ -281,8 +320,14 @@ def train_for_target(
     return target_results
 
 
-def train_all(targets: list[str]) -> dict:
-    """Main entry point. Trains all variants × models × targets."""
+def train_all(targets: list[str], notes: str = "") -> tuple[dict, str]:
+    """
+    Main entry point. Trains all variants × models × targets.
+    Returns (all_results, run_id).
+    """
+    run_id = datetime.now().strftime("run_%Y%m%d_%H%M%S")
+    timestamp = datetime.now().isoformat()
+
     returns_df = pd.read_csv(PROCESSED_DIR / "returns.csv")
     feature_sets = load_feature_sets()
     variants = build_model_variants(feature_sets)
@@ -296,11 +341,27 @@ def train_all(targets: list[str]) -> dict:
         if result:
             all_results[target] = result
 
+    # Write legacy model_results.json (overwritten each run — used by evaluate.py fallback)
     with open(RESULTS_PATH, "w") as f:
         json.dump(all_results, f, indent=2)
-    print(f"\nAll results saved to {RESULTS_PATH}")
 
-    return all_results
+    # Write timestamped run file with full metadata envelope
+    run_envelope = {
+        "run_id": run_id,
+        "timestamp": timestamp,
+        "notes": notes,
+        "targets_trained": targets,
+        "hyperparameters": HYPERPARAMS,
+        "results": all_results,
+    }
+    run_path = RUN_RESULTS_DIR / f"{run_id}.json"
+    with open(run_path, "w") as f:
+        json.dump(run_envelope, f, indent=2)
+
+    print(f"\nRun saved: {run_path}")
+    print(f"Latest results: {RESULTS_PATH}")
+
+    return all_results, run_id
 
 
 def print_comparison_table(all_results: dict):
@@ -336,10 +397,17 @@ if __name__ == "__main__":
         "--target", type=str, default=None,
         help="Single target to train (e.g. label_1m). Omit to train all windows."
     )
+    parser.add_argument(
+        "--notes", type=str, default="",
+        help="Optional note to attach to this run (e.g. 'after leakage fix, 300 filings')."
+    )
     args = parser.parse_args()
 
     targets = [args.target] if args.target else DEFAULT_TARGETS
     print(f"Training targets: {targets}")
+    if args.notes:
+        print(f"Notes: {args.notes}")
 
-    results = train_all(targets)
+    results, run_id = train_all(targets, notes=args.notes)
     print_comparison_table(results)
+    print(f"\nRun ID: {run_id}")

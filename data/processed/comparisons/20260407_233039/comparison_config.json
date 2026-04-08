@@ -1,0 +1,9 @@
+{
+  "generated_at": "2026-04-07T23:30:39.994803",
+  "baseline_run": "/Users/robertlennon/Desktop/ipo-analyzer/data/processed/run_results/run_20260407_225709.json",
+  "enhanced_run": "/Users/robertlennon/Desktop/ipo-analyzer/data/processed/experiments/enhanced_v1/run_results/run_20260407_232546.json",
+  "experiment_name": "enhanced_v1",
+  "tag": "20260407_233039",
+  "baseline_run_id": "run_20260407_225709",
+  "enhanced_run_id": "run_20260407_232546"
+}

@@ -15,14 +15,14 @@ Naive accuracy baseline: **52.2%**
 | M1_text | ridge | 0.530 | 0.037 | 0.529 | 0.053 | 55.8% | 425 |
 | M1_text | random_forest | 0.607 | 0.054 | 0.601 | 0.059 | 56.9% | 425 |
 | M1_text | xgboost | 0.586 | 0.033 | 0.573 | 0.038 | 57.4% | 425 |
-| M2_multiples | logistic_regression | 0.586 | 0.044 | 0.560 | 0.031 | 57.6% | 517 |
-| M2_multiples | ridge | 0.593 | 0.052 | 0.563 | 0.047 | 51.3% | 517 |
-| M2_multiples | random_forest | 0.592 | 0.072 | 0.573 | 0.066 | 56.7% | 517 |
-| M2_multiples | xgboost | 0.575 | 0.055 | 0.554 | 0.033 | 51.8% | 517 |
-| M3_combined | logistic_regression | 0.510 | 0.032 | 0.489 | 0.033 | 55.1% | 425 |
-| M3_combined | ridge | 0.508 | 0.053 | 0.525 | 0.039 | 54.4% | 425 |
-| M3_combined | random_forest | 0.593 | 0.056 | 0.580 | 0.077 | 56.7% | 425 |
-| M3_combined | xgboost | 0.584 | 0.054 | 0.569 | 0.041 | 56.0% | 425 |
+| M2_multiples | logistic_regression | 0.592 | 0.045 | 0.575 | 0.028 | 57.6% | 517 |
+| M2_multiples | ridge | 0.596 | 0.057 | 0.565 | 0.059 | 49.9% | 517 |
+| M2_multiples | random_forest | 0.608 | 0.077 | 0.578 | 0.065 | 54.5% | 517 |
+| M2_multiples | xgboost | 0.584 | 0.053 | 0.555 | 0.059 | 53.8% | 517 |
+| M3_combined | logistic_regression | 0.510 | 0.030 | 0.503 | 0.027 | 55.1% | 425 |
+| M3_combined | ridge | 0.513 | 0.060 | 0.521 | 0.042 | 52.5% | 425 |
+| M3_combined | random_forest | 0.594 | 0.055 | 0.585 | 0.064 | 56.7% | 425 |
+| M3_combined | xgboost | 0.585 | 0.063 | 0.564 | 0.061 | 55.5% | 425 |
 
 ### Top Features
 
@@ -96,61 +96,61 @@ Naive accuracy baseline: **52.2%**
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `ipo_year` | 0.4277 |
-| 2 | `is_hot_ipo_year` | 0.3401 |
-| 3 | `cash_burn_proxy` | 0.2009 |
-| 4 | `vix_30d_avg` | 0.1844 |
-| 5 | `total_assets` | 0.1834 |
-| 6 | `price_range_revised_up` | 0.1743 |
-| 7 | `sector_etf_ret_90d` | 0.1676 |
-| 8 | `cash` | 0.1510 |
-| 9 | `revenue_prior` | 0.1500 |
-| 10 | `has_insider_selling` | 0.1481 |
+| 1 | `ipo_year` | 0.4252 |
+| 2 | `is_hot_ipo_year` | 0.3742 |
+| 3 | `vix_30d_avg` | 0.2257 |
+| 4 | `cash_burn_proxy` | 0.1887 |
+| 5 | `total_assets` | 0.1875 |
+| 6 | `price_range_revised_up` | 0.1788 |
+| 7 | `sector_etf_ret_90d` | 0.1772 |
+| 8 | `ipos_prior_30d` | 0.1570 |
+| 9 | `revenue_prior` | 0.1512 |
+| 10 | `has_insider_selling` | 0.1488 |
 
 **ridge** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `cash` | 0.2421 |
-| 2 | `ipo_year` | 0.2169 |
-| 3 | `is_hot_ipo_year` | 0.2103 |
-| 4 | `net_income` | 0.1939 |
-| 5 | `vix_30d_avg` | 0.1378 |
-| 6 | `sector_etf_ret_90d` | 0.1040 |
-| 7 | `ipos_same_quarter` | 0.1032 |
-| 8 | `vix_on_ipo_date` | 0.0953 |
-| 9 | `price_range_revised_up` | 0.0759 |
-| 10 | `has_insider_selling` | 0.0741 |
+| 1 | `is_hot_ipo_year` | 0.2171 |
+| 2 | `ipo_year` | 0.2108 |
+| 3 | `cash` | 0.1888 |
+| 4 | `vix_30d_avg` | 0.1770 |
+| 5 | `net_income` | 0.1482 |
+| 6 | `vix_on_ipo_date` | 0.1263 |
+| 7 | `sector_etf_ret_90d` | 0.1093 |
+| 8 | `ipos_prior_30d` | 0.1060 |
+| 9 | `price_range_revised_up` | 0.0796 |
+| 10 | `has_insider_selling` | 0.0726 |
 
 **random_forest** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `sector_etf_ret_30d` | 0.1048 |
-| 2 | `ipo_year` | 0.1041 |
-| 3 | `sp500_ret_30d` | 0.0950 |
-| 4 | `ipos_same_quarter` | 0.0849 |
-| 5 | `sector_etf_ret_90d` | 0.0800 |
-| 6 | `sp500_ret_90d` | 0.0762 |
-| 7 | `sector_vs_sp500_30d` | 0.0730 |
-| 8 | `vix_30d_avg` | 0.0705 |
-| 9 | `vix_on_ipo_date` | 0.0702 |
-| 10 | `ipos_same_month` | 0.0618 |
+| 1 | `ipo_year` | 0.1152 |
+| 2 | `sector_etf_ret_30d` | 0.0934 |
+| 3 | `sp500_ret_30d` | 0.0896 |
+| 4 | `ipos_prior_90d` | 0.0805 |
+| 5 | `sector_etf_ret_90d` | 0.0738 |
+| 6 | `vix_30d_avg` | 0.0722 |
+| 7 | `ipos_prior_30d` | 0.0698 |
+| 8 | `sector_vs_sp500_30d` | 0.0679 |
+| 9 | `vix_on_ipo_date` | 0.0671 |
+| 10 | `sp500_ret_90d` | 0.0649 |
 
 **xgboost** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `ipo_year` | 0.1440 |
-| 2 | `has_insider_selling` | 0.0557 |
-| 3 | `sector_etf_ret_30d` | 0.0521 |
-| 4 | `sp500_ret_90d` | 0.0502 |
-| 5 | `vix_30d_avg` | 0.0453 |
-| 6 | `gross_profit` | 0.0436 |
-| 7 | `sector_etf_ret_90d` | 0.0429 |
-| 8 | `ebitda` | 0.0426 |
-| 9 | `vix_on_ipo_date` | 0.0398 |
-| 10 | `net_income` | 0.0394 |
+| 1 | `ipo_year` | 0.1510 |
+| 2 | `has_insider_selling` | 0.0782 |
+| 3 | `total_proceeds_m` | 0.0565 |
+| 4 | `sector_etf_ret_30d` | 0.0477 |
+| 5 | `sp500_ret_90d` | 0.0452 |
+| 6 | `cash` | 0.0447 |
+| 7 | `cash_burn_proxy` | 0.0442 |
+| 8 | `vix_30d_avg` | 0.0416 |
+| 9 | `vix_on_ipo_date` | 0.0404 |
+| 10 | `insider_proceeds_pct` | 0.0391 |
 
 
 ### M3_combined
@@ -159,60 +159,60 @@ Naive accuracy baseline: **52.2%**
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `emb_089` | 0.4259 |
-| 2 | `emb_026` | 0.3928 |
-| 3 | `emb_104` | 0.3612 |
-| 4 | `emb_187` | 0.3590 |
-| 5 | `is_hot_ipo_year` | 0.3401 |
-| 6 | `loss_keyword_density` | 0.3141 |
-| 7 | `emb_147` | 0.2999 |
-| 8 | `ipo_year` | 0.2908 |
-| 9 | `emb_315` | 0.2900 |
-| 10 | `emb_076` | 0.2843 |
+| 1 | `emb_089` | 0.4225 |
+| 2 | `emb_026` | 0.3925 |
+| 3 | `emb_104` | 0.3604 |
+| 4 | `emb_187` | 0.3594 |
+| 5 | `is_hot_ipo_year` | 0.3144 |
+| 6 | `loss_keyword_density` | 0.3113 |
+| 7 | `emb_147` | 0.2978 |
+| 8 | `emb_315` | 0.2885 |
+| 9 | `emb_076` | 0.2820 |
+| 10 | `emb_225` | 0.2809 |
 
 **ridge** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `emb_071` | 0.8936 |
-| 2 | `emb_383` | 0.8569 |
-| 3 | `emb_250` | 0.7986 |
-| 4 | `emb_378` | 0.7802 |
-| 5 | `emb_136` | 0.7789 |
-| 6 | `emb_317` | 0.6601 |
-| 7 | `emb_262` | 0.6177 |
-| 8 | `emb_181` | 0.6001 |
-| 9 | `emb_175` | 0.5954 |
-| 10 | `emb_229` | 0.5891 |
+| 1 | `emb_383` | 0.8915 |
+| 2 | `emb_071` | 0.8775 |
+| 3 | `emb_250` | 0.8218 |
+| 4 | `emb_136` | 0.7863 |
+| 5 | `emb_378` | 0.7663 |
+| 6 | `emb_317` | 0.6584 |
+| 7 | `emb_262` | 0.6301 |
+| 8 | `emb_175` | 0.6158 |
+| 9 | `emb_076` | 0.6144 |
+| 10 | `emb_181` | 0.5897 |
 
 **random_forest** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `emb_189` | 0.0176 |
+| 1 | `emb_189` | 0.0175 |
 | 2 | `emb_200` | 0.0134 |
 | 3 | `emb_302` | 0.0104 |
 | 4 | `emb_158` | 0.0090 |
 | 5 | `emb_064` | 0.0084 |
 | 6 | `emb_256` | 0.0083 |
 | 7 | `emb_061` | 0.0077 |
-| 8 | `emb_080` | 0.0071 |
-| 9 | `emb_006` | 0.0068 |
-| 10 | `emb_288` | 0.0065 |
+| 8 | `emb_080` | 0.0073 |
+| 9 | `emb_006` | 0.0072 |
+| 10 | `emb_288` | 0.0068 |
 
 **xgboost** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `emb_189` | 0.0104 |
+| 1 | `emb_189` | 0.0118 |
 | 2 | `emb_010` | 0.0103 |
-| 3 | `emb_042` | 0.0099 |
-| 4 | `emb_247` | 0.0098 |
-| 5 | `emb_324` | 0.0097 |
-| 6 | `emb_358` | 0.0096 |
-| 7 | `ipo_year` | 0.0086 |
-| 8 | `emb_187` | 0.0085 |
-| 9 | `emb_302` | 0.0085 |
+| 3 | `vix_30d_avg` | 0.0101 |
+| 4 | `emb_247` | 0.0099 |
+| 5 | `emb_358` | 0.0096 |
+| 6 | `emb_224` | 0.0092 |
+| 7 | `emb_335` | 0.0090 |
+| 8 | `emb_094` | 0.0089 |
+| 9 | `emb_187` | 0.0086 |
 | 10 | `emb_171` | 0.0082 |
 
 
@@ -222,30 +222,29 @@ Naive accuracy baseline: **52.2%**
 **xgboost:**
 
 - M1 (text only): ROC-AUC = 0.586
-- M2 (fundamentals only): ROC-AUC = 0.575
-- M3 (combined): ROC-AUC = 0.584
+- M2 (fundamentals only): ROC-AUC = 0.584
+- M3 (combined): ROC-AUC = 0.585
 
-**Mixed result:** Text adds marginal lift (+0.009 AUC). With a larger corpus the signal may become clearer.
+**Mixed result:** Text adds marginal lift (+0.001 AUC). With a larger corpus the signal may become clearer.
 Best variant achieves 0.586 AUC — modest lift above random. Consider expanding the IPO universe for stronger signal.
 
 **logistic_regression:**
 
 - M1 (text only): ROC-AUC = 0.516
-- M2 (fundamentals only): ROC-AUC = 0.586
+- M2 (fundamentals only): ROC-AUC = 0.592
 - M3 (combined): ROC-AUC = 0.510
 
-**Text does not help:** M3 underperforms M2 by 0.077 AUC, suggesting text may be adding noise or overfitting with this sample size.
-Best variant achieves 0.586 AUC — modest lift above random. Consider expanding the IPO universe for stronger signal.
+**Text does not help:** M3 underperforms M2 by 0.081 AUC, suggesting text may be adding noise or overfitting with this sample size.
+Best variant achieves 0.592 AUC — modest lift above random. Consider expanding the IPO universe for stronger signal.
 
 ### Notable Findings
 
 - **`emb_089`** is the #1 feature in **M1_text/logistic_regression** (importance: 0.4352)
 - **`emb_378`** is the #1 feature in **M1_text/ridge** (importance: 0.8397)
 - **`emb_189`** is the #1 feature in **M1_text/random_forest** (importance: 0.0132)
-- **`ipo_year`** is the #1 feature in **M2_multiples/logistic_regression** (importance: 0.4277)
-- **`cash`** is the #1 feature in **M2_multiples/ridge** (importance: 0.2421)
-- **`sector_etf_ret_30d`** is the #1 feature in **M2_multiples/random_forest** (importance: 0.1048)
-- **`emb_071`** is the #1 feature in **M3_combined/ridge** (importance: 0.8936)
+- **`ipo_year`** is the #1 feature in **M2_multiples/logistic_regression** (importance: 0.4252)
+- **`is_hot_ipo_year`** is the #1 feature in **M2_multiples/ridge** (importance: 0.2171)
+- **`emb_383`** is the #1 feature in **M3_combined/ridge** (importance: 0.8915)
 
 ### SHAP Plots
 
@@ -310,14 +309,14 @@ Naive accuracy baseline: **50.6%**
 | M1_text | ridge | 0.583 | 0.052 | 0.558 | 0.050 | 49.9% | 425 |
 | M1_text | random_forest | 0.620 | 0.019 | 0.612 | 0.032 | 54.4% | 425 |
 | M1_text | xgboost | 0.607 | 0.035 | 0.577 | 0.042 | 56.0% | 425 |
-| M2_multiples | logistic_regression | 0.565 | 0.061 | 0.550 | 0.053 | 53.4% | 517 |
-| M2_multiples | ridge | 0.551 | 0.062 | 0.542 | 0.067 | 46.4% | 517 |
-| M2_multiples | random_forest | 0.619 | 0.054 | 0.578 | 0.044 | 49.5% | 517 |
-| M2_multiples | xgboost | 0.597 | 0.075 | 0.566 | 0.055 | 47.6% | 517 |
-| M3_combined | logistic_regression | 0.621 | 0.045 | 0.598 | 0.055 | 53.4% | 425 |
-| M3_combined | ridge | 0.588 | 0.059 | 0.574 | 0.060 | 52.0% | 425 |
-| M3_combined | random_forest | 0.632 | 0.026 | 0.615 | 0.025 | 53.6% | 425 |
-| M3_combined | xgboost | 0.618 | 0.025 | 0.612 | 0.036 | 52.5% | 425 |
+| M2_multiples | logistic_regression | 0.566 | 0.062 | 0.549 | 0.053 | 52.6% | 517 |
+| M2_multiples | ridge | 0.553 | 0.065 | 0.532 | 0.055 | 45.1% | 517 |
+| M2_multiples | random_forest | 0.630 | 0.062 | 0.577 | 0.050 | 46.4% | 517 |
+| M2_multiples | xgboost | 0.607 | 0.071 | 0.571 | 0.060 | 47.0% | 517 |
+| M3_combined | logistic_regression | 0.619 | 0.038 | 0.584 | 0.042 | 52.5% | 425 |
+| M3_combined | ridge | 0.587 | 0.056 | 0.567 | 0.044 | 50.4% | 425 |
+| M3_combined | random_forest | 0.631 | 0.025 | 0.612 | 0.036 | 53.9% | 425 |
+| M3_combined | xgboost | 0.615 | 0.037 | 0.600 | 0.040 | 53.2% | 425 |
 
 ### Top Features
 
@@ -391,61 +390,61 @@ Naive accuracy baseline: **50.6%**
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `is_profitable` | 0.2121 |
-| 2 | `cash_burn_proxy` | 0.1852 |
-| 3 | `ipo_year` | 0.1765 |
-| 4 | `total_assets` | 0.1653 |
-| 5 | `net_income_pct_revenue` | 0.1615 |
-| 6 | `cash` | 0.1475 |
-| 7 | `proceeds_to_revenue_ratio` | 0.1455 |
-| 8 | `revenue_prior` | 0.1337 |
-| 9 | `gross_margin_pct` | 0.1312 |
-| 10 | `gross_profit` | 0.1290 |
+| 1 | `is_profitable` | 0.2072 |
+| 2 | `cash_burn_proxy` | 0.1835 |
+| 3 | `ipo_year` | 0.1795 |
+| 4 | `net_income_pct_revenue` | 0.1628 |
+| 5 | `total_assets` | 0.1605 |
+| 6 | `cash` | 0.1528 |
+| 7 | `proceeds_to_revenue_ratio` | 0.1442 |
+| 8 | `revenue_prior` | 0.1349 |
+| 9 | `gross_margin_pct` | 0.1346 |
+| 10 | `gross_profit` | 0.1327 |
 
 **ridge** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `cash` | 0.2796 |
-| 2 | `net_income` | 0.2345 |
-| 3 | `ipo_year` | 0.0851 |
-| 4 | `is_profitable` | 0.0722 |
-| 5 | `vix_30d_avg` | 0.0689 |
-| 6 | `cash_burn_proxy` | 0.0620 |
-| 7 | `ipos_same_quarter` | 0.0618 |
-| 8 | `proceeds_to_revenue_ratio` | 0.0608 |
-| 9 | `net_income_pct_revenue` | 0.0554 |
-| 10 | `total_assets` | 0.0527 |
+| 1 | `cash` | 0.2884 |
+| 2 | `net_income` | 0.2354 |
+| 3 | `ipo_year` | 0.0867 |
+| 4 | `vix_30d_avg` | 0.0727 |
+| 5 | `is_profitable` | 0.0689 |
+| 6 | `cash_burn_proxy` | 0.0617 |
+| 7 | `proceeds_to_revenue_ratio` | 0.0601 |
+| 8 | `ipos_prior_90d` | 0.0577 |
+| 9 | `net_income_pct_revenue` | 0.0556 |
+| 10 | `gross_profit` | 0.0516 |
 
 **random_forest** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `sector_etf_ret_30d` | 0.1047 |
-| 2 | `sp500_ret_90d` | 0.1005 |
-| 3 | `vix_30d_avg` | 0.0957 |
-| 4 | `ipos_same_month` | 0.0880 |
-| 5 | `sector_vs_sp500_30d` | 0.0849 |
-| 6 | `vix_on_ipo_date` | 0.0785 |
-| 7 | `sp500_ret_30d` | 0.0774 |
-| 8 | `sector_etf_ret_90d` | 0.0753 |
-| 9 | `ipos_same_quarter` | 0.0722 |
-| 10 | `net_income` | 0.0399 |
+| 1 | `sector_etf_ret_30d` | 0.1085 |
+| 2 | `sp500_ret_90d` | 0.0887 |
+| 3 | `vix_30d_avg` | 0.0852 |
+| 4 | `sector_vs_sp500_30d` | 0.0839 |
+| 5 | `sp500_ret_30d` | 0.0834 |
+| 6 | `ipos_prior_30d` | 0.0811 |
+| 7 | `ipos_prior_90d` | 0.0791 |
+| 8 | `vix_on_ipo_date` | 0.0780 |
+| 9 | `sector_etf_ret_90d` | 0.0680 |
+| 10 | `ipo_year` | 0.0466 |
 
 **xgboost** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `ipos_same_month` | 0.0946 |
-| 2 | `vix_30d_avg` | 0.0664 |
-| 3 | `ebitda` | 0.0655 |
-| 4 | `sp500_ret_90d` | 0.0651 |
-| 5 | `ipo_year` | 0.0619 |
-| 6 | `ipos_same_quarter` | 0.0612 |
-| 7 | `sector_etf_ret_30d` | 0.0606 |
-| 8 | `vix_on_ipo_date` | 0.0595 |
-| 9 | `sector_vs_sp500_30d` | 0.0581 |
-| 10 | `sector_etf_ret_90d` | 0.0549 |
+| 1 | `ipo_year` | 0.1082 |
+| 2 | `sector_etf_ret_30d` | 0.0724 |
+| 3 | `cash` | 0.0665 |
+| 4 | `vix_on_ipo_date` | 0.0665 |
+| 5 | `vix_30d_avg` | 0.0653 |
+| 6 | `ebitda` | 0.0649 |
+| 7 | `sp500_ret_90d` | 0.0643 |
+| 8 | `ipos_prior_30d` | 0.0584 |
+| 9 | `sector_vs_sp500_30d` | 0.0510 |
+| 10 | `ipos_prior_90d` | 0.0497 |
 
 
 ### M3_combined
@@ -454,61 +453,61 @@ Naive accuracy baseline: **50.6%**
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `emb_315` | 0.4374 |
-| 2 | `emb_369` | 0.3613 |
-| 3 | `emb_329` | 0.3520 |
-| 4 | `emb_380` | 0.3252 |
-| 5 | `emb_256` | 0.3166 |
-| 6 | `emb_383` | 0.3085 |
-| 7 | `emb_076` | 0.2993 |
-| 8 | `emb_153` | 0.2920 |
-| 9 | `emb_047` | 0.2896 |
-| 10 | `emb_184` | 0.2887 |
+| 1 | `emb_315` | 0.4444 |
+| 2 | `emb_329` | 0.3554 |
+| 3 | `emb_369` | 0.3490 |
+| 4 | `emb_380` | 0.3296 |
+| 5 | `emb_383` | 0.3169 |
+| 6 | `emb_256` | 0.3156 |
+| 7 | `emb_076` | 0.2989 |
+| 8 | `emb_153` | 0.2933 |
+| 9 | `emb_047` | 0.2922 |
+| 10 | `emb_184` | 0.2906 |
 
 **ridge** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `emb_378` | 0.8228 |
-| 2 | `emb_250` | 0.6867 |
-| 3 | `emb_383` | 0.6774 |
-| 4 | `emb_367` | 0.6472 |
-| 5 | `emb_380` | 0.6271 |
-| 6 | `emb_175` | 0.5998 |
-| 7 | `emb_232` | 0.5976 |
-| 8 | `emb_047` | 0.5701 |
-| 9 | `emb_304` | 0.5654 |
-| 10 | `emb_181` | 0.5644 |
+| 1 | `emb_378` | 0.8459 |
+| 2 | `emb_383` | 0.6976 |
+| 3 | `emb_250` | 0.6766 |
+| 4 | `emb_367` | 0.6494 |
+| 5 | `emb_380` | 0.6296 |
+| 6 | `emb_232` | 0.6086 |
+| 7 | `emb_047` | 0.5920 |
+| 8 | `emb_175` | 0.5790 |
+| 9 | `emb_304` | 0.5667 |
+| 10 | `emb_181` | 0.5516 |
 
 **random_forest** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `emb_006` | 0.0137 |
-| 2 | `emb_064` | 0.0119 |
-| 3 | `emb_253` | 0.0113 |
-| 4 | `emb_013` | 0.0101 |
-| 5 | `emb_258` | 0.0096 |
-| 6 | `emb_189` | 0.0087 |
-| 7 | `emb_200` | 0.0086 |
-| 8 | `emb_149` | 0.0079 |
-| 9 | `emb_250` | 0.0077 |
-| 10 | `emb_158` | 0.0077 |
+| 1 | `emb_253` | 0.0124 |
+| 2 | `emb_064` | 0.0122 |
+| 3 | `emb_006` | 0.0120 |
+| 4 | `emb_013` | 0.0107 |
+| 5 | `emb_258` | 0.0092 |
+| 6 | `emb_200` | 0.0089 |
+| 7 | `emb_189` | 0.0088 |
+| 8 | `emb_038` | 0.0084 |
+| 9 | `emb_310` | 0.0078 |
+| 10 | `emb_080` | 0.0076 |
 
 **xgboost** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `emb_206` | 0.0116 |
-| 2 | `emb_301` | 0.0114 |
-| 3 | `emb_092` | 0.0099 |
-| 4 | `emb_038` | 0.0091 |
-| 5 | `emb_163` | 0.0079 |
-| 6 | `emb_064` | 0.0079 |
-| 7 | `emb_334` | 0.0074 |
-| 8 | `emb_200` | 0.0074 |
-| 9 | `emb_175` | 0.0071 |
-| 10 | `emb_149` | 0.0067 |
+| 1 | `emb_262` | 0.0103 |
+| 2 | `emb_002` | 0.0102 |
+| 3 | `emb_175` | 0.0088 |
+| 4 | `emb_321` | 0.0081 |
+| 5 | `emb_064` | 0.0079 |
+| 6 | `emb_284` | 0.0077 |
+| 7 | `emb_200` | 0.0077 |
+| 8 | `emb_038` | 0.0070 |
+| 9 | `emb_265` | 0.0070 |
+| 10 | `emb_031` | 0.0069 |
 
 
 ### Signal Interpretation
@@ -517,20 +516,20 @@ Naive accuracy baseline: **50.6%**
 **xgboost:**
 
 - M1 (text only): ROC-AUC = 0.607
-- M2 (fundamentals only): ROC-AUC = 0.597
-- M3 (combined): ROC-AUC = 0.618
+- M2 (fundamentals only): ROC-AUC = 0.607
+- M3 (combined): ROC-AUC = 0.615
 
-**Text adds signal:** M3 outperforms M2 by +0.020 AUC, suggesting filing language contains predictive information beyond financials.
-Best variant achieves 0.618 AUC — modest lift above random. Consider expanding the IPO universe for stronger signal.
+**Mixed result:** Text adds marginal lift (+0.009 AUC). With a larger corpus the signal may become clearer.
+Best variant achieves 0.615 AUC — modest lift above random. Consider expanding the IPO universe for stronger signal.
 
 **logistic_regression:**
 
 - M1 (text only): ROC-AUC = 0.612
-- M2 (fundamentals only): ROC-AUC = 0.565
-- M3 (combined): ROC-AUC = 0.621
+- M2 (fundamentals only): ROC-AUC = 0.566
+- M3 (combined): ROC-AUC = 0.619
 
-**Text adds signal:** M3 outperforms M2 by +0.056 AUC, suggesting filing language contains predictive information beyond financials.
-Best variant achieves 0.621 AUC — modest lift above random. Consider expanding the IPO universe for stronger signal.
+**Text adds signal:** M3 outperforms M2 by +0.054 AUC, suggesting filing language contains predictive information beyond financials.
+Best variant achieves 0.619 AUC — modest lift above random. Consider expanding the IPO universe for stronger signal.
 
 ### Notable Findings
 
@@ -538,12 +537,13 @@ Best variant achieves 0.621 AUC — modest lift above random. Consider expanding
 - **`emb_232`** is the #1 feature in **M1_text/ridge** (importance: 0.8086)
 - **`emb_006`** is the #1 feature in **M1_text/random_forest** (importance: 0.0116)
 - **`emb_073`** is the #1 feature in **M1_text/xgboost** (importance: 0.0111)
-- **`is_profitable`** is the #1 feature in **M2_multiples/logistic_regression** (importance: 0.2121)
-- **`cash`** is the #1 feature in **M2_multiples/ridge** (importance: 0.2796)
-- **`sector_etf_ret_30d`** is the #1 feature in **M2_multiples/random_forest** (importance: 0.1047)
-- **`ipos_same_month`** is the #1 feature in **M2_multiples/xgboost** (importance: 0.0946)
-- **`emb_378`** is the #1 feature in **M3_combined/ridge** (importance: 0.8228)
-- **`emb_206`** is the #1 feature in **M3_combined/xgboost** (importance: 0.0116)
+- **`is_profitable`** is the #1 feature in **M2_multiples/logistic_regression** (importance: 0.2072)
+- **`cash`** is the #1 feature in **M2_multiples/ridge** (importance: 0.2884)
+- **`sector_etf_ret_30d`** is the #1 feature in **M2_multiples/random_forest** (importance: 0.1085)
+- **`ipo_year`** is the #1 feature in **M2_multiples/xgboost** (importance: 0.1082)
+- **`emb_378`** is the #1 feature in **M3_combined/ridge** (importance: 0.8459)
+- **`emb_253`** is the #1 feature in **M3_combined/random_forest** (importance: 0.0124)
+- **`emb_262`** is the #1 feature in **M3_combined/xgboost** (importance: 0.0103)
 
 ### SHAP Plots
 
@@ -608,14 +608,14 @@ Naive accuracy baseline: **65.9%**
 | M1_text | ridge | 0.558 | 0.033 | 0.509 | 0.040 | 40.9% | 425 |
 | M1_text | random_forest | 0.608 | 0.044 | 0.549 | 0.018 | 17.6% | 425 |
 | M1_text | xgboost | 0.630 | 0.055 | 0.582 | 0.044 | 27.8% | 425 |
-| M2_multiples | logistic_regression | 0.633 | 0.059 | 0.596 | 0.048 | 45.8% | 517 |
-| M2_multiples | ridge | 0.629 | 0.055 | 0.564 | 0.021 | 12.8% | 517 |
-| M2_multiples | random_forest | 0.682 | 0.061 | 0.626 | 0.022 | 33.8% | 517 |
-| M2_multiples | xgboost | 0.631 | 0.034 | 0.619 | 0.032 | 34.8% | 517 |
-| M3_combined | logistic_regression | 0.620 | 0.033 | 0.570 | 0.012 | 36.2% | 425 |
-| M3_combined | ridge | 0.563 | 0.032 | 0.535 | 0.043 | 39.5% | 425 |
-| M3_combined | random_forest | 0.694 | 0.048 | 0.639 | 0.029 | 20.9% | 425 |
-| M3_combined | xgboost | 0.732 | 0.042 | 0.676 | 0.047 | 32.0% | 425 |
+| M2_multiples | logistic_regression | 0.625 | 0.067 | 0.595 | 0.047 | 45.5% | 517 |
+| M2_multiples | ridge | 0.621 | 0.066 | 0.548 | 0.009 | 12.6% | 517 |
+| M2_multiples | random_forest | 0.679 | 0.057 | 0.634 | 0.039 | 32.9% | 517 |
+| M2_multiples | xgboost | 0.637 | 0.042 | 0.606 | 0.023 | 37.1% | 517 |
+| M3_combined | logistic_regression | 0.620 | 0.035 | 0.569 | 0.032 | 37.2% | 425 |
+| M3_combined | ridge | 0.559 | 0.034 | 0.521 | 0.040 | 40.7% | 425 |
+| M3_combined | random_forest | 0.679 | 0.052 | 0.631 | 0.021 | 20.0% | 425 |
+| M3_combined | xgboost | 0.726 | 0.033 | 0.672 | 0.042 | 32.5% | 425 |
 
 ### Top Features
 
@@ -689,61 +689,61 @@ Naive accuracy baseline: **65.9%**
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `vix_30d_avg` | 0.3645 |
-| 2 | `ipo_year` | 0.3550 |
-| 3 | `has_insider_selling` | 0.2069 |
-| 4 | `ipos_same_quarter` | 0.1751 |
-| 5 | `total_assets` | 0.1734 |
-| 6 | `revenue_prior` | 0.1539 |
-| 7 | `proceeds_to_revenue_ratio` | 0.1507 |
-| 8 | `sp500_ret_90d` | 0.1367 |
-| 9 | `ebitda` | 0.1349 |
-| 10 | `gross_profit` | 0.1335 |
+| 1 | `vix_30d_avg` | 0.3622 |
+| 2 | `ipo_year` | 0.3572 |
+| 3 | `has_insider_selling` | 0.2051 |
+| 4 | `ipos_prior_90d` | 0.1881 |
+| 5 | `total_assets` | 0.1780 |
+| 6 | `revenue_prior` | 0.1517 |
+| 7 | `proceeds_to_revenue_ratio` | 0.1510 |
+| 8 | `gross_profit` | 0.1373 |
+| 9 | `ebitda` | 0.1309 |
+| 10 | `sp500_ret_90d` | 0.1293 |
 
 **ridge** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `cash` | 0.2711 |
-| 2 | `net_income` | 0.2368 |
-| 3 | `vix_30d_avg` | 0.1920 |
-| 4 | `ipo_year` | 0.1601 |
-| 5 | `has_insider_selling` | 0.0964 |
-| 6 | `ipos_same_quarter` | 0.0849 |
-| 7 | `total_assets` | 0.0821 |
-| 8 | `proceeds_to_revenue_ratio` | 0.0731 |
-| 9 | `sp500_ret_90d` | 0.0726 |
-| 10 | `gross_profit` | 0.0603 |
+| 1 | `cash` | 0.2760 |
+| 2 | `net_income` | 0.2367 |
+| 3 | `vix_30d_avg` | 0.1909 |
+| 4 | `ipo_year` | 0.1588 |
+| 5 | `has_insider_selling` | 0.0948 |
+| 6 | `ipos_prior_90d` | 0.0854 |
+| 7 | `total_assets` | 0.0791 |
+| 8 | `proceeds_to_revenue_ratio` | 0.0733 |
+| 9 | `sp500_ret_90d` | 0.0700 |
+| 10 | `is_hot_ipo_year` | 0.0657 |
 
 **random_forest** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `vix_30d_avg` | 0.1301 |
-| 2 | `ipo_year` | 0.1128 |
-| 3 | `vix_on_ipo_date` | 0.1104 |
-| 4 | `ipos_same_quarter` | 0.0902 |
-| 5 | `sector_etf_ret_90d` | 0.0881 |
-| 6 | `sp500_ret_90d` | 0.0762 |
-| 7 | `sector_vs_sp500_30d` | 0.0725 |
-| 8 | `sector_etf_ret_30d` | 0.0725 |
-| 9 | `sp500_ret_30d` | 0.0632 |
-| 10 | `ipos_same_month` | 0.0578 |
+| 1 | `ipo_year` | 0.1388 |
+| 2 | `vix_30d_avg` | 0.1317 |
+| 3 | `vix_on_ipo_date` | 0.1085 |
+| 4 | `ipos_prior_90d` | 0.0888 |
+| 5 | `sector_etf_ret_90d` | 0.0801 |
+| 6 | `sp500_ret_90d` | 0.0782 |
+| 7 | `sector_etf_ret_30d` | 0.0708 |
+| 8 | `sector_vs_sp500_30d` | 0.0699 |
+| 9 | `sp500_ret_30d` | 0.0580 |
+| 10 | `ipos_prior_30d` | 0.0524 |
 
 **xgboost** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `ipo_year` | 0.2289 |
-| 2 | `vix_30d_avg` | 0.0621 |
-| 3 | `is_hot_ipo_year` | 0.0582 |
-| 4 | `sp500_ret_90d` | 0.0500 |
-| 5 | `ipos_same_quarter` | 0.0495 |
-| 6 | `sector_etf_ret_90d` | 0.0476 |
-| 7 | `insider_proceeds_pct` | 0.0462 |
-| 8 | `sp500_ret_30d` | 0.0452 |
-| 9 | `sector_etf_ret_30d` | 0.0389 |
-| 10 | `sector_vs_sp500_30d` | 0.0378 |
+| 1 | `ipo_year` | 0.2821 |
+| 2 | `vix_30d_avg` | 0.0630 |
+| 3 | `sp500_ret_90d` | 0.0557 |
+| 4 | `sector_etf_ret_90d` | 0.0501 |
+| 5 | `insider_proceeds_pct` | 0.0470 |
+| 6 | `sector_vs_sp500_30d` | 0.0458 |
+| 7 | `ipos_prior_90d` | 0.0425 |
+| 8 | `cash_burn_proxy` | 0.0421 |
+| 9 | `sp500_ret_30d` | 0.0382 |
+| 10 | `net_income_pct_revenue` | 0.0377 |
 
 
 ### M3_combined
@@ -752,61 +752,61 @@ Naive accuracy baseline: **65.9%**
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `vix_30d_avg` | 0.4622 |
-| 2 | `emb_026` | 0.4153 |
-| 3 | `ipo_year` | 0.3975 |
-| 4 | `emb_165` | 0.3410 |
-| 5 | `emb_345` | 0.3367 |
-| 6 | `uncertainty_in_risk` | 0.3083 |
-| 7 | `risk_factor_count_approx` | 0.3045 |
-| 8 | `emb_340` | 0.3033 |
-| 9 | `emb_160` | 0.3018 |
-| 10 | `emb_235` | 0.2985 |
+| 1 | `vix_30d_avg` | 0.4532 |
+| 2 | `emb_026` | 0.4095 |
+| 3 | `ipo_year` | 0.4033 |
+| 4 | `emb_165` | 0.3417 |
+| 5 | `emb_345` | 0.3286 |
+| 6 | `emb_340` | 0.3058 |
+| 7 | `emb_160` | 0.3042 |
+| 8 | `emb_235` | 0.3026 |
+| 9 | `risk_factor_count_approx` | 0.3019 |
+| 10 | `uncertainty_in_risk` | 0.2997 |
 
 **ridge** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `emb_250` | 0.8135 |
-| 2 | `emb_353` | 0.7134 |
-| 3 | `emb_095` | 0.5778 |
-| 4 | `emb_217` | 0.5765 |
-| 5 | `emb_232` | 0.5459 |
-| 6 | `emb_084` | 0.5380 |
-| 7 | `emb_191` | 0.5113 |
-| 8 | `emb_369` | 0.5024 |
-| 9 | `emb_311` | 0.4964 |
-| 10 | `emb_124` | 0.4951 |
+| 1 | `emb_250` | 0.8314 |
+| 2 | `emb_353` | 0.6962 |
+| 3 | `emb_217` | 0.5741 |
+| 4 | `emb_095` | 0.5719 |
+| 5 | `emb_232` | 0.5370 |
+| 6 | `emb_084` | 0.5247 |
+| 7 | `emb_369` | 0.5061 |
+| 8 | `emb_311` | 0.5027 |
+| 9 | `emb_191` | 0.4966 |
+| 10 | `emb_225` | 0.4932 |
 
 **random_forest** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `vix_30d_avg` | 0.0246 |
-| 2 | `ipo_year` | 0.0188 |
-| 3 | `vix_on_ipo_date` | 0.0174 |
-| 4 | `ipos_same_quarter` | 0.0120 |
-| 5 | `emb_367` | 0.0094 |
-| 6 | `emb_288` | 0.0091 |
-| 7 | `emb_279` | 0.0078 |
-| 8 | `emb_004` | 0.0074 |
-| 9 | `emb_118` | 0.0072 |
-| 10 | `emb_261` | 0.0072 |
+| 1 | `vix_30d_avg` | 0.0252 |
+| 2 | `ipo_year` | 0.0186 |
+| 3 | `vix_on_ipo_date` | 0.0185 |
+| 4 | `emb_367` | 0.0094 |
+| 5 | `emb_288` | 0.0082 |
+| 6 | `emb_261` | 0.0077 |
+| 7 | `emb_279` | 0.0076 |
+| 8 | `emb_004` | 0.0073 |
+| 9 | `emb_118` | 0.0070 |
+| 10 | `sp500_ret_90d` | 0.0069 |
 
 **xgboost** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `ipo_year` | 0.0184 |
-| 2 | `emb_362` | 0.0121 |
-| 3 | `emb_127` | 0.0101 |
-| 4 | `emb_223` | 0.0094 |
-| 5 | `emb_016` | 0.0094 |
-| 6 | `emb_110` | 0.0092 |
-| 7 | `emb_070` | 0.0090 |
-| 8 | `vix_30d_avg` | 0.0089 |
-| 9 | `emb_243` | 0.0088 |
-| 10 | `emb_266` | 0.0082 |
+| 1 | `ipo_year` | 0.0153 |
+| 2 | `vix_on_ipo_date` | 0.0114 |
+| 3 | `emb_127` | 0.0093 |
+| 4 | `risk_to_total_ratio` | 0.0093 |
+| 5 | `emb_192` | 0.0092 |
+| 6 | `emb_223` | 0.0092 |
+| 7 | `emb_145` | 0.0088 |
+| 8 | `emb_266` | 0.0087 |
+| 9 | `emb_301` | 0.0086 |
+| 10 | `emb_070` | 0.0086 |
 
 
 ### Signal Interpretation
@@ -815,29 +815,29 @@ Naive accuracy baseline: **65.9%**
 **xgboost:**
 
 - M1 (text only): ROC-AUC = 0.630
-- M2 (fundamentals only): ROC-AUC = 0.631
-- M3 (combined): ROC-AUC = 0.732
+- M2 (fundamentals only): ROC-AUC = 0.637
+- M3 (combined): ROC-AUC = 0.726
 
-**Text adds signal:** M3 outperforms M2 by +0.101 AUC, suggesting filing language contains predictive information beyond financials.
-Best variant achieves 0.732 AUC — meaningfully above the 0.5 random baseline.
+**Text adds signal:** M3 outperforms M2 by +0.089 AUC, suggesting filing language contains predictive information beyond financials.
+Best variant achieves 0.726 AUC — meaningfully above the 0.5 random baseline.
 
 **logistic_regression:**
 
 - M1 (text only): ROC-AUC = 0.592
-- M2 (fundamentals only): ROC-AUC = 0.633
+- M2 (fundamentals only): ROC-AUC = 0.625
 - M3 (combined): ROC-AUC = 0.620
 
-**Text does not help:** M3 underperforms M2 by 0.012 AUC, suggesting text may be adding noise or overfitting with this sample size.
-Best variant achieves 0.633 AUC — modest lift above random. Consider expanding the IPO universe for stronger signal.
+**Mixed result:** Text adds marginal lift (-0.005 AUC). With a larger corpus the signal may become clearer.
+Best variant achieves 0.625 AUC — modest lift above random. Consider expanding the IPO universe for stronger signal.
 
 ### Notable Findings
 
 - **`emb_026`** is the #1 feature in **M1_text/logistic_regression** (importance: 0.4144)
 - **`emb_250`** is the #1 feature in **M1_text/ridge** (importance: 0.7369)
 - **`emb_288`** is the #1 feature in **M1_text/random_forest** (importance: 0.0119)
-- **`vix_30d_avg`** is the #1 feature in **M2_multiples/logistic_regression** (importance: 0.3645)
-- **`cash`** is the #1 feature in **M2_multiples/ridge** (importance: 0.2711)
-- **`ipo_year`** is the #1 feature in **M2_multiples/xgboost** (importance: 0.2289)
+- **`vix_30d_avg`** is the #1 feature in **M2_multiples/logistic_regression** (importance: 0.3622)
+- **`cash`** is the #1 feature in **M2_multiples/ridge** (importance: 0.2760)
+- **`ipo_year`** is the #1 feature in **M2_multiples/random_forest** (importance: 0.1388)
 
 ### SHAP Plots
 
@@ -902,14 +902,14 @@ Naive accuracy baseline: **69.2%**
 | M1_text | ridge | 0.587 | 0.050 | 0.550 | 0.037 | 38.8% | 425 |
 | M1_text | random_forest | 0.649 | 0.072 | 0.528 | 0.037 | 10.6% | 425 |
 | M1_text | xgboost | 0.605 | 0.051 | 0.553 | 0.021 | 20.9% | 425 |
-| M2_multiples | logistic_regression | 0.685 | 0.070 | 0.659 | 0.050 | 46.4% | 517 |
-| M2_multiples | ridge | 0.688 | 0.067 | 0.574 | 0.019 | 13.9% | 517 |
-| M2_multiples | random_forest | 0.680 | 0.038 | 0.615 | 0.026 | 36.6% | 517 |
-| M2_multiples | xgboost | 0.676 | 0.039 | 0.618 | 0.021 | 35.4% | 517 |
-| M3_combined | logistic_regression | 0.687 | 0.073 | 0.621 | 0.064 | 36.7% | 425 |
-| M3_combined | ridge | 0.615 | 0.053 | 0.586 | 0.054 | 36.9% | 425 |
-| M3_combined | random_forest | 0.687 | 0.084 | 0.556 | 0.034 | 13.6% | 425 |
-| M3_combined | xgboost | 0.661 | 0.057 | 0.618 | 0.031 | 31.8% | 425 |
+| M2_multiples | logistic_regression | 0.681 | 0.060 | 0.641 | 0.044 | 47.6% | 517 |
+| M2_multiples | ridge | 0.689 | 0.059 | 0.581 | 0.032 | 14.9% | 517 |
+| M2_multiples | random_forest | 0.690 | 0.042 | 0.633 | 0.023 | 34.0% | 517 |
+| M2_multiples | xgboost | 0.681 | 0.030 | 0.656 | 0.045 | 36.6% | 517 |
+| M3_combined | logistic_regression | 0.689 | 0.073 | 0.605 | 0.055 | 35.8% | 425 |
+| M3_combined | ridge | 0.606 | 0.051 | 0.574 | 0.044 | 36.9% | 425 |
+| M3_combined | random_forest | 0.688 | 0.084 | 0.559 | 0.042 | 12.5% | 425 |
+| M3_combined | xgboost | 0.671 | 0.039 | 0.629 | 0.035 | 29.4% | 425 |
 
 ### Top Features
 
@@ -983,61 +983,61 @@ Naive accuracy baseline: **69.2%**
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `ipo_year` | 0.4425 |
-| 2 | `vix_30d_avg` | 0.4041 |
-| 3 | `is_hot_ipo_year` | 0.2958 |
-| 4 | `has_insider_selling` | 0.2697 |
-| 5 | `sp500_ret_90d` | 0.2509 |
-| 6 | `total_assets` | 0.2065 |
-| 7 | `ipos_same_month` | 0.1854 |
-| 8 | `revenue_prior` | 0.1711 |
-| 9 | `ipos_same_quarter` | 0.1675 |
-| 10 | `ebitda` | 0.1581 |
+| 1 | `ipo_year` | 0.4269 |
+| 2 | `vix_30d_avg` | 0.3620 |
+| 3 | `ipos_prior_30d` | 0.3166 |
+| 4 | `is_hot_ipo_year` | 0.3131 |
+| 5 | `has_insider_selling` | 0.2756 |
+| 6 | `sp500_ret_90d` | 0.2383 |
+| 7 | `total_assets` | 0.2089 |
+| 8 | `revenue_prior` | 0.1739 |
+| 9 | `ebitda` | 0.1655 |
+| 10 | `proceeds_to_revenue_ratio` | 0.1519 |
 
 **ridge** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `cash` | 0.2773 |
-| 2 | `net_income` | 0.2499 |
-| 3 | `vix_30d_avg` | 0.2320 |
-| 4 | `ipo_year` | 0.1930 |
-| 5 | `is_hot_ipo_year` | 0.1410 |
-| 6 | `sp500_ret_90d` | 0.1225 |
-| 7 | `has_insider_selling` | 0.1187 |
-| 8 | `vix_on_ipo_date` | 0.1018 |
-| 9 | `ipos_same_quarter` | 0.0808 |
-| 10 | `total_assets` | 0.0748 |
+| 1 | `cash` | 0.3195 |
+| 2 | `net_income` | 0.2855 |
+| 3 | `vix_30d_avg` | 0.2020 |
+| 4 | `ipo_year` | 0.1869 |
+| 5 | `is_hot_ipo_year` | 0.1437 |
+| 6 | `has_insider_selling` | 0.1169 |
+| 7 | `sp500_ret_90d` | 0.1154 |
+| 8 | `ipos_prior_30d` | 0.0938 |
+| 9 | `revenue_current` | 0.0811 |
+| 10 | `total_assets` | 0.0800 |
 
 **random_forest** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `ipo_year` | 0.1180 |
-| 2 | `ipos_same_quarter` | 0.1115 |
-| 3 | `vix_on_ipo_date` | 0.0909 |
-| 4 | `ipos_same_month` | 0.0892 |
-| 5 | `vix_30d_avg` | 0.0822 |
-| 6 | `sp500_ret_30d` | 0.0760 |
-| 7 | `sector_etf_ret_90d` | 0.0725 |
-| 8 | `sector_etf_ret_30d` | 0.0721 |
-| 9 | `sp500_ret_90d` | 0.0708 |
-| 10 | `sector_vs_sp500_30d` | 0.0707 |
+| 1 | `ipo_year` | 0.1455 |
+| 2 | `ipos_prior_90d` | 0.1209 |
+| 3 | `ipos_prior_30d` | 0.0984 |
+| 4 | `vix_30d_avg` | 0.0858 |
+| 5 | `vix_on_ipo_date` | 0.0814 |
+| 6 | `sector_etf_ret_30d` | 0.0800 |
+| 7 | `sp500_ret_30d` | 0.0714 |
+| 8 | `sp500_ret_90d` | 0.0623 |
+| 9 | `sector_vs_sp500_30d` | 0.0599 |
+| 10 | `sector_etf_ret_90d` | 0.0578 |
 
 **xgboost** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `ipo_year` | 0.2177 |
-| 2 | `ipos_same_month` | 0.0574 |
-| 3 | `ebitda` | 0.0551 |
-| 4 | `has_insider_selling` | 0.0483 |
-| 5 | `gross_profit` | 0.0476 |
+| 1 | `ipo_year` | 0.2064 |
+| 2 | `is_hot_ipo_year` | 0.0585 |
+| 3 | `ipos_prior_90d` | 0.0542 |
+| 4 | `ipos_prior_30d` | 0.0509 |
+| 5 | `vix_on_ipo_date` | 0.0509 |
 | 6 | `sp500_ret_30d` | 0.0445 |
-| 7 | `ipos_same_quarter` | 0.0410 |
-| 8 | `vix_30d_avg` | 0.0407 |
-| 9 | `is_hot_ipo_year` | 0.0398 |
-| 10 | `vix_on_ipo_date` | 0.0388 |
+| 7 | `vix_30d_avg` | 0.0415 |
+| 8 | `ebitda` | 0.0406 |
+| 9 | `sp500_ret_90d` | 0.0387 |
+| 10 | `sector_vs_sp500_30d` | 0.0383 |
 
 
 ### M3_combined
@@ -1046,61 +1046,61 @@ Naive accuracy baseline: **69.2%**
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `emb_026` | 0.4577 |
-| 2 | `is_hot_ipo_year` | 0.4161 |
-| 3 | `ipo_year` | 0.3955 |
-| 4 | `vix_30d_avg` | 0.3823 |
-| 5 | `n_sections_found` | 0.3793 |
-| 6 | `profit_loss_ratio` | 0.3389 |
-| 7 | `ipos_same_quarter` | 0.3209 |
-| 8 | `emb_266` | 0.3205 |
-| 9 | `emb_065` | 0.3159 |
-| 10 | `emb_264` | 0.3105 |
+| 1 | `is_hot_ipo_year` | 0.4454 |
+| 2 | `emb_026` | 0.4427 |
+| 3 | `n_sections_found` | 0.4000 |
+| 4 | `ipo_year` | 0.3775 |
+| 5 | `ipos_prior_30d` | 0.3442 |
+| 6 | `vix_30d_avg` | 0.3414 |
+| 7 | `profit_loss_ratio` | 0.3247 |
+| 8 | `emb_266` | 0.3243 |
+| 9 | `emb_264` | 0.3241 |
+| 10 | `emb_065` | 0.3224 |
 
 **ridge** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `emb_250` | 0.8252 |
-| 2 | `emb_265` | 0.6172 |
-| 3 | `emb_353` | 0.5993 |
-| 4 | `emb_111` | 0.5015 |
-| 5 | `emb_285` | 0.5011 |
-| 6 | `emb_050` | 0.5007 |
-| 7 | `emb_373` | 0.4913 |
-| 8 | `emb_198` | 0.4825 |
-| 9 | `emb_246` | 0.4695 |
-| 10 | `emb_242` | 0.4669 |
+| 1 | `emb_250` | 0.8166 |
+| 2 | `emb_265` | 0.6322 |
+| 3 | `emb_353` | 0.5913 |
+| 4 | `emb_285` | 0.5212 |
+| 5 | `emb_111` | 0.4987 |
+| 6 | `emb_050` | 0.4978 |
+| 7 | `emb_373` | 0.4970 |
+| 8 | `emb_246` | 0.4885 |
+| 9 | `emb_198` | 0.4650 |
+| 10 | `emb_242` | 0.4608 |
 
 **random_forest** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `ipo_year` | 0.0233 |
-| 2 | `ipos_same_quarter` | 0.0209 |
-| 3 | `ipos_same_month` | 0.0182 |
-| 4 | `emb_282` | 0.0099 |
-| 5 | `emb_030` | 0.0097 |
-| 6 | `emb_189` | 0.0083 |
-| 7 | `vix_30d_avg` | 0.0081 |
-| 8 | `emb_028` | 0.0070 |
-| 9 | `emb_120` | 0.0069 |
-| 10 | `emb_343` | 0.0065 |
+| 1 | `ipo_year` | 0.0259 |
+| 2 | `ipos_prior_30d` | 0.0191 |
+| 3 | `ipos_prior_90d` | 0.0119 |
+| 4 | `emb_030` | 0.0106 |
+| 5 | `emb_282` | 0.0101 |
+| 6 | `emb_028` | 0.0098 |
+| 7 | `vix_30d_avg` | 0.0088 |
+| 8 | `emb_120` | 0.0086 |
+| 9 | `emb_189` | 0.0077 |
+| 10 | `emb_343` | 0.0072 |
 
 **xgboost** — top 10 features:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | `ipo_year` | 0.0194 |
-| 2 | `emb_255` | 0.0124 |
-| 3 | `emb_281` | 0.0110 |
-| 4 | `emb_348` | 0.0106 |
-| 5 | `emb_124` | 0.0102 |
-| 6 | `emb_209` | 0.0095 |
-| 7 | `emb_199` | 0.0093 |
-| 8 | `emb_180` | 0.0091 |
-| 9 | `emb_047` | 0.0091 |
-| 10 | `emb_310` | 0.0089 |
+| 1 | `ipo_year` | 0.0167 |
+| 2 | `emb_255` | 0.0111 |
+| 3 | `emb_341` | 0.0102 |
+| 4 | `emb_058` | 0.0098 |
+| 5 | `emb_158` | 0.0098 |
+| 6 | `emb_315` | 0.0095 |
+| 7 | `emb_199` | 0.0091 |
+| 8 | `emb_124` | 0.0086 |
+| 9 | `emb_248` | 0.0086 |
+| 10 | `emb_180` | 0.0084 |
 
 
 ### Signal Interpretation
@@ -1109,20 +1109,20 @@ Naive accuracy baseline: **69.2%**
 **xgboost:**
 
 - M1 (text only): ROC-AUC = 0.605
-- M2 (fundamentals only): ROC-AUC = 0.676
-- M3 (combined): ROC-AUC = 0.661
+- M2 (fundamentals only): ROC-AUC = 0.681
+- M3 (combined): ROC-AUC = 0.671
 
-**Text does not help:** M3 underperforms M2 by 0.016 AUC, suggesting text may be adding noise or overfitting with this sample size.
-Best variant achieves 0.676 AUC — meaningfully above the 0.5 random baseline.
+**Mixed result:** Text adds marginal lift (-0.009 AUC). With a larger corpus the signal may become clearer.
+Best variant achieves 0.681 AUC — meaningfully above the 0.5 random baseline.
 
 **logistic_regression:**
 
 - M1 (text only): ROC-AUC = 0.644
-- M2 (fundamentals only): ROC-AUC = 0.685
-- M3 (combined): ROC-AUC = 0.687
+- M2 (fundamentals only): ROC-AUC = 0.681
+- M3 (combined): ROC-AUC = 0.689
 
-**Mixed result:** Text adds marginal lift (+0.003 AUC). With a larger corpus the signal may become clearer.
-Best variant achieves 0.687 AUC — meaningfully above the 0.5 random baseline.
+**Mixed result:** Text adds marginal lift (+0.008 AUC). With a larger corpus the signal may become clearer.
+Best variant achieves 0.689 AUC — meaningfully above the 0.5 random baseline.
 
 ### Notable Findings
 
@@ -1130,9 +1130,10 @@ Best variant achieves 0.687 AUC — meaningfully above the 0.5 random baseline.
 - **`emb_041`** is the #1 feature in **M1_text/ridge** (importance: 0.6163)
 - **`emb_120`** is the #1 feature in **M1_text/random_forest** (importance: 0.0103)
 - **`emb_074`** is the #1 feature in **M1_text/xgboost** (importance: 0.0109)
-- **`ipo_year`** is the #1 feature in **M2_multiples/logistic_regression** (importance: 0.4425)
-- **`cash`** is the #1 feature in **M2_multiples/ridge** (importance: 0.2773)
-- **`emb_250`** is the #1 feature in **M3_combined/ridge** (importance: 0.8252)
+- **`ipo_year`** is the #1 feature in **M2_multiples/logistic_regression** (importance: 0.4269)
+- **`cash`** is the #1 feature in **M2_multiples/ridge** (importance: 0.3195)
+- **`is_hot_ipo_year`** is the #1 feature in **M3_combined/logistic_regression** (importance: 0.4454)
+- **`emb_250`** is the #1 feature in **M3_combined/ridge** (importance: 0.8166)
 
 ### SHAP Plots
 
