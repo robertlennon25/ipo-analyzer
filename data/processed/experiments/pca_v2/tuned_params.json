@@ -1,0 +1,274 @@
+{
+  "label_1w": {
+    "P1_v2_text_pca": {
+      "random_forest": {
+        "n_estimators": 300,
+        "min_samples_leaf": 5,
+        "max_features": 0.5,
+        "max_depth": 4
+      },
+      "xgboost": {
+        "subsample": 0.6,
+        "n_estimators": 50,
+        "min_child_weight": 3,
+        "max_depth": 2,
+        "learning_rate": 0.03,
+        "colsample_bytree": 1.0
+      },
+      "logistic_regression": {
+        "C": 0.005
+      },
+      "ridge": {
+        "alpha": 100.0
+      }
+    },
+    "P2_v2_structured": {
+      "random_forest": {
+        "n_estimators": 100,
+        "min_samples_leaf": 20,
+        "max_features": 0.3,
+        "max_depth": 8
+      },
+      "xgboost": {
+        "subsample": 0.8,
+        "n_estimators": 150,
+        "min_child_weight": 5,
+        "max_depth": 3,
+        "learning_rate": 0.01,
+        "colsample_bytree": 0.6
+      },
+      "logistic_regression": {
+        "C": 0.01
+      },
+      "ridge": {
+        "alpha": 100.0
+      }
+    },
+    "P3_v2_combined_pca": {
+      "random_forest": {
+        "n_estimators": 300,
+        "min_samples_leaf": 20,
+        "max_features": 0.3,
+        "max_depth": 3
+      },
+      "xgboost": {
+        "subsample": 0.8,
+        "n_estimators": 150,
+        "min_child_weight": 5,
+        "max_depth": 3,
+        "learning_rate": 0.01,
+        "colsample_bytree": 0.6
+      },
+      "logistic_regression": {
+        "C": 0.001
+      },
+      "ridge": {
+        "alpha": 100.0
+      }
+    }
+  },
+  "label_1m": {
+    "P1_v2_text_pca": {
+      "random_forest": {
+        "n_estimators": 300,
+        "min_samples_leaf": 2,
+        "max_features": 0.5,
+        "max_depth": 4
+      },
+      "xgboost": {
+        "subsample": 0.6,
+        "n_estimators": 50,
+        "min_child_weight": 3,
+        "max_depth": 2,
+        "learning_rate": 0.03,
+        "colsample_bytree": 1.0
+      },
+      "logistic_regression": {
+        "C": 0.1
+      },
+      "ridge": {
+        "alpha": 50.0
+      }
+    },
+    "P2_v2_structured": {
+      "random_forest": {
+        "n_estimators": 500,
+        "min_samples_leaf": 2,
+        "max_features": 0.3,
+        "max_depth": null
+      },
+      "xgboost": {
+        "subsample": 0.8,
+        "n_estimators": 150,
+        "min_child_weight": 3,
+        "max_depth": 4,
+        "learning_rate": 0.1,
+        "colsample_bytree": 0.8
+      },
+      "logistic_regression": {
+        "C": 5.0
+      },
+      "ridge": {
+        "alpha": 5.0
+      }
+    },
+    "P3_v2_combined_pca": {
+      "random_forest": {
+        "n_estimators": 300,
+        "min_samples_leaf": 10,
+        "max_features": "log2",
+        "max_depth": null
+      },
+      "xgboost": {
+        "subsample": 0.6,
+        "n_estimators": 50,
+        "min_child_weight": 3,
+        "max_depth": 2,
+        "learning_rate": 0.03,
+        "colsample_bytree": 1.0
+      },
+      "logistic_regression": {
+        "C": 0.5
+      },
+      "ridge": {
+        "alpha": 50.0
+      }
+    }
+  },
+  "label_6m": {
+    "P1_v2_text_pca": {
+      "random_forest": {
+        "n_estimators": 100,
+        "min_samples_leaf": 20,
+        "max_features": "sqrt",
+        "max_depth": 8
+      },
+      "xgboost": {
+        "subsample": 0.7,
+        "n_estimators": 50,
+        "min_child_weight": 10,
+        "max_depth": 6,
+        "learning_rate": 0.1,
+        "colsample_bytree": 1.0
+      },
+      "logistic_regression": {
+        "C": 0.1
+      },
+      "ridge": {
+        "alpha": 50.0
+      }
+    },
+    "P2_v2_structured": {
+      "random_forest": {
+        "n_estimators": 300,
+        "min_samples_leaf": 20,
+        "max_features": 0.3,
+        "max_depth": 3
+      },
+      "xgboost": {
+        "subsample": 0.6,
+        "n_estimators": 300,
+        "min_child_weight": 10,
+        "max_depth": 6,
+        "learning_rate": 0.01,
+        "colsample_bytree": 1.0
+      },
+      "logistic_regression": {
+        "C": 0.005
+      },
+      "ridge": {
+        "alpha": 100.0
+      }
+    },
+    "P3_v2_combined_pca": {
+      "random_forest": {
+        "n_estimators": 200,
+        "min_samples_leaf": 10,
+        "max_features": "sqrt",
+        "max_depth": 5
+      },
+      "xgboost": {
+        "subsample": 0.6,
+        "n_estimators": 100,
+        "min_child_weight": 10,
+        "max_depth": 6,
+        "learning_rate": 0.05,
+        "colsample_bytree": 0.6
+      },
+      "logistic_regression": {
+        "C": 0.005
+      },
+      "ridge": {
+        "alpha": 100.0
+      }
+    }
+  },
+  "label_1y": {
+    "P1_v2_text_pca": {
+      "random_forest": {
+        "n_estimators": 500,
+        "min_samples_leaf": 5,
+        "max_features": 0.5,
+        "max_depth": 6
+      },
+      "xgboost": {
+        "subsample": 0.8,
+        "n_estimators": 100,
+        "min_child_weight": 3,
+        "max_depth": 2,
+        "learning_rate": 0.03,
+        "colsample_bytree": 0.8
+      },
+      "logistic_regression": {
+        "C": 0.01
+      },
+      "ridge": {
+        "alpha": 10.0
+      }
+    },
+    "P2_v2_structured": {
+      "random_forest": {
+        "n_estimators": 300,
+        "min_samples_leaf": 2,
+        "max_features": 0.5,
+        "max_depth": 4
+      },
+      "xgboost": {
+        "subsample": 0.8,
+        "n_estimators": 200,
+        "min_child_weight": 10,
+        "max_depth": 2,
+        "learning_rate": 0.03,
+        "colsample_bytree": 0.6
+      },
+      "logistic_regression": {
+        "C": 0.01
+      },
+      "ridge": {
+        "alpha": 100.0
+      }
+    },
+    "P3_v2_combined_pca": {
+      "random_forest": {
+        "n_estimators": 200,
+        "min_samples_leaf": 10,
+        "max_features": "sqrt",
+        "max_depth": 5
+      },
+      "xgboost": {
+        "subsample": 0.8,
+        "n_estimators": 200,
+        "min_child_weight": 10,
+        "max_depth": 2,
+        "learning_rate": 0.03,
+        "colsample_bytree": 0.6
+      },
+      "logistic_regression": {
+        "C": 0.01
+      },
+      "ridge": {
+        "alpha": 100.0
+      }
+    }
+  }
+}

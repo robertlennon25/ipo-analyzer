@@ -42,7 +42,6 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 from sklearn.metrics import roc_auc_score, balanced_accuracy_score
-from sklearn.impute import SimpleImputer
 
 # ── Project paths ──────────────────────────────────────────────────────────────
 ROOT_DIR = Path(__file__).parent.parent.parent
@@ -105,6 +104,7 @@ def evaluate_direction(
     target: str,
     train_tickers: set[str],
     test_tickers: set[str],
+    hyperparams_override: dict | None = None,
 ) -> list[dict]:
     """
     Train all four models for one direction × variant × target.
@@ -139,8 +139,14 @@ def evaluate_direction(
     pos_rate         = y_train.mean()
     scale_pos_weight = (1 - pos_rate) / pos_rate if pos_rate > 0 else 1.0
 
+    custom_params = (hyperparams_override or {}).get(variant_name, {})
     results = []
-    for model_name, model in _build_model_list(scale_pos_weight=scale_pos_weight):
+    for model_name, model in _build_model_list(scale_pos_weight=scale_pos_weight,
+                                               custom_params=custom_params):
+        # Force n_jobs=1 to avoid joblib worker pool deadlocks in subprocesses.
+        for _, step in (model.steps if hasattr(model, 'steps') else []):
+            if hasattr(step, 'n_jobs'):
+                step.n_jobs = 1
         model.fit(X_train, y_train)
 
         train_scores = _predict_scores(model, X_train)
@@ -203,7 +209,7 @@ def save_auc_chart(df: pd.DataFrame, target: str, plots_dir: Path) -> Path:
     width  = 0.35
 
     for ax, variant in zip(axes, variants):
-        for i, (direction, offset) in enumerate(zip(directions, [-width / 2, width / 2])):
+        for direction, offset in zip(directions, [-width / 2, width / 2]):
             sub = df[(df["variant"] == variant) & (df["direction"] == direction)]
             aucs = [sub[sub["model"] == m]["test_auc"].values[0]
                     if len(sub[sub["model"] == m]) else 0.0
@@ -230,6 +236,16 @@ def save_auc_chart(df: pd.DataFrame, target: str, plots_dir: Path) -> Path:
 
 # ── Console summary ────────────────────────────────────────────────────────────
 
+def _variant_type(name: str) -> str:
+    """Classify variant by role: text | structured | combined."""
+    n = name.lower()
+    if "combined" in n or n.startswith("e3") or n.startswith("m3") or n.startswith("p3"):
+        return "combined"
+    if "structured" in n or n.startswith("e2") or n.startswith("m2") or n.startswith("p2"):
+        return "structured"
+    return "text"
+
+
 def print_summary(df: pd.DataFrame) -> None:
     print(f"\n{'='*70}")
     print("BIDIRECTIONAL TEMPORAL TEST — SUMMARY")
@@ -241,14 +257,16 @@ def print_summary(df: pd.DataFrame) -> None:
     for v, auc in var_auc.items():
         print(f"  {v:<35} {auc:.3f}")
 
-    # Does structured degrade more than text?
-    text_drop   = df[df["variant"].str.startswith("E1")]["auc_drop"].mean()
-    struct_drop = df[df["variant"].str.startswith("E2")]["auc_drop"].mean()
-    comb_drop   = df[df["variant"].str.startswith("E3")]["auc_drop"].mean()
+    # Does structured degrade more than text? (works for E-series, P-series, M-series)
+    df = df.copy()
+    df["variant_type"] = df["variant"].apply(_variant_type)
+    text_drop   = df[df["variant_type"] == "text"]["auc_drop"].mean()
+    struct_drop = df[df["variant_type"] == "structured"]["auc_drop"].mean()
+    comb_drop   = df[df["variant_type"] == "combined"]["auc_drop"].mean()
     print(f"\nMean AUC drop (train → test) by variant type:")
-    print(f"  E1 text:       {text_drop:+.3f}")
-    print(f"  E2 structured: {struct_drop:+.3f}")
-    print(f"  E3 combined:   {comb_drop:+.3f}")
+    print(f"  text:       {text_drop:+.3f}")
+    print(f"  structured: {struct_drop:+.3f}")
+    print(f"  combined:   {comb_drop:+.3f}")
     if not np.isnan(struct_drop) and not np.isnan(text_drop):
         if struct_drop > text_drop:
             print("  → Structured features degrade MORE than text (expected: regime sensitivity)")
@@ -278,12 +296,26 @@ def print_summary(df: pd.DataFrame) -> None:
 
 # ── Main ───────────────────────────────────────────────────────────────────────
 
-def run(target: str = "label_1m", split_frac: float = 0.5) -> pd.DataFrame:
+def run(
+    target: str = "label_1m",
+    split_frac: float = 0.5,
+    which: str = "enhanced",
+    hyperparams_path: str | None = None,
+) -> pd.DataFrame:
+    import json
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    hyperparams_override: dict | None = None
+    if hyperparams_path:
+        hp_path = Path(hyperparams_path)
+        if not hp_path.exists():
+            raise FileNotFoundError(f"--hyperparams file not found: {hp_path}")
+        hyperparams_override = json.loads(hp_path.read_text())
+        print(f"Hyperparams loaded: {hp_path}")
 
     returns_df = pd.read_csv(PROCESSED_DIR / "returns.csv", parse_dates=["ipo_date"])
     feature_sets, _ = load_all_feature_sets()
-    variants = build_variants(feature_sets, which="enhanced")
+    variants = build_variants(feature_sets, which=which)
 
     split_a, split_b, date_a_end, date_b_start = chronological_split(returns_df, split_frac)
 
@@ -310,6 +342,7 @@ def run(target: str = "label_1m", split_frac: float = 0.5) -> pd.DataFrame:
             rows = evaluate_direction(
                 direction_label, variant_name, feat_df,
                 returns_df, target, train_tickers, test_tickers,
+                hyperparams_override=hyperparams_override,
             )
             all_rows.extend(rows)
 
@@ -335,6 +368,15 @@ if __name__ == "__main__":
                         help="Return target to evaluate (default: label_1m).")
     parser.add_argument("--split", type=float, default=0.5,
                         help="Fraction of IPOs in Split A (default: 0.5).")
+    parser.add_argument("--variants", default="enhanced",
+                        choices=["baseline", "enhanced", "pca", "pca_v2", "all"],
+                        help="Variant family to test (default: enhanced). "
+                             "Use 'pca' to test P1/P2/P3 (calendar-year regime). "
+                             "Use 'pca_v2' to test P1_v2/P2_v2/P3_v2 (rolling 360d, regime-unaware).")
+    parser.add_argument("--hyperparams", default=None, metavar="PATH",
+                        help="Path to tuned_params.json from tune_hyperparams.py. "
+                             "Applies tuned params when refitting models in each split.")
     args = parser.parse_args()
 
-    run(target=args.target, split_frac=args.split)
+    run(target=args.target, split_frac=args.split, which=args.variants,
+        hyperparams_path=args.hyperparams)

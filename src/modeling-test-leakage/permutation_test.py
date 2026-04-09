@@ -26,12 +26,18 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent.parent
 sys.path.append(str(REPO_ROOT))
+sys.path.insert(0, str(REPO_ROOT / "src" / "modeling"))
 
 from config.settings import PROCESSED_DIR, RANDOM_STATE, CV_FOLDS
 from src.modeling.train import (
     load_feature_sets,
     build_model_variants,
-    _build_model_list,
+    _build_model_list as _build_model_list_baseline,
+)
+from train_experiment import (
+    load_all_feature_sets,
+    build_variants as build_experiment_variants,
+    _build_model_list as _build_model_list_experiment,
 )
 from sklearn.model_selection import StratifiedKFold, cross_val_score
 from sklearn.impute import SimpleImputer
@@ -44,27 +50,56 @@ DEFAULT_TARGET = "label_1m"
 
 
 def auc_for_model(model, X: np.ndarray, y: np.ndarray) -> float:
+    # Force n_jobs=1 on any RandomForest in the pipeline to avoid joblib worker
+    # pool deadlocks when cross_val_score is called many times in a subprocess.
+    import copy
+    model = copy.deepcopy(model)
+    for step_name, step in (model.steps if hasattr(model, 'steps') else []):
+        if hasattr(step, 'n_jobs'):
+            step.n_jobs = 1
     cv = StratifiedKFold(n_splits=CV_FOLDS, shuffle=True, random_state=RANDOM_STATE)
     scores = cross_val_score(model, X, y, cv=cv, scoring="roc_auc")
     return float(scores.mean())
 
 
-def run_permutation_test(target: str, n_shuffles: int) -> None:
+def run_permutation_test(target: str, n_shuffles: int, which: str = "baseline",
+                         hyperparams_path: str | None = None) -> None:
     returns_df = pd.read_csv(PROCESSED_DIR / "returns.csv")
     if target not in returns_df.columns:
         print(f"Target '{target}' not in returns.csv")
         sys.exit(1)
 
-    feature_sets = load_feature_sets()
-    variants = build_model_variants(feature_sets)
+    # Load hyperparams override for experiment variants
+    hyperparams_override: dict | None = None
+    if hyperparams_path:
+        import json as _json
+        raw = _json.loads(Path(hyperparams_path).read_text())
+        known_targets = {"label_1w", "label_1m", "label_6m", "label_1y"}
+        if raw and set(raw.keys()) <= known_targets:
+            hyperparams_override = raw.get(target)  # per-target format
+        else:
+            hyperparams_override = raw               # flat format
 
-    print(f"\nPermutation test — target: {target}, shuffles: {n_shuffles}")
+    if which == "baseline":
+        feature_sets = load_feature_sets()
+        variants = build_model_variants(feature_sets)
+        build_models = lambda spw: _build_model_list_baseline(scale_pos_weight=spw)
+    else:
+        feature_sets, _ = load_all_feature_sets()
+        variants = build_experiment_variants(feature_sets, which=which)
+        build_models = lambda spw: _build_model_list_experiment(
+            scale_pos_weight=spw,
+            custom_params=hyperparams_override,
+        )
+
+    print(f"\nPermutation test — target: {target}, variants: {which}, shuffles: {n_shuffles}")
     print(f"Expected null AUC: ~0.500  (any model scoring >> 0.5 on shuffled labels = leakage)\n")
 
     rng = np.random.default_rng(RANDOM_STATE)
     output: dict = {
         "test": "permutation",
         "target": target,
+        "variants_family": which,
         "n_shuffles": n_shuffles,
         "run_at": datetime.now().isoformat(),
         "variants": {},
@@ -100,7 +135,7 @@ def run_permutation_test(target: str, n_shuffles: int) -> None:
         print(f"{'-'*75}")
 
         variant_rows = {}
-        for model_name, model in _build_model_list(scale_pos_weight=scale_pos_weight):
+        for model_name, model in build_models(scale_pos_weight):
             # Real AUC (on actual labels)
             real_auc = auc_for_model(model, X, y_real)
 
@@ -152,7 +187,7 @@ def run_permutation_test(target: str, n_shuffles: int) -> None:
 
     # Save results to JSON
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    out_path = RESULTS_DIR / f"permutation_{target}_{timestamp}.json"
+    out_path = RESULTS_DIR / f"permutation_{which}_{target}_{timestamp}.json"
     with open(out_path, "w") as f:
         json.dump(output, f, indent=2)
     print(f"\nResults saved: {out_path}")
@@ -164,5 +199,12 @@ if __name__ == "__main__":
                         help="Target column (e.g. label_1m). Default: label_1m")
     parser.add_argument("--shuffles", type=int, default=N_SHUFFLES_DEFAULT,
                         help=f"Number of label permutations. Default: {N_SHUFFLES_DEFAULT}")
+    parser.add_argument("--variants", default="baseline",
+                        choices=["baseline", "enhanced", "pca", "pca_v2"],
+                        help="Variant family to test (default: baseline = M1/M2/M3). "
+                             "Use 'pca_v2' for P1_v2/P2_v2/P3_v2.")
+    parser.add_argument("--hyperparams", default=None, metavar="PATH",
+                        help="Path to tuned_params.json. Applies tuned params to experiment variants.")
     args = parser.parse_args()
-    run_permutation_test(args.target, args.shuffles)
+    run_permutation_test(args.target, args.shuffles, which=args.variants,
+                         hyperparams_path=args.hyperparams)

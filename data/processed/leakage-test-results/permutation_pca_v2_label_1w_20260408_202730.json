@@ -1,0 +1,114 @@
+{
+  "test": "permutation",
+  "target": "label_1w",
+  "variants_family": "pca_v2",
+  "n_shuffles": 20,
+  "run_at": "2026-04-08T20:25:59.279711",
+  "variants": {
+    "P1_v2_text_pca": {
+      "n_samples": 425,
+      "n_features": 59,
+      "positive_rate": 0.5224,
+      "models": {
+        "logistic_regression": {
+          "real_auc": 0.5803,
+          "null_auc_mean": 0.487,
+          "null_auc_std": 0.0338,
+          "p_value": 0.0,
+          "verdict": "SIGNAL (p<0.05)"
+        },
+        "ridge": {
+          "real_auc": 0.567,
+          "null_auc_mean": 0.5129,
+          "null_auc_std": 0.0303,
+          "p_value": 0.1,
+          "verdict": "MARGINAL"
+        },
+        "random_forest": {
+          "real_auc": 0.5667,
+          "null_auc_mean": 0.5089,
+          "null_auc_std": 0.0254,
+          "p_value": 0.05,
+          "verdict": "MARGINAL"
+        },
+        "xgboost": {
+          "real_auc": 0.5568,
+          "null_auc_mean": 0.5053,
+          "null_auc_std": 0.0356,
+          "p_value": 0.05,
+          "verdict": "MARGINAL"
+        }
+      }
+    },
+    "P2_v2_structured": {
+      "n_samples": 517,
+      "n_features": 70,
+      "positive_rate": 0.4816,
+      "models": {
+        "logistic_regression": {
+          "real_auc": 0.5913,
+          "null_auc_mean": 0.494,
+          "null_auc_std": 0.0311,
+          "p_value": 0.0,
+          "verdict": "SIGNAL (p<0.05)"
+        },
+        "ridge": {
+          "real_auc": 0.5756,
+          "null_auc_mean": 0.5034,
+          "null_auc_std": 0.0301,
+          "p_value": 0.0,
+          "verdict": "SIGNAL (p<0.05)"
+        },
+        "random_forest": {
+          "real_auc": 0.6277,
+          "null_auc_mean": 0.4978,
+          "null_auc_std": 0.0301,
+          "p_value": 0.0,
+          "verdict": "SIGNAL (p<0.05)"
+        },
+        "xgboost": {
+          "real_auc": 0.6014,
+          "null_auc_mean": 0.5042,
+          "null_auc_std": 0.0268,
+          "p_value": 0.0,
+          "verdict": "SIGNAL (p<0.05)"
+        }
+      }
+    },
+    "P3_v2_combined_pca": {
+      "n_samples": 425,
+      "n_features": 117,
+      "positive_rate": 0.5224,
+      "models": {
+        "logistic_regression": {
+          "real_auc": 0.5573,
+          "null_auc_mean": 0.4977,
+          "null_auc_std": 0.036,
+          "p_value": 0.05,
+          "verdict": "MARGINAL"
+        },
+        "ridge": {
+          "real_auc": 0.5153,
+          "null_auc_mean": 0.5047,
+          "null_auc_std": 0.0324,
+          "p_value": 0.35,
+          "verdict": "NO SIGNAL"
+        },
+        "random_forest": {
+          "real_auc": 0.618,
+          "null_auc_mean": 0.4941,
+          "null_auc_std": 0.0393,
+          "p_value": 0.0,
+          "verdict": "SIGNAL (p<0.05)"
+        },
+        "xgboost": {
+          "real_auc": 0.5886,
+          "null_auc_mean": 0.5047,
+          "null_auc_std": 0.028,
+          "p_value": 0.0,
+          "verdict": "SIGNAL (p<0.05)"
+        }
+      }
+    }
+  }
+}
