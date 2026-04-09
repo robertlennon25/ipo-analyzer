@@ -11,6 +11,14 @@ This project extracts features from SEC IPO filings and post-IPO return data to 
 The central question: **does language in IPO filings predict aftermarket returns, and does it add information beyond financial metrics and market context?**
 
 ---
+## Key Results (TL;DR)
+
+- Best cross-validation performance: **0.75 AUC (1-year horizon)**
+- Best temporal out-of-sample performance: **~0.61 AUC**
+- Structured features (underwriter, proceeds, valuation) dominate prediction
+- Text provides modest signal but generalizes better across time
+- Models trained on one market regime fail to generalize to others
+- Dimensionality reduction (PCA) improves robustness
 
 ## Why IPO Prediction Is Hard
 
@@ -350,7 +358,7 @@ P2 structured XGB is essentially random on the temporal holdout despite near-per
 ## Key Findings
 
 
-### 1. Signal Is Real but Weak
+### 1. Signal Is Real but Moderate
 
 IPO filings contain genuine predictive signal for aftermarket returns. Permutation tests confirm this across all horizons with null AUC consistently ~0.50 and real AUC beating null at p<0.05 for virtually all models at label_1m/6m/1y. The signal sits in the 0.60–0.76 AUC range — above random, below actionable without substantially more data.
 
